@@ -1,0 +1,20 @@
+{
+  "name": "@protagonists/coerce",
+  "version": "1.0.0",
+  "description": "A package to handle object coercing and cloning so you don't have to!",
+  "main": "./coerce",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThePywon/coerce.git"
+  },
+  "author": "Pywon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThePywon/coerce/issues"
+  },
+  "homepage": "https://github.com/ThePywon/coerce#readme"
+}
