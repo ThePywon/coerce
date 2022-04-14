@@ -1,8 +1,10 @@
+"use strict";
+
 // Import
 const SchemaType = require("../SchemaType");
 
-// DateType class definition
-class DateType extends SchemaType {
+// _Date_ class definition
+class _Date_ extends SchemaType {
   // Initialization
   constructor() { super() }
 
@@ -13,9 +15,9 @@ class DateType extends SchemaType {
   }
 }
 // Simple toString function override
-DateType.prototype.toString = function toString() {
+_Date_.prototype.toString = function toString() {
   return "Date";
 }
 
 // Export
-module.exports = DateType;
+module.exports = _Date_;

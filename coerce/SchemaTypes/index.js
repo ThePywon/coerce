@@ -1,7 +1,7 @@
 // Fetch all default SchemaTypes
 module.exports = {
-  BooleanType: require("./BooleanType"),
-  NumberType: require("./NumberType"),
-  StringType: require("./StringType"),
-  DateType: require("./DateType")
+  _Boolean_: require("./Boolean"),
+  _Number_: require("./Number"),
+  _String_: require("./String"),
+  _Date_: require("./Date")
 }

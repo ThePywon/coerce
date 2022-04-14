@@ -1,3 +1,5 @@
+"use strict";
+
 // SchemaType class definition
 class SchemaType {
   // Force function "call" to exist

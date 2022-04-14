@@ -1,3 +1,5 @@
+"use strict";
+
 // Import
 const SchemaType = require("../SchemaType");
 
@@ -7,8 +9,8 @@ function isValid(val) {
            typeof val === "number" && isNaN(val));
 }
 
-// BooleanType class definition
-class BooleanType extends SchemaType {
+// _Boolean_ class definition
+class _Boolean_ extends SchemaType {
   // Initialisation
   constructor() { super() }
 
@@ -16,9 +18,9 @@ class BooleanType extends SchemaType {
   call(val) { if(isValid(val)) return !!val }
 }
 // Simple toString function override
-BooleanType.prototype.toString = function toString() {
+_Boolean_.prototype.toString = function toString() {
   return "Boolean";
 }
 
 // Export
-module.exports = BooleanType;
+module.exports = _Boolean_;
