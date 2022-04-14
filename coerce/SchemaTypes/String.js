@@ -1,3 +1,5 @@
+"use strict";
+
 // Import
 const SchemaType = require("../SchemaType");
 
@@ -7,8 +9,8 @@ function isValid(val) {
            typeof val === "number" && isNaN(val));
 }
 
-// StringType class definition
-class StringType extends SchemaType {
+// _String_ class definition
+class _String_ extends SchemaType {
   // Initialization
   constructor() { super() }
 
@@ -16,9 +18,9 @@ class StringType extends SchemaType {
   call(val) { if(isValid(val)) return val.toString() }
 }
 // Simple toString function override
-StringType.prototype.toString = function toString() {
+_String_.prototype.toString = function toString() {
   return "String";
 }
 
 // Export
-module.exports = StringType;
+module.exports = _String_;

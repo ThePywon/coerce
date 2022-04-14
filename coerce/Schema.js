@@ -1,5 +1,7 @@
+"use strict";
+
 // Imports
-const deepClone = require("./deepClone");
+const { deepClone, deepFreeze } = require("@protagonists/deep");
 const SchemaType = require("./SchemaType");
 const SchemaTypes = require("./SchemaTypes");
 
@@ -13,25 +15,31 @@ function toSchema(obj) {
       const types = Object.getOwnPropertyNames(SchemaTypes);
       
       // Check if it is an existing SchemaType
-      if(elem.prototype instanceof SchemaType)
+      if(elem instanceof Schema)
+        if(!isArray)
+          return elem.raw;
+        else throw new Error(`Illegal use of Schema at ${path}[${name}], cannot process Object nested inside an Array\nUse SchemaType instead`);
+      else if(elem instanceof SchemaType)
+        return new elem.constructor();
+      else if(elem.prototype instanceof SchemaType)
         return new elem();
 
       // Check if it is a similar value type
       switch(elem) {
         case Boolean:
-          return new SchemaTypes.BooleanType();
+          return new SchemaTypes._Boolean_();
           break;
 
         case Number:
-          return new SchemaTypes.NumberType();
+          return new SchemaTypes._Number_();
           break;
           
         case String:
-          return new SchemaTypes.StringType();
+          return new SchemaTypes._String_();
           break;
           
         case Date:
-          return new SchemaTypes.DateType();
+          return new SchemaTypes._Date_();
           break;
       }
 
@@ -87,10 +95,10 @@ function toSchema(obj) {
 
 
 
-function coerceSchema(schema, obj) {
+function coerceSchema_STRICT(schema, obj, defaults) {
 
   // Iterator
-  const iterate = function(schemaParent, parent, path) {
+  const iterate = function(schemaParent, parent, defaultParent, path) {
     // Iterable value is an array
     if(Array.isArray(parent)) {
       const result = [];
@@ -116,6 +124,87 @@ function coerceSchema(schema, obj) {
           throw new Error(`Invalid value at ${path}, expected [${schemaParent.map(s => s.toString()).join(', ')}]`);
       }
 
+      return result.length > 0 ? result : defaultParent || result;
+    }
+    else {
+      
+      const result = {};
+      const props = Object.getOwnPropertyNames(schemaParent);
+
+      // Iterable value is not an object
+      if(typeof parent !== "object")
+        // Loop through schema properties
+        for(let i = 0; i < props.length; i++) {
+          const schemaProp = schemaParent[props[i]];
+          const name = props[i];
+
+          // Parse from empty value
+          if(schemaProp instanceof SchemaType)
+            result[name] = defaultParent[name] !== undefined ? defaultParent[name] : schemaProp.call();
+          else if(Array.isArray(schemaProp))
+            result[name] = defaultParent[name] || [];
+          else result[name] = iterate(schemaProp, {}, defaultParent[name], path+'.'+name);
+
+          if(result[name] === undefined)
+            throw new Error(`Invalid value at ${path}.${name}, expected ${schemaProp.toString()}`);
+        }
+      // Iterable value is an object
+      else
+        // Loop through schema properties
+        for(let i = 0; i < props.length; i++) {
+          const schemaProp = schemaParent[props[i]];
+          const parentProp = parent[props[i]];
+          const name = props[i];
+
+          // Parse each values
+          if(schemaProp instanceof SchemaType) {
+            const value = schemaProp.call(parentProp);
+            result[name] = value !== undefined ? value : defaultParent[name];
+          }
+          else if(Array.isArray(schemaProp))
+            if(Array.isArray(parentProp))
+              result[name] = iterate(schemaProp, parentProp, defaultParent[name], path+'.'+name);
+            else result[name] = iterate(schemaProp, 
+parentProp !== undefined ? [parentProp] : [], defaultParent[name], path+'.'+name);
+          else result[name] = iterate(schemaProp, parentProp, defaultParent[name], path+'.'+name);
+
+          if(result[name] === undefined)
+            throw new Error(`Invalid value at ${path}.${name}, expected ${schemaProp.toString()}`);
+        }
+      
+      return result;
+    }
+  }
+
+  return iterate(schema, obj, defaults, "root");
+}
+
+
+
+function coerceSchema(schema, obj) {
+  
+  // Iterator
+  const iterate = function(schemaParent, parent) {
+    // Iterable value is an array
+    if(Array.isArray(parent)) {
+      const result = [];
+
+      if(typeof schemaParent === "object" && !Array.isArray(schemaParent))
+        return [];
+
+      // Loop through each element
+      for(let i = 0; i < parent.length; i++) {
+
+        // Parse each element
+        for(let j = 0; j < schemaParent.length; j++) {
+          const val = schemaParent[j].call(parent[i]);
+          if(val !== undefined) {
+            result.push(val);
+            break;
+          }
+        }
+      }
+
       return result;
     }
     else {
@@ -136,9 +225,6 @@ function coerceSchema(schema, obj) {
           else if(Array.isArray(schemaProp))
             result[name] = [];
           else result[name] = iterate(schemaProp, {}, path+'.'+name);
-
-          if(result[name] === undefined)
-            throw new Error(`Invalid value at ${path}.${name}, expected ${schemaProp.toString()}`);
         }
       // Iterable value is an object
       else
@@ -153,19 +239,16 @@ function coerceSchema(schema, obj) {
             result[name] = schemaProp.call(parentProp);
           else if(Array.isArray(schemaProp))
             if(Array.isArray(parentProp))
-              result[name] = iterate(schemaProp, parentProp, path+'.'+name);
-            else result[name] = iterate(schemaProp, [parentProp], path+'.'+name);
-          else result[name] = iterate(schemaProp, parentProp, path+'.'+name);
-
-          if(result[name] === undefined)
-            throw new Error(`Invalid value at ${path}.${name}, expected ${schemaProp.toString()}`);
+              result[name] = iterate(schemaProp, parentProp);
+            else result[name] = iterate(schemaProp, [parentProp]);
+          else result[name] = iterate(schemaProp, parentProp);
         }
       
       return result;
     }
   }
 
-  return iterate(schema, obj, "root");
+  return iterate(schema, obj);
 }
 
 
@@ -178,13 +261,21 @@ function Schema(obj) {
     throw new Error("Invalid passed value for parameter 'obj', expected Object.");
 
   // Convert the passed object into a proper schema
-  obj = Object.freeze(toSchema(obj));
+  obj = toSchema(obj);
+  deepFreeze(obj);
 
   // Define properties
   Object.defineProperty(this, "raw", {
     enumerable:true,
     value:obj,
     writable:false
+  });
+
+  let defaults = coerceSchema(obj, {});
+
+  Object.defineProperty(this, "defaults", {
+    enumerable:true,
+    get:()=>{return deepClone(defaults)}
   });
 
   // Define functions
@@ -194,7 +285,18 @@ function Schema(obj) {
       if(!val || typeof val !== "object")
         throw new Error("Invalid passed value for parameter 'val', expected Object.");
 
-      return coerceSchema(obj, val);
+      return coerceSchema_STRICT(obj, val, defaults);
+    },
+    writable:false
+  });
+
+  Object.defineProperty(this, "setDefaults", {
+    enumerable:true,
+    value:function setDefaults(val) {
+      if(!val || typeof val !== "object")
+        throw new Error("Invalid passed value for parameter 'val', expected Object.");
+
+      defaults = coerceSchema(obj, val);
     },
     writable:false
   });

@@ -1,8 +1,10 @@
+"use strict";
+
 // Import
 const SchemaType = require("../SchemaType");
 
-// NumberType class definition
-class NumberType extends SchemaType {
+// _Number_ class definition
+class _Number_ extends SchemaType {
   // Initialization
   constructor() { super() }
 
@@ -16,9 +18,9 @@ class NumberType extends SchemaType {
   }
 }
 // Simple toString function override
-NumberType.prototype.toString = function toString() {
+_Number_.prototype.toString = function toString() {
   return "Number";
 }
 
 // Export
-module.exports = NumberType;
+module.exports = _Number_;
