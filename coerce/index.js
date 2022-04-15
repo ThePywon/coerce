@@ -1,6 +1,6 @@
 // Fetch everything
 module.exports = {
-  ...require("./Schema"),
+  Schema: require("./Schema/Schema"),
   SchemaType: require("./SchemaType"),
   SchemaTypes: require("./SchemaTypes")
 };
