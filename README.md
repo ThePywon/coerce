@@ -8,6 +8,11 @@
 <a href="https://discord.gg/cwhj3EgqGP"><imgs src="https://img.shields.io/discord/937758194736955443?logo=discord&logoColor=white" alt="discord server"/></a>
 <a href="https://github.com/ThePywon/coerce"><img src="https://img.shields.io/github/last-commit/ThePywon/coerce" alt="last commit"/></a>
 
+<iframe
+  src="https://codepen.io/team/codepen/embed/preview/PNaGbb"
+  style="width:100%; height:300px;"
+></iframe>
+
 
 # Table of content
 
