@@ -6,6 +6,7 @@
 <a href="https://npmjs.com/package/@protagonists/coerce"><img src="https://img.shields.io/npm/v/@protagonists/coerce" alt="npm version"/></a>
 <a href="https://npmjs.com/package/@protagonists/coerce"><img src="https://img.shields.io/npm/dt/@protagonists/coerce" alt="npm downloads"/></a>
 <a href="https://discord.gg/cwhj3EgqGP"><imgs src="https://img.shields.io/discord/937758194736955443?logo=discord&logoColor=white" alt="discord server"/></a>
+<a href="https://github.com/ThePywon/coerce"><img src="https://img.shields.io/github/last-commit/ThePywon/coerce" alt="last commit"/></a>
 
 
 # Table of content
