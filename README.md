@@ -267,7 +267,7 @@ console.log(Person.raw);
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require('.');
+const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
 // Create Byte Type from Number type
 class Byte extends SchemaTypes._Number_ {
@@ -337,7 +337,7 @@ Array
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require('.');
+const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
 // Create a test schema
 const mySchema = new Schema({
