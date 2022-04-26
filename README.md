@@ -137,7 +137,7 @@ Error: Invalid value at root.name, expected String
 ```
 
 
-<h1 id="schema-raw" title="Readonly">Schema Raw <img src="https://imgur.com/muzdSho.gif" width="24px" height="16px"/></h1>
+<h1 id="schema-raw" title="Readonly">Schema.raw <img src="https://imgur.com/muzdSho.gif" width="24px" height="16px"/></h1>
 
 ## Description
 
