@@ -109,8 +109,16 @@ function Schema(obj) {
   obj = toSchema(obj);
   deepFreeze(obj);
 
+  // Initialize resulting class
+  const result = function _Schema_(val) {
+    if(!val || typeof val !== "object")
+      throw new Error("Invalid passed value for parameter 'val', expected Object.");
+
+    return coerceSchema_STRICT(obj, val, defaults);
+  }
+
   // Define properties
-  Object.defineProperty(this, "raw", {
+  Object.defineProperty(result, "raw", {
     enumerable:true,
     value:obj,
     writable:false
@@ -118,24 +126,13 @@ function Schema(obj) {
 
   let defaults = coerceSchema(obj, {});
 
-  Object.defineProperty(this, "defaults", {
+  Object.defineProperty(result, "defaults", {
     enumerable:true,
     get:()=>{return deepClone(defaults)}
   });
 
   // Define functions
-  Object.defineProperty(this, "from", {
-    enumerable:true,
-    value:function from(val) {
-      if(!val || typeof val !== "object")
-        throw new Error("Invalid passed value for parameter 'val', expected Object.");
-
-      return coerceSchema_STRICT(obj, val, defaults);
-    },
-    writable:false
-  });
-
-  Object.defineProperty(this, "setDefaults", {
+  Object.defineProperty(result, "setDefaults", {
     enumerable:true,
     value:function setDefaults(val) {
       if(!val || typeof val !== "object")
@@ -145,10 +142,13 @@ function Schema(obj) {
     },
     writable:false
   });
+
+  Object.defineProperty(result.prototype, "toString", {
+    value:function toString() { return result.raw },
+    writable:false
+  });
+
+  return result;
 }
-Object.defineProperty(Schema.prototype, "toString", {
-  value:function toString() { return this.raw },
-  writable:false
-});
 
 module.exports = Schema;

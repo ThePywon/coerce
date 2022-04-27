@@ -7,6 +7,15 @@ class SchemaType {
     if(!this.call || typeof this.call !== "function")
       throw new Error("Cannot create new instance of SchemaType without function 'call'");
   }
+
+  // A function that checks either a value is defined or undefined/null/NaN
+  defined(val) {
+    if(val === undefined ||
+      val === null ||
+      typeof val === "number" && isNaN(val))
+      return false;
+    return true;
+  }
 }
 // Default toString function
 SchemaType.prototype.toString = function toString() {
