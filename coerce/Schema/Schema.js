@@ -46,6 +46,14 @@ function toSchema(obj) {
           case Date:
             return new SchemaTypes._Date_();
             break;
+
+          case Function:
+            return new SchemaTypes._Function_();
+            break;
+
+          case RegExp:
+            return new SchemaTypes._RegExp_();
+            break;
         }
   
         // Check if it is an object to iterate over
@@ -143,7 +151,7 @@ function Schema(obj) {
     writable:false
   });
 
-  Object.defineProperty(result.prototype, "toString", {
+  Object.defineProperty(result, "toString", {
     value:function toString() { return result.raw },
     writable:false
   });
