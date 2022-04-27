@@ -4,5 +4,10 @@ module.exports = {
   _Number_: require("./Number"),
   _String_: require("./String"),
   _Date_: require("./Date"),
-  Integer: require("./Integer")
+  _Function_: require("./Function"),
+  _RegExp_: require("./RegExp"),
+  Integer: require("./Integer"),
+  Range: require("./Range"),
+  IntRange: require("./IntRange"),
+  DateRange: require("./DateRange")
 }
