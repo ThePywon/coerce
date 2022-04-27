@@ -11,7 +11,8 @@ class _Date_ extends SchemaType {
   // Conversion
   call(val) {
     const result = new Date(val);
-    return !isNaN(result) ? result : undefined;
+    if(!isNaN(result))
+      return result;
   }
 }
 // Simple toString function override

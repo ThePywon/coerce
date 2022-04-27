@@ -11,10 +11,15 @@ class _Number_ extends SchemaType {
   // Conversion
   call(val) {
     if(typeof val !== "number" || isNaN(val)) {
-      val = parseInt(val);
-      return !isNaN(val) ? val : undefined;
+      const parsed = parseInt(val);
+      if(!isNaN(parsed)) return parsed;
+
+      if(super.defined(val) && typeof val.valueOf === "function") {
+        const valOf = parseInt(val.valueOf());
+        if(!isNaN(valOf)) return valOf;
+      }
     }
-    return val;
+    else return val;
   }
 }
 // Simple toString function override
