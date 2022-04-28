@@ -15,13 +15,19 @@ class _Function_ extends SchemaType {
 
   // Conversion
   call(val) {
-    if(util.types.isProxy(originalToString) ||
-       originalToString.name === '')
+    if(typeof originalToString !== "function" ||
+       util.types.isProxy(originalToString) ||
+       originalToString.name === '' || 
+       originalToString.hasOwnProperty("prototype"))
       throw new Error("String.toString is non-native");
     try {
       void originalToString.arguments;
     }
     catch(e) {
+      originalToString.toString = (function(){}).toString;
+      if(originalToString.toString() !== "function toString() { [native code] }")
+        throw new Error("String.toString is non-native");
+
       if(typeof val === "function") {
         (val.prototype||val).constructor.toString = originalToString;
         if(!(val.prototype||val).constructor

@@ -5,7 +5,7 @@ const SchemaType = require("../SchemaType");
 function coerceSchema(schema, obj) {
   
     // Iterator
-    const iterate = function(schemaParent, parent) {
+    const iterate = function(schemaParent, parent, path) {
       // Iterable value is an array
       if(Array.isArray(parent)) {
         const result = [];
@@ -69,7 +69,7 @@ function coerceSchema(schema, obj) {
       }
     }
   
-    return iterate(schema, obj);
+    return iterate(schema, obj, "root");
 }
 
 module.exports = coerceSchema;

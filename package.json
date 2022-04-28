@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A package to handle object coercing and cloning so you don't have to!",
   "main": "coerce",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +18,7 @@
   "homepage": "https://github.com/ThePywon/coerce#readme",
   "dependencies": {
     "@protagonists/deep": "^1.0.1",
+    "@protagonists/locked-array": "^1.0.0",
     "operator-overloading": "^0.5.1"
   }
 }
