@@ -19,7 +19,7 @@ function Range(min, max) {
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class extends _Number_ {
+  const result = class _Range_ extends _Number_ {
     // Initialization
     constructor() {
       super();

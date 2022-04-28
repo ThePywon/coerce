@@ -9,5 +9,6 @@ module.exports = {
   Integer: require("./Integer"),
   Range: require("./Range"),
   IntRange: require("./IntRange"),
-  DateRange: require("./DateRange")
+  DateRange: require("./DateRange"),
+  Byte: require("./Byte")
 }
