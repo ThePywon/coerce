@@ -19,26 +19,27 @@ A package to handle user inputs automatically
 # Table of content
 
 * [**How to use?**](#how-to-use)
-* <details><summary><a href="#properties"><b>Properties</b></a></summary>
-  <p>
 
-    * [**Schema.raw**](#schema-raw)
-    * [**SchemaType**](#schematype)
-    * [**SchemaTypes**](#schematypes)
-        * [**\_Boolean\_**](#schematypes-boolean)
-        * [**\_Number\_**](#schematypes-number)
-        * [**\_String\_**](#schematypes-string)
-        * [**\_Date\_**](#schematypes-date)
+* <details><summary><a href="#schema"><b>Schema</b></a></summary>
+  <p>
+    
+  * [**raw**](#schema-raw)
+  * [**from**](#schema-from)
+  * [**setDefaults**](#schema-setdefaults)
+  * [**defaults**](#schema-defaults)
     
   </p>
 </details>
 
-* <details><summary><a href="#functions"><b>Functions</b></a></summary>
-  <p>
+* [**SchemaType**](#schematype)
 
-    * [**Schema**](#schema)
-        * [**from**](#schema-from)
-        * [**setDefaults**](schema-setdefaults)
+* <details><summary><a href="#schematypes"><b>SchemaTypes</b></a></summary>
+  <p>
+    
+  * [**\_Boolean\_**](#schematypes-boolean)
+  * [**\_Number\_**](#schematypes-number)
+  * [**\_String\_**](#schematypes-string)
+  * [**\_Date\_**](#schematypes-date)
 
   </p>
 </details>

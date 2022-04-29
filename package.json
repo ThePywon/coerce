@@ -17,8 +17,6 @@
   },
   "homepage": "https://github.com/ThePywon/coerce#readme",
   "dependencies": {
-    "@protagonists/deep": "^1.0.1",
-    "@protagonists/locked-array": "^1.0.0",
-    "operator-overloading": "^0.5.1"
+    "@protagonists/deep": "^1.0.1"
   }
 }
