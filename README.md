@@ -38,8 +38,15 @@ A package to handle user inputs automatically
     
   * [**\_Boolean\_**](#schematypes-boolean)
   * [**\_Number\_**](#schematypes-number)
+  * [**Range**](#schematypes-range)
+  * [**Integer**](#schematypes-integer)
+  * [**IntRange**](#schematypes-intrange)
+  * [**Byte**](#schematypes-byte)
   * [**\_String\_**](#schematypes-string)
+  * [**\_RegExp\_**](#schematypes-regexp)
   * [**\_Date\_**](#schematypes-date)
+  * [**DateRange**](#schematypes-daterange)
+  * [**\_Function\_**](#schematypes-function)
 
   </p>
 </details>
