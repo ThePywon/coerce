@@ -4,8 +4,6 @@
 const SchemaType = require("../SchemaType");
 const util = require("util");
 
-const originalToString = String.toString;
-
 // Create _Function_ class
 class _Function_ extends SchemaType {
   // Initialization
@@ -15,25 +13,10 @@ class _Function_ extends SchemaType {
 
   // Conversion
   call(val) {
-    if(typeof originalToString !== "function" ||
-       util.types.isProxy(originalToString) ||
-       originalToString.name === '' || 
-       originalToString.hasOwnProperty("prototype"))
-      throw new Error("String.toString is non-native");
-    try {
-      void originalToString.arguments;
-    }
-    catch(e) {
-      originalToString.toString = (function(){}).toString;
-      if(originalToString.toString() !== "function toString() { [native code] }")
-        throw new Error("String.toString is non-native");
-
-      if(typeof val === "function") {
-        (val.prototype||val).constructor.toString = originalToString;
-        if(!(val.prototype||val).constructor
-           .toString().startsWith('class'))
-          return val;
-      }
+    if(typeof val === "function") {
+      if(!util.inspect((val.prototype||val)
+         .constructor).startsWith("[class"))
+        return val;
     }
   }
 }

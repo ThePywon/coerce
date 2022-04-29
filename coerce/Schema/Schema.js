@@ -4,7 +4,6 @@
 const { deepClone, deepFreeze } = require("@protagonists/deep");
 const SchemaType = require("../SchemaType");
 const SchemaTypes = require("../SchemaTypes");
-const LockedArray = require("@protagonists/locked-array");
 
 // Function imports
 const coerceSchema_STRICT = require("./coerceSchema_STRICT");
@@ -21,7 +20,7 @@ function toSchema(obj) {
       const types = Object.getOwnPropertyNames(SchemaTypes);
         
       // Check if it is an existing SchemaType
-      if(Schemas.includes(elem))
+      if(Schemas.indexOf(elem) != -1)
         if(!isArray)
           return elem.raw;
         else throw new Error(`Illegal use of Schema at ${path}[${name}], cannot process Object nested inside an Array\nUse SchemaType instead`);
@@ -101,8 +100,7 @@ function toSchema(obj) {
   return iterate(obj, "root");
 }
 
-const Schemas = new LockedArray();
-const KEY = Schemas.key;
+const Schemas = [];
 
 function Schema(obj) {
   // Handle parameters
@@ -152,9 +150,7 @@ function Schema(obj) {
     writable: false
   });
 
-  Schemas.unlock(KEY);
-  Schemas.add(result);
-  Schemas.lock();
+  Schemas.push(result);
   return result;
 }
 
