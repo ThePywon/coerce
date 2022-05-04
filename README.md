@@ -1,14 +1,3 @@
-<div id="top" align="center">
-
-# coerce
- 
-[![npm version](https://img.shields.io/npm/v/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
-[![npm downloads](https://img.shields.io/npm/dt/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
-[![discord server](https://img.shields.io/discord/937758194736955443?logo=discord&logoColor=white)](https://discord.gg/cwhj3EgqGP)
-[![last commit](https://img.shields.io/github/last-commit/ThePywon/coerce)](https://github.com/ThePywon/coerce)
- 
-</div>
-
 
 # About
 
@@ -20,7 +9,7 @@ A package to handle user inputs automatically
 
 * [**How to use?**](#how-to-use)
 
-* <details><summary><b>Classes</b></summary>
+* <details open><summary><b>Classes</b></summary>
   <p>
 
   * [**Schema**](https://github.com/ThePywon/coerce/blob/main/Schema.md)
@@ -29,8 +18,6 @@ A package to handle user inputs automatically
     
   </p>
 </details>
-
-* [**Symbols?**](#symbols)
 
 ---
 
@@ -93,21 +80,3 @@ console.log(John);
   friends: [ 'Steve', 'Carla', 'Meep' ]
 }
 ```
-
----
-
-
-
-# Symbols?
-
-<h2><img src="https://imgur.com/ToMgUid.gif" width="60px" height="33px"/></h2>
-
-Added in the latest update!
-
-<h2><img src="https://imgur.com/muzdSho.gif" width="36px" height="24px"/></h2>
-
-Readonly
-
-<h2><img src="https://imgur.com/oSU7YNt.gif" width="42px" height="36px"/></h2>
-
-Non-Enumerable
