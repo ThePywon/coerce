@@ -21,9 +21,7 @@ function Range(min, max) {
   // Create temp class
   const result = class _Range_ extends _Number_ {
     // Initialization
-    constructor() {
-      super();
-    }
+    constructor() { super() }
 
     // Conversion
     call(val) {

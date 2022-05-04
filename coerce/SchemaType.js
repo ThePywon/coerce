@@ -19,7 +19,7 @@ class SchemaType {
 }
 // Default toString function
 SchemaType.prototype.toString = function toString() {
-  return `[${this.constructor.name} SchemaType]`
+  return `[${this.constructor.name} SchemaType]`;
 }
 
 // Export

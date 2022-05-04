@@ -21,9 +21,7 @@ function DateRange(min, max) {
   // Create temp class
   const result = class _DateRange_ extends _Date_ {
     // Initialization
-    constructor() {
-      super();
-    }
+    constructor() { super() }
 
     // Conversion
     call(val) {

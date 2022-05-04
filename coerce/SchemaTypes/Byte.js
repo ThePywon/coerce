@@ -1,3 +1,5 @@
+"use strict";
+
 const IntRange = require("./IntRange");
 
 const Byte = IntRange(0, 255);

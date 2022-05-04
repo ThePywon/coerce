@@ -1,25 +1,25 @@
 "use strict";
 
 // Import
-const Integer = require("./Integer");
+const _BigInt_ = require("./BigInt");
 
-const validator = new Integer();
+const validator = new _BigInt_();
 
-function IntRange(min, max) {
+function BigIntRange(min, max) {
   // Parse parameters
   min = validator.call(min);
   max = validator.call(max);
 
   // Validate parameters
   if(min === undefined)
-    throw new Error("Invalid passed value for parameter 'min', expected Integer.");
+    throw new Error("Invalid passed value for parameter 'min', expected BigInt.");
   if(max === undefined)
-    throw new Error("Invalid passed value for parameter 'max', expected Integer.");
+    throw new Error("Invalid passed value for parameter 'max', expected BigInt.");
   if(min > max)
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class _IntRange_ extends Integer {
+  const result = class _BigIntRange_ extends _BigInt_ {
     // Initialization
     constructor() { super() }
 
@@ -34,11 +34,11 @@ function IntRange(min, max) {
     }
   }
   result.prototype.toString = function toString() {
-    return `IntRange(${min}, ${max})`;
+    return `BigIntRange(${min}, ${max})`;
   }
 
   // Return temp class
   return result;
 }
 
-module.exports = IntRange;
+module.exports = BigIntRange;

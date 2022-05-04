@@ -2,13 +2,15 @@
 module.exports = {
   _Boolean_: require("./Boolean"),
   _Number_: require("./Number"),
+  Range: require("./Range"),
   _String_: require("./String"),
   _Date_: require("./Date"),
+  DateRange: require("./DateRange"),
   _Function_: require("./Function"),
   _RegExp_: require("./RegExp"),
   Integer: require("./Integer"),
-  Range: require("./Range"),
   IntRange: require("./IntRange"),
-  DateRange: require("./DateRange"),
-  Byte: require("./Byte")
+  Byte: require("./Byte"),
+  BigInt: require("./BigInt"),
+  BigIntRange: require("./BigIntRange")
 }

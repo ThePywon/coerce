@@ -6,9 +6,7 @@ const _String_ = require("./String");
 // _RegExp_ class definition
 class _RegExp_ extends _String_ {
   // Initialization
-  constructor() {
-    super();
-  }
+  constructor() { super() }
 
   // Conversion
   call(val) {
@@ -16,8 +14,14 @@ class _RegExp_ extends _String_ {
 
     val = super.call(val);
 
+    if(val === undefined) return;
+
     try {
-      return new RegExp(val);
+      const regexp = new RegExp(val);
+      if(regexp.toString() === "/(?:)/" &&
+         val != "(?:)")
+        return;
+      return regexp;
     } catch(e) {}
   }
 }
