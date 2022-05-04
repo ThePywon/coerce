@@ -7,9 +7,7 @@ const util = require("util");
 // Create _Function_ class
 class _Function_ extends SchemaType {
   // Initialization
-  constructor() {
-    super();
-  }
+  constructor() { super() }
 
   // Conversion
   call(val) {

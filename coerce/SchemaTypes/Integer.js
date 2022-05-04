@@ -6,9 +6,7 @@ const _Number_ = require("./Number");
 // Integer class definition
 class Integer extends _Number_ {
     // Initialization
-    constructor() {
-      super();
-    }
+    constructor() { super() }
 
     // Conversion
     call(val) {
