@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 * [**How to use?**](#how-to-use)
 
-* <details><summary><b>Classes</b></summary>
+* <details open><summary><b>Classes</b></summary>
   <p>
 
   * [**Schema**](https://github.com/ThePywon/coerce/blob/main/Schema.md)
@@ -29,8 +29,6 @@ A package to handle user inputs automatically
     
   </p>
 </details>
-
-* [**Symbols?**](#symbols)
 
 ---
 
@@ -93,21 +91,3 @@ console.log(John);
   friends: [ 'Steve', 'Carla', 'Meep' ]
 }
 ```
-
----
-
-
-
-# Symbols?
-
-<h2><img src="https://imgur.com/ToMgUid.gif" width="60px" height="33px"/></h2>
-
-Added in the latest update!
-
-<h2><img src="https://imgur.com/muzdSho.gif" width="36px" height="24px"/></h2>
-
-Readonly
-
-<h2><img src="https://imgur.com/oSU7YNt.gif" width="42px" height="36px"/></h2>
-
-Non-Enumerable
