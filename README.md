@@ -1,6 +1,6 @@
 <div id="top" align="center">
 
-# ![coerce](https://api.imgbun.com/png?key=9dee0db487cd9383d7c0635dd81f671b&text=coerce&color=00ff00&size=32&format=raw)
+# coerce
  
 [![npm version](https://img.shields.io/npm/v/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
 [![npm downloads](https://img.shields.io/npm/dt/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
@@ -20,34 +20,13 @@ A package to handle user inputs automatically
 
 * [**How to use?**](#how-to-use)
 
-* <details><summary><a href="https://github.com/ThePywon/coerce/blob/main/Schema.md"><b>Schema</b></a></summary>
+* <details><summary><b>Classes</b></summary>
   <p>
-    
-  * [**raw**](https://github.com/ThePywon/coerce/blob/main/Schema.md#raw)
-  * [**from**](https://github.com/ThePywon/coerce/blob/main/Schema.md#from)
-  * [**setDefaults**](https://github.com/ThePywon/coerce/blob/main/Schema.md#setdefaults)
-  * [**defaults**](https://github.com/ThePywon/coerce/blob/main/Schema.md#defaults)
-    
-  </p>
-</details>
 
-* [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/SchemaType.md)
-
-* <details><summary><a href="https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md"><b>SchemaTypes</b></a></summary>
-  <p>
+  * [**Schema**](https://github.com/ThePywon/coerce/blob/main/Schema.md)
+  * [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/SchemaType.md)
+  * [**SchemaTypes**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md)
     
-  * [**\_Boolean\_**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#boolean)
-  * [**\_Number\_**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#number)
-  * [**Range**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#range)
-  * [**Integer**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#integer)
-  * [**IntRange**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#intrange)
-  * [**Byte**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#byte)
-  * [**\_String\_**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#string)
-  * [**\_RegExp\_**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#regexp)
-  * [**\_Date\_**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#date)
-  * [**DateRange**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#daterange)
-  * [**\_Function\_**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md#function)
-
   </p>
 </details>
 
@@ -68,7 +47,9 @@ This can be a very usefull tool to manage user inputted data automatically
 
 ### Terminal
 
-> `npm i @protagonists/coerce`
+> ```sh
+> npm install @protagonists/coerce
+> ```
 
 ### Node.js
 
