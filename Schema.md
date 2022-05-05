@@ -19,8 +19,8 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#properties"><b>Properties</b></a></summary>
   <p>
 
-  * [**`.prototype.raw`**](#raw)
-  * [**`.prototype.defaults`**](#defaults)
+  * [**`.prototype.raw`**](#prototype-raw)
+  * [**`.prototype.defaults`**](#prototype-defaults)
     
   </p>
 </details>
@@ -28,8 +28,8 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**`.prototype.setDefaults`**](#setdefaults)
-  * [**`.prototype.toString`**](#tostring)
+  * [**`.prototype.setDefaults`**](#prototype-setdefaults)
+  * [**`.prototype.toString`**](#prototype-tostring)
     
   </p>
 </details>
@@ -38,6 +38,14 @@ A package to handle user inputs automatically
 
 # Properties
 
+<a id="prototype-raw"></a>
 ## `Schema.prototype.raw`
+
+
+
+<br/><br/><br/><br/><br/>
+
+<h1 align="center">This is the bottom, there is nothing more.<br/>
+Go <a href="#top">back up?</a></h1>
 
 
