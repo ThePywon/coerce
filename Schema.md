@@ -19,8 +19,8 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#properties"><b>Properties</b></a></summary>
   <p>
 
-  * [**raw**](#raw)
-  * [**defaults**](#defaults)
+  * [**`.prototype.raw`**](#raw)
+  * [**`.prototype.defaults`**](#defaults)
     
   </p>
 </details>
@@ -28,10 +28,16 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**setDefaults**](#setdefaults)
-  * [**toString**](#tostring)
+  * [**`.prototype.setDefaults`**](#setdefaults)
+  * [**`.prototype.toString`**](#tostring)
     
   </p>
 </details>
 
 ---
+
+# Properties
+
+## `Schema.prototype.raw`
+
+
