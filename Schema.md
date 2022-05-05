@@ -30,7 +30,7 @@ The model used to coerce objects in the temp function is a parsed version of the
 
 |**Parameters**|**Types**|
 |-|-|
-|`obj`|[**`Object`**](https://javascript.info/object)|
+|`obj`|[**Object**](https://javascript.info/object)|
 
 <br/>
 

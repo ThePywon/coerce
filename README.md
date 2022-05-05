@@ -1,6 +1,6 @@
 <div id="top" align="center">
 
-# coerce
+<h1><a href="https://github.com/ThePywon/coerce">coerce</a></h1>
  
 [![npm version](https://img.shields.io/npm/v/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
 [![npm downloads](https://img.shields.io/npm/dt/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
