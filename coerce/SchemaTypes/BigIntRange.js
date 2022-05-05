@@ -5,6 +5,11 @@ const _BigInt_ = require("./BigInt");
 
 const validator = new _BigInt_();
 
+/**
+ * @param {bigint} min
+ * @param {bigint} max
+ * @returns {typeof _BigInt_}
+ */
 function BigIntRange(min, max) {
   // Parse parameters
   min = validator.call(min);

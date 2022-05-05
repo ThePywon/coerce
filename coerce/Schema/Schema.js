@@ -6,11 +6,14 @@ const SchemaType = require("../SchemaType");
 const SchemaTypes = require("../SchemaTypes");
 
 // Function imports
-const coerceSchema_STRICT = require("./coerceSchema_STRICT");
 const coerceSchema = require("./coerceSchema");
+const createDefaults = require("./createDefaults");
 
-
-
+/**
+ * Creates the raw model used inside the Schema class
+ * @param {Object} obj
+ * @returns {Model} raw Schema model
+ */
 function toSchema(obj) {
 
   // Iterator
@@ -102,6 +105,11 @@ function toSchema(obj) {
 
 const Schemas = [];
 
+/**
+ * Creates a small temp function that coerces objects into the passed model
+ * @param {Object} obj
+ * @returns {SchemaInstance} a schema parsing function
+ */
 function Schema(obj) {
   // Handle parameters
   if(!obj || typeof obj !== "object")
@@ -116,7 +124,7 @@ function Schema(obj) {
     if(!val || typeof val !== "object")
       throw new Error("Invalid passed value for parameter 'val', expected Object.");
 
-    return coerceSchema_STRICT(obj, val, defaults);
+    return coerceSchema(obj, val, defaults);
   }
 
   // Define properties
@@ -126,7 +134,7 @@ function Schema(obj) {
     writable: false
   });
 
-  let defaults = coerceSchema(obj, {});
+  let defaults = createDefaults(obj, {});
 
   Object.defineProperty(result, "defaults", {
     enumerable: true,
@@ -140,7 +148,7 @@ function Schema(obj) {
       if(!val || typeof val !== "object")
         throw new Error("Invalid passed value for parameter 'val', expected Object.");
 
-      defaults = coerceSchema(obj, val);
+      defaults = createDefaults(obj, val);
     },
     writable: false
   });

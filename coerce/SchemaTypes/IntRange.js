@@ -5,6 +5,11 @@ const Integer = require("./Integer");
 
 const validator = new Integer();
 
+/**
+ * @param {number} min
+ * @param {number} max
+ * @returns {typeof Integer}
+ */
 function IntRange(min, max) {
   // Parse parameters
   min = validator.call(min);

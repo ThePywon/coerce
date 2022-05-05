@@ -5,6 +5,15 @@ const _Date_ = require("./Date");
 
 const validator = new _Date_();
 
+/**
+ * @typedef {Date|string|number} date
+ */
+
+/**
+ * @param {date} min
+ * @param {date} max
+ * @returns {typeof _Date_}
+ */
 function DateRange(min, max) {
   // Parse parameters
   min = validator.call(min);

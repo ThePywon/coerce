@@ -9,6 +9,11 @@ class SchemaType {
   }
 
   // A function that checks either a value is defined or undefined/null/NaN
+  /**
+   * Check if a value is not undefined, null or NaN
+   * @param {any} val 
+   * @returns {boolean}
+   */
   defined(val) {
     if(val === undefined ||
       val === null ||
@@ -19,7 +24,7 @@ class SchemaType {
 }
 // Default toString function
 SchemaType.prototype.toString = function toString() {
-  return `[${this.constructor.name} SchemaType]`;
+  return `[SchemaType ${this.constructor.name}]`;
 }
 
 // Export
