@@ -91,3 +91,8 @@ console.log(John);
   friends: [ 'Steve', 'Carla', 'Meep' ]
 }
 ```
+
+<br/><br/><br/><br/><br/>
+
+<h1 align="center">This is the bottom, there is nothing more.<br/>
+Go <a href="#top">back up?</a></h1>
