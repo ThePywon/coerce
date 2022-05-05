@@ -47,6 +47,8 @@ A package to handle user inputs automatically
 This package is meant to coerce objects following a certain model  
 This can be a very usefull tool to manage user inputted data automatically
 
+<br/>
+
 ## Import
 
 ### Terminal
@@ -55,11 +57,15 @@ This can be a very usefull tool to manage user inputted data automatically
 > npm install @protagonists/coerce
 > ```
 
+<br/>
+
 ### Node.js
 
 > ```js
 > const Coerce = require("@protagonists/coerce");
 > ```
+
+<br/>
 
 ## Example
 
@@ -86,6 +92,8 @@ const John = new Person({
 
 console.log(John);
 ```
+
+<br/>
 
 ### Output:
 
