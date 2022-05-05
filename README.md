@@ -19,6 +19,7 @@ A package to handle user inputs automatically
 <br/><br/><br/>
 
 
+
 # Table of content
 
 * [**How to use?**](#how-to-use)

@@ -105,6 +105,9 @@ function toSchema(obj) {
 
 const Schemas = [];
 
+
+const SchemaInstances = [];
+
 /**
  * Creates a small temp function that coerces objects into the passed model
  * @param {Object} obj
@@ -158,8 +161,14 @@ function Schema(obj) {
     writable: false
   });
 
-  Schemas.push(result);
+  SchemaInstances.push(result);
   return result;
 }
+Object.defineProperty(Schema, Symbol.hasInstance, {
+  value: function hasInstance(instance) {
+    return instance === Schema || SchemaInstances.indexOf(instance) != -1;
+  },
+  writable: false
+});
 
 module.exports = Schema;

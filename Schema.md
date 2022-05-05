@@ -19,14 +19,17 @@ A package to handle user inputs automatically
 <br/><br/><br/>
 
 
-# Description
 
-A function that returns a temp function to ceorce objects  
-The model used to coerce objects in the temp function is a parsed version of the passed object
+# Schema
+
+A function that returns a temporary function to ceorce objects  
+The model used to coerce objects in the temporary function is the parsed value of the parameter `obj`
 
 <br/>
 
 **Syntax:** &nbsp; `new Schema(obj)`
+
+> The lack of the `new` keyword may create unwanted behaviour
 
 |**Parameters**|**Types**|
 |-|-|
@@ -36,4 +39,39 @@ The model used to coerce objects in the temp function is a parsed version of the
 
 **Returns:** [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/SchemaInstance.md)
 
+---
 
+<br/><br/><br/>
+
+
+
+# Example
+
+## Code:
+
+```js
+
+```
+
+## Output:
+
+```
+
+```
+
+---
+
+<br/><br/><br/>
+
+
+
+# Methods
+
+## `[Symbol.hasInstance]`
+
+This is the function called when [`Schema`](#schema) is used in the right hand side of `instanceof`  
+It returns true if the value is itself or one of the temporary functions it created
+
+<br/>
+
+**Returns:** [**Boolean**](https://devdocs.io/javascript/global_objects/boolean)
