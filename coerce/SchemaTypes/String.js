@@ -10,7 +10,7 @@ class _String_ extends SchemaType {
 
   // Conversion
   call(val) {
-    if(super.defined(val) && typeof val.toString === "function") {
+    if(this.defined(val) && typeof val.toString === "function") {
       const str = val.toString();
       if(typeof str === "string") return str;
     }

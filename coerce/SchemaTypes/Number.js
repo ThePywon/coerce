@@ -14,7 +14,7 @@ class _Number_ extends SchemaType {
       const parsed = parseInt(val);
       if(!isNaN(parsed)) return parsed;
 
-      if(super.defined(val) && typeof val.valueOf === "function") {
+      if(this.defined(val) && typeof val.valueOf === "function") {
         const valOf = parseInt(val.valueOf());
         if(!isNaN(valOf)) return valOf;
       }

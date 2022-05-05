@@ -5,6 +5,11 @@ const _Number_ = require("./Number");
 
 const validator = new _Number_();
 
+/**
+ * @param {number} min
+ * @param {number} max
+ * @returns {typeof _Number_}
+ */
 function Range(min, max) {
   // Parse parameters
   min = validator.call(min);
