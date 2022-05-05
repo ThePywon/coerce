@@ -19,21 +19,20 @@ A package to handle user inputs automatically
 <br/><br/><br/>
 
 
-# Table of content | `Schema`
-
-* [**Description**](#description)
-
----
-
-<br/><br/><br/>
-
-
 # Description
 
-**Syntax:** `Schema(obj: `[`Object`](https://javascript.info/object)`)`
-
 A function that returns a temp function to ceorce objects  
-The model used to coerce objects is a parsed version of `obj`
+The model used to coerce objects in the temp function is a parsed version of the passed object
+
+<br/>
+
+**Syntax:** &nbsp; `new Schema(obj)`
+
+|**Parameters**|**Types**|
+|-|-|
+|`obj`|[**`Object`**](https://javascript.info/object)|
+
+<br/>
 
 **Returns:** [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/SchemaInstance.md)
 
