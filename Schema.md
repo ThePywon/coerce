@@ -25,7 +25,7 @@ A package to handle user inputs automatically
   </p>
 </details>
 
-* <details open><summary><a href="#properties"><b>Methods</b></a></summary>
+* <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
   * [**setDefaults**](#setdefaults)
