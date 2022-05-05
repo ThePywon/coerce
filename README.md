@@ -14,6 +14,9 @@
 
 A package to handle user inputs automatically
 
+---
+
+<br/><br/><br/>
 
 
 # Table of content
@@ -24,6 +27,7 @@ A package to handle user inputs automatically
   <p>
 
   * [**Schema**](https://github.com/ThePywon/coerce/blob/main/Schema.md)
+  * [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/SchemaInstance.md)
   * [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/SchemaType.md)
   * [**SchemaTypes**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md)
     
@@ -31,6 +35,8 @@ A package to handle user inputs automatically
 </details>
 
 ---
+
+<br/><br/><br/>
 
 
 
