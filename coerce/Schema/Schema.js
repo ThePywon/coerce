@@ -120,7 +120,7 @@ function Schema(obj) {
   deepFreeze(obj);
 
   // Initialize resulting class
-  const result = function _Schema_(val) {
+  const result = function SchemaInstance(val) {
     if(!val || typeof val !== "object")
       throw new Error("Invalid passed value for parameter 'val', expected Object.");
 

@@ -1,6 +1,6 @@
 <div id="top" align="center">
 
-# coerce
+<h1><a href="https://github.com/ThePywon/coerce">coerce</a></h1>
  
 [![npm version](https://img.shields.io/npm/v/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
 [![npm downloads](https://img.shields.io/npm/dt/@protagonists/coerce)](https://npmjs.com/package/@protagonists/coerce)
@@ -14,38 +14,27 @@
 
 A package to handle user inputs automatically
 
+---
+
+<br/><br/><br/>
+
+
 # Table of content | `Schema`
 
-* <details open><summary><a href="#properties"><b>Properties</b></a></summary>
-  <p>
-
-  * [**`.prototype.raw`**](#prototype-raw)
-  * [**`.prototype.defaults`**](#prototype-defaults)
-    
-  </p>
-</details>
-
-* <details open><summary><a href="#methods"><b>Methods</b></a></summary>
-  <p>
-
-  * [**`.prototype.setDefaults`**](#prototype-setdefaults)
-  * [**`.prototype.toString`**](#prototype-tostring)
-    
-  </p>
-</details>
+* [**Description**](#description)
 
 ---
 
-# Properties
-
-<a id="prototype-raw"></a>
-## `Schema.prototype.raw`
+<br/><br/><br/>
 
 
+# Description
 
-<br/><br/><br/><br/><br/>
+**Syntax:** `Schema(obj: `[`Object`](https://javascript.info/object)`)`
 
-<h1 align="center">This is the bottom, there is nothing more.<br/>
-Go <a href="#top">back up?</a></h1>
+A function that returns a temp function to ceorce objects  
+The model used to coerce objects is a parsed version of `obj`
+
+**Returns:** [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/SchemaInstance.md)
 
 
