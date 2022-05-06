@@ -27,10 +27,10 @@ A package to handle user inputs automatically
 * <details open><summary><b>Classes</b></summary>
   <p>
 
-  * [**Schema**](https://github.com/ThePywon/coerce/blob/main/Schema.md)
-  * [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/SchemaInstance.md)
-  * [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/SchemaType.md)
-  * [**SchemaTypes**](https://github.com/ThePywon/coerce/blob/main/SchemaTypes.md)
+  * [**Schema**](https://github.com/ThePywon/coerce/blob/main/docs/Schema.md)
+  * [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/docs/SchemaInstance.md)
+  * [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/docs/SchemaType.md)
+  * [**SchemaTypes**](https://github.com/ThePywon/coerce/blob/main/docs/SchemaTypes.md)
     
   </p>
 </details>
