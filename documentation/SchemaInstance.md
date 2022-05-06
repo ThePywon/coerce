@@ -21,7 +21,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**Schema**](#schema)
+* [**SchemaInstance**](#schemainstance)
 
 * <details open><summary><a href="#properties"><b>Properties</b></a></summary>
   <p>
@@ -48,7 +48,7 @@ A package to handle user inputs automatically
 
 # SchemaInstance
 
-A temporary function created by [`Schema`](https://github.com/ThePywon/coerce/blob/main/docs/Schema.md) used to ceorce an object by following a model
+A temporary function created by [`Schema`](https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md) used to ceorce an object by following a model
 
 <br/>
 
