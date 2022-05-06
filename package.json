@@ -1,7 +1,7 @@
 {
   "name": "@protagonists/coerce",
   "version": "1.0.1",
-  "description": "A package to handle object coercing and cloning so you don't have to!",
+  "description": "A package to handle user inputs automatically",
   "main": "coerce",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
