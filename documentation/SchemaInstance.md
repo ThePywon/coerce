@@ -60,7 +60,7 @@ A temporary function created by [`Schema`](https://github.com/ThePywon/coerce/bl
 
 <br/>
 
-**Returns:** [**Object**](https://javascript.info/object)
+**Returns:** &nbsp; [**Object**](https://javascript.info/object)
 
 <br/>
 
@@ -123,7 +123,7 @@ console.log(John);
 
 The raw parsed model used to coerce the objects
 
-**Type:** [**Object**](https://javascript.info/object)
+**Type:** &nbsp; [**Object**](https://javascript.info/object)
 
 <br/>
 
@@ -220,7 +220,7 @@ A function used to set the properties of [`.defaults`](#defaults)
 
 <br/>
 
-**Returns:** [**Void**](https://javascript.info/types#the-undefined-value)
+**Returns:** &nbsp; [**Void**](https://javascript.info/types#the-undefined-value)
 
 <br/>
 
@@ -263,7 +263,7 @@ console.log(Person.defaults);
 
 ## `.toString`
 
-A function used to convert this instance into a string format  
+A function used to convert this object into a string format  
 It returns a stringified version of [`.raw`](#raw)
 
 <br/>
@@ -272,7 +272,7 @@ It returns a stringified version of [`.raw`](#raw)
 
 <br/>
 
-**Returns:** [**String**](https://javascript.info/string)
+**Returns:** &nbsp; [**String**](https://javascript.info/string)
 
 <br/>
 
@@ -309,5 +309,3 @@ console.log(Person.toString());
 
 <h1 align="center">This is the bottom, there is nothing more.<br/>
 Go <a href="#top">back up?</a></h1>
-
-

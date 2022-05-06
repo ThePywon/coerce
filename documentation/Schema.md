@@ -27,7 +27,7 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**\[Symbol.hasInstance\]**](#hasinstance)
+  * [**`[Symbol.hasInstance]`**](#hasinstance)
     
   </p>
 </details>
@@ -55,7 +55,7 @@ The model used to coerce objects in the temporary function is the parsed value o
 
 <br/>
 
-**Returns:** [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md)
+**Returns:** &nbsp; [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md)
 
 <br/>
 
@@ -108,7 +108,7 @@ It returns true if the value is itself or one of the temporary functions it crea
 
 <br/>
 
-**Returns:** [**Boolean**](https://javascript.info/types#boolean-logical-type)
+**Returns:** &nbsp; [**Boolean**](https://javascript.info/types#boolean-logical-type)
 
 <br/>
 
