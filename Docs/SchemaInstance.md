@@ -18,9 +18,37 @@ A package to handle user inputs automatically
 
 <br/><br/><br/>
 
+
+# Table of content
+
+* [**Schema**](#schema)
+
+* <details open><summary><a href="#properties"><b>Properties</b></a></summary>
+  <p>
+
+  * [**`.raw`**](#raw)
+  * [**`.defaults`**](#defaults)
+    
+  </p>
+</details>
+
+* <details open><summary><a href="#methods"><b>Methods</b></a></summary>
+  <p>
+
+  * [**`.setDefaults`**](#setdefaults)
+  * [**`.toString`**](#tostring)
+    
+  </p>
+</details>
+
+---
+
+<br/><br/><br/>
+
+
 # SchemaInstance
 
-A temporary function created by [`Schema`](https://github.com/ThePywon/coerce/blob/main/Docs/Schema.md) used to ceorce an object by following a model
+A temporary function created by [`Schema`](https://github.com/ThePywon/coerce/blob/main/docs/Schema.md) used to ceorce an object by following a model
 
 <br/>
 

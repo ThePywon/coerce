@@ -55,7 +55,7 @@ The model used to coerce objects in the temporary function is the parsed value o
 
 <br/>
 
-**Returns:** [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/Docs/SchemaInstance.md)
+**Returns:** [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/docs/SchemaInstance.md)
 
 <br/>
 
