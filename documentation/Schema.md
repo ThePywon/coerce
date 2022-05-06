@@ -103,7 +103,7 @@ console.log(Person);
 
 ## `[Symbol.hasInstance]`
 
-This is the function called when [`Schema`](#schema) is used in the right hand side of `instanceof`  
+This is the function called when [`Schema`](#schema) is used in the right hand side of [`instanceof`](https://javascript.info/instanceof)  
 It returns true if the value is itself or one of the temporary functions it created
 
 <br/>
