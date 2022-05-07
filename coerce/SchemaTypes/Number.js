@@ -14,7 +14,7 @@ class _Number_ extends SchemaType {
       const parsed = parseInt(val);
       if(!isNaN(parsed)) return parsed;
 
-      if(this.defined(val) && typeof val.valueOf === "function") {
+      if(SchemaType.defaultCheck(val) && typeof val.valueOf === "function") {
         const valOf = parseInt(val.valueOf());
         if(!isNaN(valOf)) return valOf;
       }
@@ -23,9 +23,7 @@ class _Number_ extends SchemaType {
   }
 }
 // Simple toString function override
-_Number_.prototype.toString = function toString() {
-  return "Number";
-}
+_Number_.prototype.toString = function toString() { return "Number" }
 
 // Export
 module.exports = _Number_;

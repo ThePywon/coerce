@@ -12,5 +12,6 @@ module.exports = {
   IntRange: require("./IntRange"),
   Byte: require("./Byte"),
   BigInt: require("./BigInt"),
-  BigIntRange: require("./BigIntRange")
+  BigIntRange: require("./BigIntRange"),
+  Any: require("./Any")
 }

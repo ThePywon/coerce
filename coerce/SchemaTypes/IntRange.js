@@ -2,7 +2,6 @@
 
 // Import
 const Integer = require("./Integer");
-
 const validator = new Integer();
 
 /**
@@ -38,9 +37,7 @@ function IntRange(min, max) {
         return val;
     }
   }
-  result.prototype.toString = function toString() {
-    return `IntRange(${min}, ${max})`;
-  }
+  result.prototype.toString = function toString() { return "IntRange" }
 
   // Return temp class
   return result;
