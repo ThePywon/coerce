@@ -2,7 +2,6 @@
 
 // Import
 const _Number_ = require("./Number");
-
 const validator = new _Number_();
 
 /**
@@ -38,9 +37,7 @@ function Range(min, max) {
         return val;
     }
   }
-  result.prototype.toString = function toString() {
-    return `Range(${min}, ${max})`;
-  }
+  result.prototype.toString = function toString() { return "Range" }
 
   // Return temp class
   return result;

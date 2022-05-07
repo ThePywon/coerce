@@ -26,9 +26,7 @@ class _RegExp_ extends _String_ {
   }
 }
 // Simple toString function override
-_RegExp_.prototype.toString = function toString() {
-  return "RegExp";
-}
+_RegExp_.prototype.toString = function toString() { return "RegExp" }
 
 // Export
 module.exports = _RegExp_;

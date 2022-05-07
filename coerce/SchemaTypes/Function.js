@@ -19,9 +19,7 @@ class _Function_ extends SchemaType {
   }
 }
 // Simple toString function override
-_Function_.prototype.toString = function toString() {
-  return "Function";
-}
+_Function_.prototype.toString = function toString() { return "Function" }
 
 // Export
 module.exports = _Function_;

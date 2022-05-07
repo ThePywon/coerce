@@ -107,14 +107,14 @@ console.log(John);
 
 # Methods
 
-## `.defined`
+## `.defined` &nbsp; ![Static](https://img.shields.io/badge/-Static-red)
 
 A simple function that returns true if a value is a valid value  
 It returns false whenever the value is [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan)
 
 <br/>
 
-**Syntax:** &nbsp; `.defined(val)`
+**Syntax:** &nbsp; `.defaultCheck(val)`
 
 |**Parameters**|**Types**|
 |-|-|
@@ -131,73 +131,7 @@ It returns false whenever the value is [`undefined`](https://javascript.info/typ
 **Code:**
 
 ```js
-const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
-
-class Any extends SchemaType {
-  constructor() { super() }
-
-  call(val) {
-    if(this.defined(val)) return val;
-  }
-}
-
-const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String],
-  other: Any
-});
-
-const John = Person({
-  name: "John",
-  age: 37,
-  birthday: "1984",
-  friends: ["Steve", "Carl", "Meep"],
-  other: "Not undefined"
-});
-
-console.log(John);
-```
-
-**Output:**
-
-```
-{
-  name: 'John',
-  age: 37,
-  birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carl', 'Meep' ],
-  other: 'Not undefined'
-}
-```
-
-<br/><br/>
-
-## `.prototype.call`
-
-The function called to convert a value into the proper type and/or validate a value
-
-<br/>
-
-**Syntax:** &nbsp; `.prototype.call(val)`
-
-|**Parameters**|**Types**|
-|-|-|
-|`val`|**Any**|
-
-<br/>
-
-**Returns:** &nbsp; **Any**
-
-<br/>
-
-### **Example**
-
-**Code:**
-
-```js
-const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
+const { Schema, SchemaType, SchemaTypes } = require('.');
 
 class Gender extends SchemaType {
   static Male = Symbol("Male");
@@ -206,6 +140,8 @@ class Gender extends SchemaType {
   constructor() { super() }
 
   call(val) {
+    if(!SchemaType.defaultCheck(val)) return;
+
     if(val === Gender.Male ||
       val === Gender.Female)
       return val;
@@ -241,6 +177,42 @@ console.log(John);
   birthday: 1984-01-01T00:00:00.000Z,
   friends: [ 'Steve', 'Carl', 'Meep' ]
 }
+```
+
+<br/><br/>
+
+## `.call`
+
+The function called to convert a value into the proper type and/or validate a value
+
+<br/>
+
+**Syntax:** &nbsp; `.call(val)`
+
+|**Parameters**|**Types**|
+|-|-|
+|`val`|**Any**|
+
+<br/>
+
+**Returns:** &nbsp; **Any**
+
+<br/>
+
+### **Example**
+
+**Code:**
+
+```js
+const { Schema, SchemaType } = require("@protagonists/coerce");
+
+console.log(new SchemaType().call("A random value"));
+```
+
+**Output:**
+
+```
+A random value
 ```
 
 <br/><br/>

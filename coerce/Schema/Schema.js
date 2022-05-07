@@ -167,8 +167,7 @@ function Schema(obj) {
 Object.defineProperty(Schema, Symbol.hasInstance, {
   value: function hasInstance(instance) {
     return instance === Schema || SchemaInstances.indexOf(instance) != -1;
-  },
-  writable: false
+  }
 });
 
 module.exports = Schema;

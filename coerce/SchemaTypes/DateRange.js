@@ -2,7 +2,6 @@
 
 // Import
 const _Date_ = require("./Date");
-
 const validator = new _Date_();
 
 /**
@@ -42,9 +41,7 @@ function DateRange(min, max) {
         return val;
     }
   }
-  result.prototype.toString = function toString() {
-    return `DateRange(${min}, ${max})`;
-  }
+  result.prototype.toString = function toString() { return "DateRange" }
 
   // Return temp class
   return result;

@@ -1,11 +1,15 @@
 "use strict";
 
+const util = require("util");
+
 // SchemaType class definition
 class SchemaType {
-  // Force function "call" to exist
+  // Initialization
   constructor() {
-    if(!this.call || typeof this.call !== "function")
-      throw new Error("Cannot create new instance of SchemaType without function 'call'");
+    // Throw error if 'call' is not a function
+    if(typeof this.call !== "function" || util.inspect((this.call.prototype||this.call)
+    .constructor).startsWith("[class"))
+      throw new Error("Invalid value at property 'call', expected function");
   }
 
   // A function that checks either a value is defined or undefined/null/NaN
@@ -14,12 +18,22 @@ class SchemaType {
    * @param {any} val 
    * @returns {boolean}
    */
-  defined(val) {
+  static defaultCheck(val) {
     if(val === undefined ||
       val === null ||
       typeof val === "number" && isNaN(val))
       return false;
     return true;
+  }
+
+  // The function where the conversion magic happens
+  /**
+   * Parses and validates the passed value into the correct format
+   * @param {any} val 
+   * @returns {any}
+   */
+  call(val) {
+    if(SchemaType.defaultCheck(val)) return val;
   }
 }
 // Default toString function
@@ -28,4 +42,4 @@ SchemaType.prototype.toString = function toString() {
 }
 
 // Export
-module.exports = SchemaType;
+module.exports = Object.freeze(SchemaType);

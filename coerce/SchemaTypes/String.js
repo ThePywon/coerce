@@ -10,16 +10,14 @@ class _String_ extends SchemaType {
 
   // Conversion
   call(val) {
-    if(this.defined(val) && typeof val.toString === "function") {
+    if(SchemaType.defaultCheck(val) && typeof val.toString === "function") {
       const str = val.toString();
       if(typeof str === "string") return str;
     }
   }
 }
 // Simple toString function override
-_String_.prototype.toString = function toString() {
-  return "String";
-}
+_String_.prototype.toString = function toString() { return "String" }
 
 // Export
 module.exports = _String_;

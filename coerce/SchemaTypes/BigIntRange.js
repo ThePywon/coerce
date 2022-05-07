@@ -2,7 +2,6 @@
 
 // Import
 const _BigInt_ = require("./BigInt");
-
 const validator = new _BigInt_();
 
 /**
@@ -38,9 +37,7 @@ function BigIntRange(min, max) {
         return val;
     }
   }
-  result.prototype.toString = function toString() {
-    return `BigIntRange(${min}, ${max})`;
-  }
+  result.prototype.toString = function toString() { return "BigIntRange" }
 
   // Return temp class
   return result;

@@ -16,9 +16,7 @@ class _Date_ extends SchemaType {
   }
 }
 // Simple toString function override
-_Date_.prototype.toString = function toString() {
-  return "Date";
-}
+_Date_.prototype.toString = function toString() { return "Date" }
 
 // Export
 module.exports = _Date_;
