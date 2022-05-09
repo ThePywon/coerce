@@ -20,26 +20,14 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**SchemaTypes**](#schematypes)
+* [**Any**](#any)
 
-* <details open><summary><a href="#classes"><b>Classes</b></a></summary>
+* <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**`.Any`**](#any)
-  * [**`._BigInt_`**](#bigint)
-  * [**`.BitIntRange`**](#bigintrange)
-  * [**`._Boolean_`**](#boolean)
-  * [**`.Byte`**](#byte)
-  * [**`._Date_`**](#date)
-  * [**`.DateRange`**](#daterange)
-  * [**`._Function_`**](#function)
-  * [**`.Integer`**](#integer)
-  * [**`.IntRange`**](#intrange)
-  * [**`._Number_`**](#number)
-  * [**`.Range`**](#range)
-  * [**`._RegExp_`**](#regexp)
-  * [**`_.String_`**](#string)
-
+  * [**`.call`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md#call)
+  * [**`.prototype.toString`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md#tostring)
+    
   </p>
 </details>
 
@@ -47,9 +35,16 @@ A package to handle user inputs automatically
 
 <br/><br/><br/>
 
-# SchemaTypes
 
-An object that holds all the default [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)s
+
+# Any
+
+A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
+It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan) without any conversion
+
+<br/>
+
+**Syntax:** &nbsp; `new Any()`
 
 <br/>
 
@@ -58,35 +53,47 @@ An object that holds all the default [`SchemaType`](https://github.com/ThePywon/
 **Code:**
 
 ```js
-const { Schema, SchemaType, SchemaTypes } = require('.');
+const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
   birthday: Date,
-  friends: [String]
+  friends: [String],
+  otherInfo: SchemaTypes.Any
 });
 
 const John = Person({
   name: "John",
   age: 37,
   birthday: "1984",
-  friends: ["Steve", "Carl", "Meep"]
+  friends: [ "Steve", "Carl", "Meep" ],
+  otherInfo: "Single"
 });
 
 console.log(John);
 ```
 
-**Output:**
+**Ouput:**
 
 ```
 {
   name: 'John',
   age: 37,
   birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carl', 'Meep' ]
+  friends: [ 'Steve', 'Carla', 'Meep' ],
+  otherInfo: 'Single'
 }
 ```
+
+---
+
+<br/><br/><br/>
+
+# Methods
+
+All methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
+Check it out for more info on this class's methods
 
 ---
 

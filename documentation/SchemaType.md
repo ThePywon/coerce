@@ -25,8 +25,8 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**`.defined`**](#defined)
-  * [**`.prototype.call`**](#call)
+  * [**`.defined`**](#defined) [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
+  * [**`.call`**](#call)
   * [**`.prototype.toString`**](#tostring)
     
   </p>
@@ -107,7 +107,7 @@ console.log(John);
 
 # Methods
 
-## `.defined` &nbsp; ![Static](https://img.shields.io/badge/-Static-red)
+## `.defined` &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
 
 A simple function that returns true if a value is a valid value  
 It returns false whenever the value is [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan)
