@@ -216,6 +216,8 @@ A random value
 
 <br/><br/>
 
+<a id="tostring"></a>
+
 ## `.prototype.toString`
 
 A function used to convert this object into a string format

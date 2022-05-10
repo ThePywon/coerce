@@ -25,7 +25,7 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
   
-  * [**`.prototype.toString`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md#tostring)
+  * [**`.prototype.toString`**](#tostring)
     
   </p>
 </details>
@@ -93,6 +93,8 @@ console.log(John);
 
 Some methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
 Check it out for more info on this class's methods
+
+<a id="tostring"></a>
 
 ## `.prototype.toString`
 
