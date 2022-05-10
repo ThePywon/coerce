@@ -24,8 +24,7 @@ A package to handle user inputs automatically
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
-
-  * [**`.call`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md#call)
+  
   * [**`.prototype.toString`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md#tostring)
     
   </p>
@@ -92,8 +91,38 @@ console.log(John);
 
 # Methods
 
-All methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
+Some methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
 Check it out for more info on this class's methods
+
+## `.prototype.toString`
+
+A function used to convert this object into a string format
+
+<br/>
+
+**Syntax:** &nbsp; `.prototype.toString()`
+
+<br/>
+
+**Returns:** &nbsp; [**String**](https://javascript.info/string)
+
+<br/>
+
+### **Example**
+
+**Code:**
+
+```js
+const { SchemaTypes } = require("@protagonists/coerce");
+
+console.log(SchemaTypes.Any.prototype.toString());
+```
+
+**Output:**
+
+```
+Any
+```
 
 ---
 

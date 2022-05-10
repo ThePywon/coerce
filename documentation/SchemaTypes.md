@@ -25,20 +25,20 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#classes"><b>Classes</b></a></summary>
   <p>
 
-  * [**`.Any`**](#any)
-  * [**`._BigInt_`**](#bigint)
-  * [**`.BitIntRange`**](#bigintrange)
-  * [**`._Boolean_`**](#boolean)
-  * [**`.Byte`**](#byte)
-  * [**`._Date_`**](#date)
-  * [**`.DateRange`**](#daterange)
-  * [**`._Function_`**](#function)
-  * [**`.Integer`**](#integer)
-  * [**`.IntRange`**](#intrange)
-  * [**`._Number_`**](#number)
-  * [**`.Range`**](#range)
-  * [**`._RegExp_`**](#regexp)
-  * [**`_.String_`**](#string)
+  * [**`.Any`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/any.md)
+  * [**`._BigInt_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/bigint.md)
+  * [**`.BitIntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/bigintrange.md)
+  * [**`._Boolean_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/boolean.md)
+  * [**`.Byte`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/byte.md)
+  * [**`._Date_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/date.md)
+  * [**`.DateRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/daterange.md)
+  * [**`._Function_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/function.md)
+  * [**`.Integer`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/integer.md)
+  * [**`.IntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/intrange.md)
+  * [**`._Number_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/number.md)
+  * [**`.Range`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/range.md)
+  * [**`._RegExp_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/regexp.md)
+  * [**`._String_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/string.md)
 
   </p>
 </details>
