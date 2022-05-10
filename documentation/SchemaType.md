@@ -25,7 +25,7 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**`.defined`**](#defined) [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
+  * [**`.defined`**](#defined) &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
   * [**`.call`**](#call)
   * [**`.prototype.toString`**](#tostring)
     
@@ -106,6 +106,8 @@ console.log(John);
 
 # Methods
 
+<a id="defined"></a>
+
 ## `.defined` &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
 
 A simple function that returns true if a value is a valid value  
@@ -130,7 +132,7 @@ It returns false whenever the value is [`undefined`](https://javascript.info/typ
 **Code:**
 
 ```js
-const { Schema, SchemaType, SchemaTypes } = require('.');
+const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
 
 class Gender extends SchemaType {
   static Male = Symbol("Male");
@@ -216,7 +218,9 @@ A random value
 
 <br/><br/>
 
-## `.prototype.toString`
+<a id="tostring"></a>
+
+# `.prototype.toString`
 
 A function used to convert this object into a string format
 

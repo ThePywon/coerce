@@ -99,6 +99,8 @@ console.log(Person);
 
 # Methods
 
+<br/>
+
 <a id="hasinstance"></a>
 
 ## `[Symbol.hasInstance]`
