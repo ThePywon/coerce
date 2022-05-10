@@ -58,7 +58,7 @@ An object that holds all the default [`SchemaType`](https://github.com/ThePywon/
 **Code:**
 
 ```js
-const { Schema, SchemaType, SchemaTypes } = require('.');
+const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
 
 const Person = new Schema({
   name: String,

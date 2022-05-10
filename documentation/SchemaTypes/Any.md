@@ -94,6 +94,8 @@ console.log(John);
 Some methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
 Check it out for more info on this class's methods
 
+<br/>
+
 <a id="tostring"></a>
 
 ## `.prototype.toString`
