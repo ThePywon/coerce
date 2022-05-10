@@ -24,7 +24,7 @@ A package to handle user inputs automatically
 
 * [**How to use?**](#how-to-use)
 
-* <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md"><b>Schema</b></a><img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
+* <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md"><b>Schema</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
   <p>
 
   * [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md)
@@ -32,9 +32,9 @@ A package to handle user inputs automatically
   </p>
 </details>
 
-* [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md) ![Exported](https://img.shields.io/badge/-Exported-cyan)
+* [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md) &nbsp; ![Exported](https://img.shields.io/badge/-Exported-cyan)
 
-* <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes.md"><b>SchemaTypes</b></a><img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
+* <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes.md"><b>SchemaTypes</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
   <p>
 
   * [**`.Any`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/any.md)
