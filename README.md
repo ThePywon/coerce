@@ -24,13 +24,33 @@ A package to handle user inputs automatically
 
 * [**How to use?**](#how-to-use)
 
-* <details open><summary><b>Classes</b></summary>
+* <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md"><b>Schema</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
   <p>
 
-  * [**Schema**](https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md)
   * [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md)
-  * [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)
-  * [**SchemaTypes**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes.md)
+    
+  </p>
+</details>
+
+* [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md) &nbsp; ![Exported](https://img.shields.io/badge/-Exported-cyan)
+
+* <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes.md"><b>SchemaTypes</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
+  <p>
+
+  * [**`.Any`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Any.md)
+  * [**`._BigInt_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md)
+  * [**`.BitIntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)
+  * [**`._Boolean_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Boolean.md)
+  * [**`.Byte`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Byte.md)
+  * [**`._Date_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Date.md)
+  * [**`.DateRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRange.md)
+  * [**`._Function_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Function.md)
+  * [**`.Integer`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md)
+  * [**`.IntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)
+  * [**`._Number_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md)
+  * [**`.Range`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Range.md)
+  * [**`._RegExp_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/RegExp.md)
+  * [**`._String_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/String.md)
     
   </p>
 </details>

@@ -40,13 +40,12 @@ A package to handle user inputs automatically
 
 # SchemaType
 
-The parent class used to parse each values within a model  
+The class used to parse each values within a model  
+This class is meant to be extended upon
 
 <br/>
 
-**Syntax:** &nbsp; `class extends SchemaType {}`
-
-> This class can only be extended upon
+**Syntax:** &nbsp; `new SchemaType()`
 
 <br/>
 
@@ -217,7 +216,7 @@ A random value
 
 <br/><br/>
 
-# `.prototype.toString`
+## `.prototype.toString`
 
 A function used to convert this object into a string format
 
