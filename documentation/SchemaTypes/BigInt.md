@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**Any**](#any)
+* [**\_BigInt\_**](#bigint)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -36,14 +36,14 @@ A package to handle user inputs automatically
 
 
 
-# Any
+# \_BigInt\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan) without any conversion
+It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type) or [`Number`](https://javascript.info/number) and tries to convert everything else into a [`Number`](https://javascript.info/number) then converts them into [`BigInt`](https://javascript.info/types#bigint-type)
 
 <br/>
 
-**Syntax:** &nbsp; `new Any()`
+**Syntax:** &nbsp; `new _BigInt_()`
 
 <br/>
 
@@ -55,7 +55,7 @@ It accepts all values but [`undefined`](https://javascript.info/types#the-undefi
 const { SchemaTypes } = require("@protagonists/coerce");
 const validator = new SchemaTypes._BigInt_();
 
-console.log(validator.call(123456789012345678901234567890));
+console.log(validator.call(1234456789012345678901234567890));
 ```
 
 **Output:**
@@ -76,7 +76,7 @@ const Person = new Schema({
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
   birthday: Date,
   friends: [String],
-  otherInfo: SchemaTypes.Any
+  ID: BigInt // Equivalent to SchemaTypes._BigInt_ after model is created
 });
 
 const John = Person({
@@ -84,7 +84,7 @@ const John = Person({
   age: 37,
   birthday: "1984",
   friends: [ "Steve", "Carl", "Meep" ],
-  otherInfo: "Single"
+  ID: 9817265120564739
 });
 
 console.log(John);
@@ -98,7 +98,7 @@ console.log(John);
   age: 37,
   birthday: 1984-01-01T00:00:00.000Z,
   friends: [ 'Steve', 'Carla', 'Meep' ],
-  otherInfo: 'Single'
+  ID: 9817265120564739n
 }
 ```
 
@@ -108,10 +108,40 @@ console.log(John);
 
 # Methods
 
-Some methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-Check it out for more info on this class's methods
+<br/>
+
+## `.call`
+
+The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
 
 <br/>
+
+**Syntax:** &nbsp; `.call()`
+
+<br/>
+
+**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
+
+<br/>
+
+### **Example**
+
+**Code:**
+
+```js
+const { SchemaTypes } = require("@protagonists/coerce");
+const validator = new SchemaTypes._BigInt_();
+
+console.log(validator.call(1234456789012345678901234567890));
+```
+
+**Output:**
+
+```
+123456789012345678901234567890n
+```
+
+<br/><br/>
 
 <a id="tostring"></a>
 
@@ -121,7 +151,7 @@ A function used to convert this object into a string format
 
 <br/>
 
-**Syntax:** &nbsp; `toString()`
+**Syntax:** &nbsp; `.toString()`
 
 <br/>
 
@@ -136,13 +166,13 @@ A function used to convert this object into a string format
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
 
-console.log(new SchemaTypes.Any().toString());
+console.log(new SchemaTypes._BigInt_().toString());
 ```
 
 **Output:**
 
 ```
-Any
+BigInt
 ```
 
 ---

@@ -261,7 +261,7 @@ console.log(Person.defaults);
 <br/><br/>
 
 
-## `.toString`
+## `.toString` &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
 
 A function used to convert this object into a string format  
 It returns a stringified version of [`.raw`](#raw)
