@@ -39,7 +39,9 @@ A package to handle user inputs automatically
 # \_BigInt\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type) or [`Number`](https://javascript.info/number) and tries to convert everything else into a [`Number`](https://javascript.info/number) then converts them into [`BigInt`](https://javascript.info/types#bigint-type)
+It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type)  
+It converts [`Number`](https://javascript.info/number) into [`BigInt`](https://javascript.info/types#bigint-type)  
+It tries to convert everything else into a [`Number`](https://javascript.info/number) then again into a [`BigInt`](https://javascript.info/types#bigint-type)
 
 <br/>
 
