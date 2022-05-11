@@ -27,7 +27,7 @@ A package to handle user inputs automatically
 
   * [**`.defined`**](#defined) &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
   * [**`.call`**](#call)
-  * [**`.prototype.toString`**](#tostring)
+  * [**`.toString`**](#tostring) &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
     
   </p>
 </details>
@@ -105,6 +105,8 @@ console.log(John);
 <br/><br/><br/>
 
 # Methods
+
+<br/>
 
 <a id="defined"></a>
 
@@ -220,13 +222,13 @@ A random value
 
 <a id="tostring"></a>
 
-# `.prototype.toString`
+## `.toString` &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
 
 A function used to convert this object into a string format
 
 <br/>
 
-**Syntax:** &nbsp; `.prototype.toString()`
+**Syntax:** &nbsp; `.toString()`
 
 <br/>
 
@@ -254,7 +256,7 @@ class Gender extends SchemaType {
   }
 }
 
-console.log(Gender.prototype.toString());
+console.log(new Gender().toString());
 ```
 
 **Output:**
