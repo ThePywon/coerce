@@ -53,15 +53,32 @@ It accepts all values but [`undefined`](https://javascript.info/types#the-undefi
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes.Any();
 
-console.log(validator.call(123456789012345678901234567890));
+console.log(validator.call("Any value"));
 ```
 
 **Output:**
 
 ```
-123456789012345678901234567890n
+Any value
+```
+
+<br/>
+
+**Code:**
+
+```js
+const { SchemaTypes } = require("@protagonists/coerce");
+const validator = new SchemaTypes.Any();
+
+console.log(validator.call(null));
+```
+
+**Output:**
+
+```
+undefined
 ```
 
 <br/>
