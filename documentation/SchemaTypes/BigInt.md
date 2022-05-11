@@ -57,13 +57,58 @@ It tries to convert everything else into a [`Number`](https://javascript.info/nu
 const { SchemaTypes } = require("@protagonists/coerce");
 const validator = new SchemaTypes._BigInt_();
 
-console.log(validator.call(1234456789012345678901234567890));
+console.log(validator.call(123456789012345678901234567890n));
 ```
 
 **Output:**
 
 ```
 123456789012345678901234567890n
+```
+
+<br/>
+
+```js
+const { SchemaTypes } = require("@protagonists/coerce");
+const validator = new SchemaTypes._BigInt_();
+
+console.log(validator.call(12));
+```
+
+**Output:**
+
+```
+12n
+```
+
+<br/>
+
+```js
+const { SchemaTypes } = require("@protagonists/coerce");
+const validator = new SchemaTypes._BigInt_();
+
+console.log(validator.call("69 haha funny number"));
+```
+
+**Output:**
+
+```
+69n
+```
+
+<br/>
+
+```js
+const { SchemaTypes } = require("@protagonists/coerce");
+const validator = new SchemaTypes._BigInt_();
+
+console.log(validator.call({ "This is": "an object" }));
+```
+
+**Output:**
+
+```
+undefined
 ```
 
 <br/>
