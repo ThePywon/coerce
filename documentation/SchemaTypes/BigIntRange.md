@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_BigInt\_**](#bigint)
+* [**BigIntRange**](#bigint)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,16 +37,22 @@ A package to handle user inputs automatically
 
 
 
-# \_BigInt\_
+# BigIntRange
 
-A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type)  
-It converts [`Number`](https://javascript.info/number) into [`BigInt`](https://javascript.info/types#bigint-type)  
-It tries to convert everything else into a [`Number`](https://javascript.info/number) then again into a [`BigInt`](https://javascript.info/types#bigint-type)
+A function that return a class extending from [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md)  
+The returned class accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
-**Syntax:** &nbsp; `new _BigInt_()`
+**Syntax:** &nbsp; `BigIntRange(min, max)`
+
+|**Parameters**|**Types**|
+|-|-|
+|`min`|Any|
+|`max`|Any|
+
+> Accepted values are all the values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse
+> `min` must be equal or smaller than `max`
 
 <br/>
 
@@ -56,7 +62,7 @@ It tries to convert everything else into a [`Number`](https://javascript.info/nu
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = SchemaTypes.BigIntRange(0, 5);
 
 console.log(validator.call(123456789012345678901234567890n));
 ```
