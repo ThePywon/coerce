@@ -18,23 +18,6 @@ A package to handle user inputs automatically
 
 <br/><br/><br/>
 
-# Table of content
-
-* [**BigIntRange**](#bigint)
-
-* <details open><summary><a href="#methods"><b>Methods</b></a></summary>
-  <p>
-
-  * [**`.call`**](#call)
-  * [**`.toString`**](#tostring) &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
-    
-  </p>
-</details>
-
----
-
-<br/><br/><br/>
-
 
 
 # BigIntRange
@@ -53,6 +36,10 @@ The returned class accepts and converts all values [`_BigInt_`](https://github.c
 
 > Accepted values are all the values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse
 > `min` must be equal or smaller than `max`
+
+<br/>
+
+**Returns:** &nbsp; [**\_BigIntRange\_**](https://github.com/ThePywon/coerce/blob/main/documentation/BigIntRangeInstance.md)
 
 <br/>
 
@@ -154,79 +141,6 @@ console.log(John);
   friends: [ 'Steve', 'Carla', 'Meep' ],
   ID: 9817265120564739n
 }
-```
-
----
-
-<br/><br/><br/>
-
-# Methods
-
-<br/>
-
-## `.call`
-
-The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
-
-<br/>
-
-**Syntax:** &nbsp; `.call()`
-
-<br/>
-
-**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
-
-<br/>
-
-### **Example**
-
-**Code:**
-
-```js
-const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
-
-console.log(validator.call(1234456789012345678901234567890));
-```
-
-**Output:**
-
-```
-123456789012345678901234567890n
-```
-
-<br/><br/>
-
-<a id="tostring"></a>
-
-## `.toString` &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
-
-A function used to convert this object into a string format
-
-<br/>
-
-**Syntax:** &nbsp; `.toString()`
-
-<br/>
-
-**Returns:** &nbsp; [**String**](https://javascript.info/string)
-
-<br/>
-
-### **Example**
-
-**Code:**
-
-```js
-const { SchemaTypes } = require("@protagonists/coerce");
-
-console.log(new SchemaTypes._BigInt_().toString());
-```
-
-**Output:**
-
-```
-BigInt
 ```
 
 ---

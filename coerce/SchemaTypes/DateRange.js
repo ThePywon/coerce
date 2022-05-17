@@ -27,7 +27,7 @@ function DateRange(min, max) {
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class _DateRange_ extends _Date_ {
+  const result = class DateRangeInstance extends _Date_ {
     // Initialization
     constructor() { super() }
 

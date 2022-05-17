@@ -23,7 +23,7 @@ function IntRange(min, max) {
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class _IntRange_ extends Integer {
+  const result = class IntRangeInstance extends Integer {
     // Initialization
     constructor() { super() }
 
