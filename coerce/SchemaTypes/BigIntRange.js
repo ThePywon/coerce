@@ -23,7 +23,7 @@ function BigIntRange(min, max) {
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class _BigIntRange_ extends _BigInt_ {
+  const result = class BigIntRangeInstance extends _BigInt_ {
     // Initialization
     constructor() { super() }
 

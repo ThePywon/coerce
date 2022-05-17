@@ -18,35 +18,28 @@ A package to handle user inputs automatically
 
 <br/><br/><br/>
 
-# Table of content
-
-* [**\_BigInt\_**](#bigint)
-
-* <details open><summary><a href="#methods"><b>Methods</b></a></summary>
-  <p>
-
-  * [**`.call`**](#call)
-  * [**`.toString`**](#tostring) &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
-    
-  </p>
-</details>
-
----
-
-<br/><br/><br/>
 
 
+# BigIntRange
 
-# \_BigInt\_
-
-A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type)  
-It converts [`Number`](https://javascript.info/number) into [`BigInt`](https://javascript.info/types#bigint-type)  
-It tries to convert everything else into a [`Number`](https://javascript.info/number) then again into a [`BigInt`](https://javascript.info/types#bigint-type)
+A function that return a class extending from [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md)  
+The returned class accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
-**Syntax:** &nbsp; `new _BigInt_()`
+**Syntax:** &nbsp; `BigIntRange(min, max)`
+
+|**Parameters**|**Types**|
+|-|-|
+|`min`|Any|
+|`max`|Any|
+
+> Accepted values are all the values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse
+> `min` must be equal or smaller than `max`
+
+<br/>
+
+**Returns:** &nbsp; [**\_BigIntRange\_**](https://github.com/ThePywon/coerce/blob/main/documentation/BigIntRangeInstance.md)
 
 <br/>
 
@@ -56,7 +49,7 @@ It tries to convert everything else into a [`Number`](https://javascript.info/nu
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = SchemaTypes.BigIntRange(0, 5);
 
 console.log(validator.call(123456789012345678901234567890n));
 ```
@@ -148,79 +141,6 @@ console.log(John);
   friends: [ 'Steve', 'Carla', 'Meep' ],
   ID: 9817265120564739n
 }
-```
-
----
-
-<br/><br/><br/>
-
-# Methods
-
-<br/>
-
-## `.call`
-
-The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
-
-<br/>
-
-**Syntax:** &nbsp; `.call()`
-
-<br/>
-
-**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
-
-<br/>
-
-### **Example**
-
-**Code:**
-
-```js
-const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
-
-console.log(validator.call(1234456789012345678901234567890));
-```
-
-**Output:**
-
-```
-123456789012345678901234567890n
-```
-
-<br/><br/>
-
-<a id="tostring"></a>
-
-## `.toString` &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
-
-A function used to convert this object into a string format
-
-<br/>
-
-**Syntax:** &nbsp; `.toString()`
-
-<br/>
-
-**Returns:** &nbsp; [**String**](https://javascript.info/string)
-
-<br/>
-
-### **Example**
-
-**Code:**
-
-```js
-const { SchemaTypes } = require("@protagonists/coerce");
-
-console.log(new SchemaTypes._BigInt_().toString());
-```
-
-**Output:**
-
-```
-BigInt
 ```
 
 ---
