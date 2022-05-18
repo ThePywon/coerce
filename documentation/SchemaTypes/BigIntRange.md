@@ -39,7 +39,7 @@ The returned class accepts and converts all values [`_BigInt_`](https://github.c
 
 <br/>
 
-**Returns:** &nbsp; [**\_BigIntRange\_**](https://github.com/ThePywon/coerce/blob/main/documentation/BigIntRangeInstance.md)
+**Returns:** &nbsp; [**BigIntRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRangeInstance.md)
 
 <br/>
 
@@ -49,7 +49,7 @@ The returned class accepts and converts all values [`_BigInt_`](https://github.c
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = SchemaTypes.BigIntRange(0, 5);
+const validator = new (SchemaTypes.BigIntRange(0, 5));
 
 console.log(validator.call(123456789012345678901234567890n));
 ```

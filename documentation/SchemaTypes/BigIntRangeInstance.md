@@ -18,9 +18,10 @@ A package to handle user inputs automatically
 
 <br/><br/><br/>
 
+
 # Table of content
 
-* [**\_BigInt\_**](#bigint)
+* [**BigIntRangeInstance**](#bigint)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,26 +38,24 @@ A package to handle user inputs automatically
 
 
 
-# \_BigInt\_
+# BigIntRangeInstance
 
-A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type)  
-It converts [`Number`](https://javascript.info/number) into [`BigInt`](https://javascript.info/types#bigint-type)  
-It tries to convert everything else into a [`Number`](https://javascript.info/number) then again into a [`BigInt`](https://javascript.info/types#bigint-type)
+A class returned from [`BigIntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)  
+it accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
-**Syntax:** &nbsp; `new _BigInt_()`
+**Syntax:** &nbsp; `new BigIntRangeInstance()`
 
 <br/>
 
-### **Example**
+### **Examples**
 
 **Code:**
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new (SchemaTypes.BigIntRange(0, 5));
 
 console.log(validator.call(123456789012345678901234567890n));
 ```
@@ -118,44 +117,6 @@ console.log(validator.call({ "This is": "an object" }));
 undefined
 ```
 
-<br/>
-
-**Code:**
-
-```js
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
-
-const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String],
-  ID: BigInt // Equivalent to SchemaTypes._BigInt_ after model is created
-});
-
-const John = Person({
-  name: "John",
-  age: 37,
-  birthday: "1984",
-  friends: [ "Steve", "Carl", "Meep" ],
-  ID: 9817265120564739
-});
-
-console.log(John);
-```
-
-**Ouput:**
-
-```
-{
-  name: 'John',
-  age: 37,
-  birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carla', 'Meep' ],
-  ID: 9817265120564739n
-}
-```
-
 ---
 
 <br/><br/><br/>
@@ -184,15 +145,15 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new (SchemaTypes.BigIntRange(0, 5));
 
-console.log(validator.call(1234456789012345678901234567890));
+console.log(validator.call(4));
 ```
 
 **Output:**
 
 ```
-123456789012345678901234567890n
+4n
 ```
 
 <br/><br/>
@@ -220,13 +181,13 @@ A function used to convert this object into a string format
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
 
-console.log(new SchemaTypes._BigInt_().toString());
+console.log(new (SchemaTypes.BigIntRange(0, 5)).toString());
 ```
 
 **Output:**
 
 ```
-BigInt
+BigIntRange
 ```
 
 ---
