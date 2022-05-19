@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_BigInt\_**](#bigint)
+* [**\_Boolean\_**](#boolean)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,16 +37,15 @@ A package to handle user inputs automatically
 
 
 
-# \_BigInt\_
+# \_Boolean\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type)  
-It converts [`Number`](https://javascript.info/number) into [`BigInt`](https://javascript.info/types#bigint-type)  
-It tries to convert everything else into a [`Number`](https://javascript.info/number) then again into a [`BigInt`](https://javascript.info/types#bigint-type)
+It accepts **ALL** values
+It converts them all into [`Boolean`](https://javascript.info/types#boolean-logical-type) using the default javascript conversion system
 
 <br/>
 
-**Syntax:** &nbsp; `new _BigInt_()`
+**Syntax:** &nbsp; `new _Boolean_()`
 
 <br/>
 
@@ -56,15 +55,15 @@ It tries to convert everything else into a [`Number`](https://javascript.info/nu
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes._Boolean_();
 
-console.log(validator.call(123456789012345678901234567890n));
+console.log(validator.call(null));
 ```
 
 **Output:**
 
 ```
-123456789012345678901234567890n
+false
 ```
 
 <br/>
@@ -81,7 +80,7 @@ console.log(validator.call(12));
 **Output:**
 
 ```
-12n
+true
 ```
 
 <br/>
@@ -92,13 +91,13 @@ console.log(validator.call(12));
 const { SchemaTypes } = require("@protagonists/coerce");
 const validator = new SchemaTypes._BigInt_();
 
-console.log(validator.call("69 haha funny number"));
+console.log(validator.call( {} ));
 ```
 
 **Output:**
 
 ```
-69n
+true
 ```
 
 <br/>
@@ -109,13 +108,13 @@ console.log(validator.call("69 haha funny number"));
 const { SchemaTypes } = require("@protagonists/coerce");
 const validator = new SchemaTypes._BigInt_();
 
-console.log(validator.call({ "This is": "an object" }));
+console.log(validator.call(""));
 ```
 
 **Output:**
 
 ```
-undefined
+false
 ```
 
 <br/>
@@ -130,7 +129,7 @@ const Person = new Schema({
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
   birthday: Date,
   friends: [String],
-  ID: BigInt // Equivalent to SchemaTypes._BigInt_ after model is created
+  male: Boolean // Equivalent to SchemaTypes._Boolean_ after model is created
 });
 
 const John = Person({
@@ -138,7 +137,7 @@ const John = Person({
   age: 37,
   birthday: "1984",
   friends: [ "Steve", "Carl", "Meep" ],
-  ID: 9817265120564739
+  male: "yes"
 });
 
 console.log(John);
@@ -152,7 +151,7 @@ console.log(John);
   age: 37,
   birthday: 1984-01-01T00:00:00.000Z,
   friends: [ 'Steve', 'Carla', 'Meep' ],
-  ID: 9817265120564739n
+  male: true
 }
 ```
 
@@ -166,7 +165,7 @@ console.log(John);
 
 ## `.call`
 
-The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
+The function called to convert any value into a [`Boolean`](https://javascript.info/types#boolean-logical-type)
 
 <br/>
 
@@ -178,7 +177,7 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 <br/>
 
-**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
+**Returns:** &nbsp; [**Boolean**](https://javascript.info/types#boolean-logical-type)
 
 <br/>
 
@@ -188,15 +187,15 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes._Boolean_();
 
-console.log(validator.call(1234456789012345678901234567890));
+console.log(validator.call("A truthy value"));
 ```
 
 **Output:**
 
 ```
-123456789012345678901234567890n
+true
 ```
 
 <br/><br/>
@@ -224,13 +223,13 @@ A function used to convert this object into a string format
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
 
-console.log(new SchemaTypes._BigInt_().toString());
+console.log(new SchemaTypes._Boolean_().toString());
 ```
 
 **Output:**
 
 ```
-BigInt
+Boolean
 ```
 
 ---
