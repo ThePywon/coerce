@@ -131,7 +131,11 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 <br/>
 
-**Syntax:** &nbsp; `.call()`
+**Syntax:** &nbsp; `.call(val)`
+
+|**Parameters**|**Types**|
+|-|-|
+|`val`|**Any**|
 
 <br/>
 

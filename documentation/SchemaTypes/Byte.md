@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_BigInt\_**](#bigint)
+* [**Byte**](#byte)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,16 +37,15 @@ A package to handle user inputs automatically
 
 
 
-# \_BigInt\_
+# Byte
 
-A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type)  
-It converts [`Number`](https://javascript.info/number) into [`BigInt`](https://javascript.info/types#bigint-type)  
-It tries to convert everything else into a [`Number`](https://javascript.info/number) then again into a [`BigInt`](https://javascript.info/types#bigint-type)
+A class extending from [`IntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)  
+The returned class accepts and converts all values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse that are within a defined range of 0 to 255 (inclusive)
+
 
 <br/>
 
-**Syntax:** &nbsp; `new _BigInt_()`
+**Syntax:** &nbsp; `new Byte()`
 
 <br/>
 
@@ -56,24 +55,7 @@ It tries to convert everything else into a [`Number`](https://javascript.info/nu
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
-
-console.log(validator.call(123456789012345678901234567890n));
-```
-
-**Output:**
-
-```
-123456789012345678901234567890n
-```
-
-<br/>
-
-**Code:**
-
-```js
-const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes.Byte();
 
 console.log(validator.call(12));
 ```
@@ -81,7 +63,7 @@ console.log(validator.call(12));
 **Output:**
 
 ```
-12n
+12
 ```
 
 <br/>
@@ -90,7 +72,7 @@ console.log(validator.call(12));
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes.Byte();
 
 console.log(validator.call("69 haha funny number"));
 ```
@@ -98,7 +80,7 @@ console.log(validator.call("69 haha funny number"));
 **Output:**
 
 ```
-69n
+69
 ```
 
 <br/>
@@ -107,9 +89,9 @@ console.log(validator.call("69 haha funny number"));
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes.Byte();
 
-console.log(validator.call({ "This is": "an object" }));
+console.log(validator.call(999));
 ```
 
 **Output:**
@@ -125,35 +107,29 @@ undefined
 ```js
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
-const Person = new Schema({
+const Color = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String],
-  ID: BigInt // Equivalent to SchemaTypes._BigInt_ after model is created
+  red: SchemaTypes.Byte,
+  green: SchemaTypes.Byte,
+  blue: SchemaTypes.Byte,
+  alpha: SchemaTypes.Byte
 });
 
-const John = Person({
-  name: "John",
-  age: 37,
-  birthday: "1984",
-  friends: [ "Steve", "Carl", "Meep" ],
-  ID: 9817265120564739
+const favColor = Color({
+  name: "Blue",
+  red: 0,
+  green: 128,
+  blue: 255,
+  alpha: 255
 });
 
-console.log(John);
+console.log(favColor);
 ```
 
 **Ouput:**
 
 ```
-{
-  name: 'John',
-  age: 37,
-  birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carla', 'Meep' ],
-  ID: 9817265120564739n
-}
+{ name: 'Blue', red: 0, green: 128, blue: 255, alpha: 255 }
 ```
 
 ---
@@ -162,11 +138,14 @@ console.log(John);
 
 # Methods
 
+Some methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
+Check it out for more info on this class's methods
+
 <br/>
 
 ## `.call`
 
-The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
+The function called to convert a value into a [`Number`](https://javascript.info/number) within an inclusive range of 0 to 255 and/or validate a value
 
 <br/>
 
@@ -178,7 +157,7 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 <br/>
 
-**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
+**Returns:** &nbsp; [**Number**](https://javascript.info/number)
 
 <br/>
 
@@ -188,15 +167,15 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes.Byte();
 
-console.log(validator.call(1234456789012345678901234567890));
+console.log(validator.call("55"));
 ```
 
 **Output:**
 
 ```
-123456789012345678901234567890n
+55
 ```
 
 <br/><br/>
@@ -209,7 +188,7 @@ A function used to convert this object into a string format
 
 <br/>
 
-**Syntax:** &nbsp; `.toString()`
+**Syntax:** &nbsp; `toString()`
 
 <br/>
 
@@ -224,13 +203,13 @@ A function used to convert this object into a string format
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
 
-console.log(new SchemaTypes._BigInt_().toString());
+console.log(new SchemaTypes.Byte().toString());
 ```
 
 **Output:**
 
 ```
-BigInt
+Byte
 ```
 
 ---
