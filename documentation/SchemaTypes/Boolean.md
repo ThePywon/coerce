@@ -37,6 +37,8 @@ A package to handle user inputs automatically
 
 
 
+<a id="boolean"></a>
+
 # \_Boolean\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
@@ -72,7 +74,7 @@ false
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes._Boolean_();
 
 console.log(validator.call(12));
 ```
@@ -89,7 +91,7 @@ true
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes._Boolean_();
 
 console.log(validator.call( {} ));
 ```
@@ -106,7 +108,7 @@ true
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes._Boolean_();
 
 console.log(validator.call(""));
 ```
