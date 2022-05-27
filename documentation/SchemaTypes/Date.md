@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_Date\_**](#bigint)
+* [**\_Date\_**](#date)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -36,6 +36,8 @@ A package to handle user inputs automatically
 <br/><br/><br/>
 
 
+
+<a id="date"></a>
 
 # \_Date\_
 

@@ -37,6 +37,8 @@ A package to handle user inputs automatically
 
 
 
+<a id="bigint"></a>
+
 # \_BigInt\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
