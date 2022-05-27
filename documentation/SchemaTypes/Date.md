@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**Byte**](#byte)
+* [**\_Date\_**](#bigint)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,15 +37,15 @@ A package to handle user inputs automatically
 
 
 
-# Byte
+# \_Date\_
 
-A class extending from [`IntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)  
-The returned class accepts and converts all values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse that are within a defined range of 0 to 255 (inclusive)
-
+A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
+It accepts all valid [`Date`](https://javascript.info/date)  
+It tries to convert everything into a valid date
 
 <br/>
 
-**Syntax:** &nbsp; `new Byte()`
+**Syntax:** &nbsp; `new _Date_()`
 
 <br/>
 
@@ -55,15 +55,15 @@ The returned class accepts and converts all values [`Integer`](https://github.co
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._Date_();
 
-console.log(validator.call(12));
+console.log(validator.call(new Date("2020")));
 ```
 
 **Output:**
 
 ```
-12
+2020-01-01T00:00:00.000Z
 ```
 
 <br/>
@@ -72,15 +72,15 @@ console.log(validator.call(12));
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._Date_();
 
-console.log(validator.call("69 haha funny number"));
+console.log(validator.call("2020"));
 ```
 
 **Output:**
 
 ```
-69
+2020-01-01T00:00:00.000Z
 ```
 
 <br/>
@@ -89,9 +89,9 @@ console.log(validator.call("69 haha funny number"));
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._BigInt_();
 
-console.log(validator.call(999));
+console.log(validator.call("Invalid date"));
 ```
 
 **Output:**
@@ -107,29 +107,32 @@ undefined
 ```js
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
-const Color = new Schema({
+const Person = new Schema({
   name: String,
-  red: SchemaTypes.Byte,
-  green: SchemaTypes.Byte,
-  blue: SchemaTypes.Byte,
-  alpha: SchemaTypes.Byte
+  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  birthday: Date,  // Equivalent to SchemaTypes._Date_ after model is created
+  friends: [String]
 });
 
-const favColor = Color({
-  name: "Blue",
-  red: 0,
-  green: 128,
-  blue: 255,
-  alpha: 255
+const John = Person({
+  name: "John",
+  age: 37,
+  birthday: "1984",
+  friends: [ "Steve", "Carl", "Meep" ]
 });
 
-console.log(favColor);
+console.log(John);
 ```
 
 **Ouput:**
 
 ```
-{ name: 'Blue', red: 0, green: 128, blue: 255, alpha: 255 }
+{
+  name: 'John',
+  age: 37,
+  birthday: 1984-01-01T00:00:00.000Z,
+  friends: [ 'Steve', 'Carla', 'Meep' ]
+}
 ```
 
 ---
@@ -138,8 +141,23 @@ console.log(favColor);
 
 # Methods
 
-Some methods from this class are inherited from [`IntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)  
-Check it out for more info on this class's methods
+<br/>
+
+## `.call`
+
+The function called to convert a value into a [`Date`](https://javascript.info/date) and/or validate a value
+
+<br/>
+
+**Syntax:** &nbsp; `.call(val)`
+
+|**Parameters**|**Types**|
+|-|-|
+|`val`|**Any**|
+
+<br/>
+
+**Returns:** &nbsp; [**Date**](https://javascript.info/date)
 
 <br/>
 
@@ -149,15 +167,15 @@ Check it out for more info on this class's methods
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._Date_();
 
-console.log(validator.call("55"));
+console.log(validator.call("1984-02-23"));
 ```
 
 **Output:**
 
 ```
-55
+1984-02-23T00:00:00.000Z
 ```
 
 <br/><br/>
@@ -170,7 +188,7 @@ A function used to convert this object into a string format
 
 <br/>
 
-**Syntax:** &nbsp; `toString()`
+**Syntax:** &nbsp; `.toString()`
 
 <br/>
 
@@ -185,13 +203,13 @@ A function used to convert this object into a string format
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
 
-console.log(new SchemaTypes.Byte().toString());
+console.log(new SchemaTypes._Date_().toString());
 ```
 
 **Output:**
 
 ```
-Byte
+Date
 ```
 
 ---
