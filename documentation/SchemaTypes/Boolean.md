@@ -42,7 +42,7 @@ A package to handle user inputs automatically
 # \_Boolean\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts **ALL** values
+It accepts **ALL** values  
 It converts them all into [`Boolean`](https://javascript.info/types#boolean-logical-type) using the default javascript conversion system
 
 <br/>
