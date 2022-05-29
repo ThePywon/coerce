@@ -21,7 +21,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**BigIntRangeInstance**](#bigintrangeinstance)
+* [**DateRangeInstance**](#daterangeinstance)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -38,83 +38,97 @@ A package to handle user inputs automatically
 
 
 
-# BigIntRangeInstance
+# DateRangeInstance
 
-A class returned from [`BigIntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)  
-it accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse that are within a defined range (inclusive)
-
-<br/>
-
-**Syntax:** &nbsp; `new BigIntRangeInstance()`
+A class returned from [`DateRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRange.md)  
+it accepts and converts all values [`_Date_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Date.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
-### **Examples**
+**Syntax:** &nbsp; `new DateRangeInstance()`
+
+<br/>
+
+### **Example**
 
 **Code:**
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new (SchemaTypes.BigIntRange(0, 5));
+const validator = new (SchemaTypes.DateRange("1890", "2000"));
 
-console.log(validator.call(123456789012345678901234567890n));
+console.log(validator.call("1893"));
 ```
 
 **Output:**
 
 ```
-123456789012345678901234567890n
+1893-01-01T00:00:00.000Z
 ```
 
 <br/>
 
-**Code:**
-
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new (SchemaTypes.DateRange("1890", "2000"));
 
-console.log(validator.call(12));
+console.log(validator.call(new Date("1899")));
 ```
 
 **Output:**
 
 ```
-12n
+1899-01-01T00:00:00.000Z
 ```
 
 <br/>
 
-**Code:**
-
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
+const validator = new (SchemaTypes.DateRange("1890", "2000"));
 
-console.log(validator.call("69 haha funny number"));
-```
-
-**Output:**
-
-```
-69n
-```
-
-<br/>
-
-**Code:**
-
-```js
-const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._BigInt_();
-
-console.log(validator.call({ "This is": "an object" }));
+console.log(validator.call(new Date("2015")));
 ```
 
 **Output:**
 
 ```
 undefined
+```
+
+<br/>
+
+**Code:**
+
+```js
+const { Schema, SchemaTypes } = require("@protagonists/coerce");
+
+const Person = new Schema({
+  name: String,
+  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  birthday: SchemaTypes.DateRange("1900", new Date()),
+  friends: [String]
+});
+
+const John = Person({
+  name: "John",
+  age: 37,
+  birthday: "1984",
+  friends: [ "Steve", "Carl", "Meep" ]
+});
+
+console.log(John);
+```
+
+**Ouput:**
+
+```
+{
+  name: 'John',
+  age: 37,
+  birthday: 1984-01-01T00:00:00.000Z,
+  friends: [ 'Steve', 'Carla', 'Meep' ]
+}
 ```
 
 ---
@@ -127,7 +141,7 @@ undefined
 
 ## `.call`
 
-The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
+The function called to convert a value into a [`Date`](https://javascript.info/date) and/or validate a value
 
 <br/>
 
@@ -139,7 +153,7 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 <br/>
 
-**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
+**Returns:** &nbsp; [**Date**](https://javascript.info/date)
 
 <br/>
 
@@ -149,15 +163,15 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new (SchemaTypes.BigIntRange(0, 5));
+const validator = new (SchemaTypes.DateRange("1980", "2000"));
 
-console.log(validator.call(4));
+console.log(validator.call("1999"));
 ```
 
 **Output:**
 
 ```
-4n
+1999-01-01T00:00:00.000Z
 ```
 
 <br/><br/>
@@ -185,13 +199,13 @@ A function used to convert this object into a string format
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
 
-console.log(new (SchemaTypes.BigIntRange(0, 5)).toString());
+console.log(new (SchemaTypes.DateRange("1900", new Date())).toString());
 ```
 
 **Output:**
 
 ```
-BigIntRange
+DateRange
 ```
 
 ---
