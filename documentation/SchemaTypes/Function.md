@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_Boolean\_**](#boolean)
+* [**\_Function\_**](#function)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,17 +37,16 @@ A package to handle user inputs automatically
 
 
 
-<a id="boolean"></a>
+<a id="function"></a>
 
-# \_Boolean\_
+# \_Function\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts **ALL** values  
-It converts them all into [`Boolean`](https://javascript.info/types#boolean-logical-type) using the default javascript conversion system
+It only accepts [`Function`](https://javascript.info/function-basics)s
 
 <br/>
 
-**Syntax:** &nbsp; `new _Boolean_()`
+**Syntax:** &nbsp; `new _Function_()`
 
 <br/>
 
@@ -57,15 +56,15 @@ It converts them all into [`Boolean`](https://javascript.info/types#boolean-logi
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._Boolean_();
+const validator = new SchemaTypes._Function_();
 
-console.log(validator.call(null));
+console.log(validator.call( () => {} ));
 ```
 
 **Output:**
 
 ```
-false
+[Function (anonymous)]
 ```
 
 <br/>
@@ -74,15 +73,19 @@ false
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._Boolean_();
+const validator = new SchemaTypes._Function_();
 
-console.log(validator.call(12));
+function test() {
+  // Some code
+}
+
+console.log(validator.call(test));
 ```
 
 **Output:**
 
 ```
-true
+[Function: test]
 ```
 
 <br/>
@@ -91,32 +94,17 @@ true
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._Boolean_();
+const validator = new SchemaTypes._Function_();
 
-console.log(validator.call( {} ));
+class test {}
+
+console.log(validator.call(test));
 ```
 
 **Output:**
 
 ```
-true
-```
-
-<br/>
-
-**Code:**
-
-```js
-const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._Boolean_();
-
-console.log(validator.call(""));
-```
-
-**Output:**
-
-```
-false
+undefined
 ```
 
 <br/>
@@ -126,34 +114,28 @@ false
 ```js
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
-const Person = new Schema({
+const Event = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String],
-  male: Boolean // Equivalent to SchemaTypes._Boolean_ after model is created
+  data: SchemaTypes.Any,
+  callback: Function // Equivalent to SchemaTypes._Function_ after model is created
 });
 
-const John = Person({
-  name: "John",
-  age: 37,
-  birthday: "1984",
-  friends: [ "Steve", "Carl", "Meep" ],
-  male: "yes"
+const readyEvent = Event({
+  name: "ready",
+  data: {},
+  callback: () => { console.log("Event called!") }
 });
 
-console.log(John);
+console.log(readyEvent);
 ```
 
 **Ouput:**
 
 ```
 {
-  name: 'John',
-  age: 37,
-  birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carla', 'Meep' ],
-  male: true
+  name: 'ready',
+  data: {},
+  callback: [Function (anonymous)]
 }
 ```
 
@@ -167,7 +149,7 @@ console.log(John);
 
 ## `.call`
 
-The function called to convert any value into a [`Boolean`](https://javascript.info/types#boolean-logical-type)
+The function called to validate any value into a [`Function`](https://javascript.info/function-basics)
 
 <br/>
 
@@ -179,7 +161,7 @@ The function called to convert any value into a [`Boolean`](https://javascript.i
 
 <br/>
 
-**Returns:** &nbsp; [**Boolean**](https://javascript.info/types#boolean-logical-type)
+**Returns:** &nbsp; [**Function**](https://javascript.info/function-basics)
 
 <br/>
 
@@ -189,15 +171,15 @@ The function called to convert any value into a [`Boolean`](https://javascript.i
 
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
-const validator = new SchemaTypes._Boolean_();
+const validator = new SchemaTypes._Function_();
 
-console.log(validator.call("A truthy value"));
+console.log(validator.call( function() {} ));
 ```
 
 **Output:**
 
 ```
-true
+[Function (anonymous)]
 ```
 
 <br/><br/>
@@ -225,13 +207,13 @@ A function used to convert this object into a string format
 ```js
 const { SchemaTypes } = require("@protagonists/coerce");
 
-console.log(new SchemaTypes._Boolean_().toString());
+console.log(new SchemaTypes._Function_().toString());
 ```
 
 **Output:**
 
 ```
-Boolean
+Function
 ```
 
 ---
