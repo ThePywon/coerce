@@ -57,9 +57,13 @@ It tries to convert everything else into a [`Number`](https://javascript.info/nu
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call(123456789012345678901234567890n));
 ```
 
@@ -74,9 +78,13 @@ console.log(validator.call(123456789012345678901234567890n));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call(12));
 ```
 
@@ -91,9 +99,13 @@ console.log(validator.call(12));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call("69 haha funny number"));
 ```
 
@@ -108,9 +120,13 @@ console.log(validator.call("69 haha funny number"));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call({ "This is": "an object" }));
 ```
 
@@ -125,8 +141,10 @@ undefined
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -135,6 +153,7 @@ const Person = new Schema({
   ID: BigInt // Equivalent to SchemaTypes._BigInt_ after model is created
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,
@@ -143,6 +162,7 @@ const John = Person({
   ID: 9817265120564739
 });
 
+// Log result of call()
 console.log(John);
 ```
 
@@ -189,9 +209,13 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call(1234456789012345678901234567890));
 ```
 
@@ -224,8 +248,10 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
+// Log SchemaType instance's toString() result
 console.log(new SchemaTypes._BigInt_().toString());
 ```
 
