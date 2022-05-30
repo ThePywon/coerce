@@ -69,7 +69,7 @@ A package to handle user inputs automatically
 
 ## Description
 
-This package is meant to coerce objects following a certain model  
+This package takes in an object and coerces it into the same structure as the passed model
 This can be a very usefull tool to manage user inputted data automatically
 
 <br/>
@@ -97,8 +97,10 @@ This can be a very usefull tool to manage user inputted data automatically
 ### Code:
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -106,6 +108,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Coerce object with the schema
 const John = new Person({
   name: "John",
   favColor: "Red",
@@ -115,6 +118,7 @@ const John = new Person({
   age: 37
 });
 
+// Log the result
 console.log(John);
 ```
 
