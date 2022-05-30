@@ -48,9 +48,13 @@ The returned class accepts and converts all values [`_BigInt_`](https://github.c
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new (SchemaTypes.BigIntRange(0, 5));
 
+// Log result of call()
 console.log(validator.call(123456789012345678901234567890n));
 ```
 
@@ -63,9 +67,13 @@ console.log(validator.call(123456789012345678901234567890n));
 <br/>
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call(12));
 ```
 
@@ -78,9 +86,13 @@ console.log(validator.call(12));
 <br/>
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call("69 haha funny number"));
 ```
 
@@ -93,9 +105,13 @@ console.log(validator.call("69 haha funny number"));
 <br/>
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call({ "This is": "an object" }));
 ```
 
@@ -110,8 +126,10 @@ undefined
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -120,6 +138,7 @@ const Person = new Schema({
   ID: BigInt // Equivalent to SchemaTypes._BigInt_ after model is created
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,
@@ -128,6 +147,7 @@ const John = Person({
   ID: 9817265120564739
 });
 
+// Log result
 console.log(John);
 ```
 
