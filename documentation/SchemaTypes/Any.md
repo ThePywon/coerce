@@ -52,9 +52,13 @@ It accepts all values but [`undefined`](https://javascript.info/types#the-undefi
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes.Any();
 
+// Log result of call()
 console.log(validator.call("Any value"));
 ```
 
@@ -69,9 +73,13 @@ Any value
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes.Any();
 
+// Log result of call()
 console.log(validator.call(null));
 ```
 
@@ -86,8 +94,10 @@ undefined
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -96,6 +106,7 @@ const Person = new Schema({
   otherInfo: SchemaTypes.Any
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,
@@ -104,6 +115,7 @@ const John = Person({
   otherInfo: "Single"
 });
 
+// Log result
 console.log(John);
 ```
 
@@ -151,8 +163,10 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
+// Log SchemaType instance's toString() result
 console.log(new SchemaTypes.Any().toString());
 ```
 
