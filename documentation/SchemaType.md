@@ -54,14 +54,20 @@ This class is meant to be extended upon
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
 
+
+// Create class 'Gender' from SchemaType class
 class Gender extends SchemaType {
+  // Static values used for Gender
   static Male = Symbol("Male");
   static Female = Symbol("Female");
 
+  // Call parent constructor
   constructor() { super() }
 
+  // Parse/validate values
   call(val) {
     if(val === Gender.Male ||
       val === Gender.Female)
@@ -69,6 +75,7 @@ class Gender extends SchemaType {
   }
 }
 
+// Create schema "Person"
 const Person = new Schema({
   name: String,
   gender: Gender,
@@ -77,6 +84,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   gender: Gender.Male,
@@ -85,6 +93,7 @@ const John = Person({
   friends: ["Steve", "Carl", "Meep"]
 });
 
+// Log result
 console.log(John);
 ```
 
@@ -134,14 +143,19 @@ It returns false whenever the value is [`undefined`](https://javascript.info/typ
 **Code:**
 
 ```js
+// Import
 const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
 
+// Create class 'Gender' from SchemaType class
 class Gender extends SchemaType {
+  // Static values used for Gender
   static Male = Symbol("Male");
   static Female = Symbol("Female");
 
+  // Call parent constructor
   constructor() { super() }
 
+  // Parse/validate values
   call(val) {
     if(!SchemaType.defaultCheck(val)) return;
 
@@ -151,6 +165,7 @@ class Gender extends SchemaType {
   }
 }
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   gender: Gender,
@@ -159,6 +174,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   gender: Gender.Male,
@@ -167,6 +183,7 @@ const John = Person({
   friends: ["Steve", "Carl", "Meep"]
 });
 
+// Log result
 console.log(John);
 ```
 
@@ -241,14 +258,19 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaType } = require("@protagonists/coerce");
 
+// Create class 'Gender' from SchemaType class
 class Gender extends SchemaType {
+  // Static values used for Gender
   static Male = Symbol("Male");
   static Female = Symbol("Female");
 
+  // Call parent constructor
   constructor() { super() }
 
+  // Parse/validate values
   call(val) {
     if(val === Gender.Male ||
       val === Gender.Female)
@@ -256,6 +278,7 @@ class Gender extends SchemaType {
   }
 }
 
+// Log result
 console.log(new Gender().toString());
 ```
 
