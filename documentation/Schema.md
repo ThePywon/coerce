@@ -40,8 +40,8 @@ A package to handle user inputs automatically
 
 # Schema
 
-A function that returns a temporary function to ceorce objects  
-The model used to coerce objects in the temporary function is the parsed value of the parameter `obj`
+A builder function that returns a [`SchemaInstance`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md) that can coerce objects  
+The model used to coerce objects is a parsed version of the parameter `obj`
 
 <br/>
 
@@ -64,8 +64,10 @@ The model used to coerce objects in the temporary function is the parsed value o
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -73,6 +75,8 @@ const Person = new Schema({
   friends: [String]
 });
 
+
+// Log result
 console.log(Person);
 ```
 
@@ -110,6 +114,10 @@ It returns true if the value is itself or one of the temporary functions it crea
 
 <br/>
 
+**Syntax:** &nbsp; `[Symbol.hasInstance]()`
+
+<br/>
+
 **Returns:** &nbsp; [**Boolean**](https://javascript.info/types#boolean-logical-type)
 
 <br/>
@@ -119,16 +127,20 @@ It returns true if the value is itself or one of the temporary functions it crea
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create a model for the schema
 const PersonModel = {
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
   birthday: Date,
   friends: [String]
 };
+// Create schema 'Person' from model
 const Person = new Schema(PersonModel);
 
+// Log results
 console.log(PersonModel instanceof Schema);
 console.log(Person instanceof Schema);
 console.log(Schema instanceof Schema);

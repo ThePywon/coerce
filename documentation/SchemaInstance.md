@@ -48,7 +48,7 @@ A package to handle user inputs automatically
 
 # SchemaInstance
 
-A temporary function created by [`Schema`](https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md) used to ceorce an object by following a model
+A resulting function from [`Schema`](https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md) used to ceorce an object by following a model
 
 <br/>
 
@@ -69,8 +69,10 @@ A temporary function created by [`Schema`](https://github.com/ThePywon/coerce/bl
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -78,8 +80,10 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Log the Person schema's raw model
 console.log(Person.raw);
 
+// Coerce object with schema
 const John = new Person({
   name: "John",
   favColor: "Red",
@@ -89,6 +93,7 @@ const John = new Person({
   age: 37
 });
 
+// Log result
 console.log(John);
 ```
 
@@ -132,8 +137,10 @@ The raw parsed model used to coerce the objects
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -141,6 +148,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Log result
 console.log(Person.raw);
 ```
 
@@ -170,18 +178,22 @@ An object in the same format as the model containing all the placeholder values 
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
   birthday: Date,
   friends: [String]
 });
+// Set the schema's default values
 Person.setDefaults({
   birthday: "1900"
 });
 
+// Log the schema's default values
 console.log(Person.defaults);
 ```
 
@@ -229,20 +241,24 @@ A function used to set the properties of [`.defaults`](#defaults)
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
   birthday: Date,
   friends: [String]
 });
+// Set schema's default values
 Person.setDefaults({
   friends: ["Steve"],
   birthday: "1900",
   favColor: "Red"
 });
 
+// Log schema's default values
 console.log(Person.defaults);
 ```
 
@@ -281,8 +297,10 @@ It returns a stringified version of [`.raw`](#raw)
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -290,6 +308,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Log toString
 console.log(Person.toString());
 ```
 
