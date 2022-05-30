@@ -58,8 +58,10 @@ An object that holds all the default [`SchemaType`](https://github.com/ThePywon/
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -67,6 +69,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,
@@ -74,6 +77,7 @@ const John = Person({
   friends: ["Steve", "Carl", "Meep"]
 });
 
+// Log result
 console.log(John);
 ```
 
