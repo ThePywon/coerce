@@ -24,6 +24,8 @@ A package to handle user inputs automatically
 
 * [**How to use?**](#how-to-use)
 
+> The content below does not correspond to the object structure of the objects
+
 * <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md"><b>Schema</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
   <p>
 
