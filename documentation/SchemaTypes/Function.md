@@ -230,7 +230,7 @@ A function used to convert this object into a string format
 // Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
-// Log SchemaType instance's toString() resul
+// Log SchemaType instance's toString() result
 console.log(new SchemaTypes._Function_().toString());
 ```
 
