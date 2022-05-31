@@ -56,9 +56,13 @@ It converts them all into [`Boolean`](https://javascript.info/types#boolean-logi
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Boolean_();
 
+// Log result of call()
 console.log(validator.call(null));
 ```
 
@@ -73,9 +77,13 @@ false
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Boolean_();
 
+// Log result of call()
 console.log(validator.call(12));
 ```
 
@@ -90,9 +98,13 @@ true
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Boolean_();
 
+// Log result of call()
 console.log(validator.call( {} ));
 ```
 
@@ -107,9 +119,13 @@ true
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Boolean_();
 
+// Log result of call()
 console.log(validator.call(""));
 ```
 
@@ -124,8 +140,10 @@ false
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -134,6 +152,7 @@ const Person = new Schema({
   male: Boolean // Equivalent to SchemaTypes._Boolean_ after model is created
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,
@@ -142,6 +161,7 @@ const John = Person({
   male: "yes"
 });
 
+// Log result
 console.log(John);
 ```
 
@@ -188,9 +208,13 @@ The function called to convert any value into a [`Boolean`](https://javascript.i
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Boolean_();
 
+// Log result of call()
 console.log(validator.call("A truthy value"));
 ```
 
@@ -223,8 +247,10 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
+// Log SchemaType instance's toString() result
 console.log(new SchemaTypes._Boolean_().toString());
 ```
 

@@ -54,9 +54,13 @@ it accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coer
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new (SchemaTypes.BigIntRange(0, 5));
 
+// Log result of call()
 console.log(validator.call(123456789012345678901234567890n));
 ```
 
@@ -71,9 +75,13 @@ console.log(validator.call(123456789012345678901234567890n));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call(12));
 ```
 
@@ -88,9 +96,13 @@ console.log(validator.call(12));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call("69 haha funny number"));
 ```
 
@@ -105,9 +117,13 @@ console.log(validator.call("69 haha funny number"));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call({ "This is": "an object" }));
 ```
 
@@ -148,9 +164,13 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new (SchemaTypes.BigIntRange(0, 5));
 
+// Log result of call()
 console.log(validator.call(4));
 ```
 
@@ -183,8 +203,10 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
+// Log SchemaType instance's toString() result
 console.log(new (SchemaTypes.BigIntRange(0, 5)).toString());
 ```
 
