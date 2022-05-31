@@ -56,9 +56,13 @@ It tries to convert everything into a valid date
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Date_();
 
+// Log result of call()
 console.log(validator.call(new Date("2020")));
 ```
 
@@ -73,9 +77,13 @@ console.log(validator.call(new Date("2020")));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Date_();
 
+// Log result of call()
 console.log(validator.call("2020"));
 ```
 
@@ -90,9 +98,13 @@ console.log(validator.call("2020"));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._BigInt_();
 
+// Log result of call()
 console.log(validator.call("Invalid date"));
 ```
 
@@ -107,8 +119,10 @@ undefined
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -116,6 +130,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,
@@ -123,6 +138,7 @@ const John = Person({
   friends: [ "Steve", "Carl", "Meep" ]
 });
 
+// Log result
 console.log(John);
 ```
 
@@ -168,9 +184,13 @@ The function called to convert a value into a [`Date`](https://javascript.info/d
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Date_();
 
+// Log result of call()
 console.log(validator.call("1984-02-23"));
 ```
 
@@ -203,8 +223,10 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
+// Log SchemaType instance's toString() result
 console.log(new SchemaTypes._Date_().toString());
 ```
 

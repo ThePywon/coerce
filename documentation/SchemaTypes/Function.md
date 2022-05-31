@@ -55,9 +55,13 @@ It only accepts [`Function`](https://javascript.info/function-basics)s
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Function_();
 
+// Log result of call()
 console.log(validator.call( () => {} ));
 ```
 
@@ -72,13 +76,18 @@ console.log(validator.call( () => {} ));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Function_();
 
+// Create a random function
 function test() {
   // Some code
 }
 
+// Log result of call()
 console.log(validator.call(test));
 ```
 
@@ -93,11 +102,16 @@ console.log(validator.call(test));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Function_();
 
+// Create a random class
 class test {}
 
+// Log result of call()
 console.log(validator.call(test));
 ```
 
@@ -112,20 +126,24 @@ undefined
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create Schema 'Event'
 const Event = new Schema({
   name: String,
   data: SchemaTypes.Any,
   callback: Function // Equivalent to SchemaTypes._Function_ after model is created
 });
 
+// Coerce object with schema
 const readyEvent = Event({
   name: "ready",
   data: {},
   callback: () => { console.log("Event called!") }
 });
 
+// Log result
 console.log(readyEvent);
 ```
 
@@ -170,9 +188,13 @@ The function called to validate any value into a [`Function`](https://javascript
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes._Function_();
 
+// Log result of call()
 console.log(validator.call( function() {} ));
 ```
 
@@ -205,8 +227,10 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
+// Log SchemaType instance's toString() resul
 console.log(new SchemaTypes._Function_().toString());
 ```
 
