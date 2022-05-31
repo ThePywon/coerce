@@ -48,9 +48,13 @@ The returned class accepts and converts all values [`_Date_`](https://github.com
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new (SchemaTypes.DateRange("1890", "2000"));
 
+// Log result of call()
 console.log(validator.call("1893"));
 ```
 
@@ -63,9 +67,13 @@ console.log(validator.call("1893"));
 <br/>
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new (SchemaTypes.DateRange("1890", "2000"));
 
+// Log result of call()
 console.log(validator.call(new Date("1899")));
 ```
 
@@ -78,9 +86,13 @@ console.log(validator.call(new Date("1899")));
 <br/>
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new (SchemaTypes.DateRange("1890", "2000"));
 
+// Log result of call()
 console.log(validator.call(new Date("2015")));
 ```
 
@@ -95,8 +107,10 @@ undefined
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Person'
 const Person = new Schema({
   name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
@@ -104,6 +118,7 @@ const Person = new Schema({
   friends: [String]
 });
 
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,
@@ -111,6 +126,7 @@ const John = Person({
   friends: [ "Steve", "Carl", "Meep" ]
 });
 
+// Log resul
 console.log(John);
 ```
 
