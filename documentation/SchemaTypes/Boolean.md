@@ -152,7 +152,7 @@ const Person = new Schema({
   male: Boolean // Equivalent to SchemaTypes._Boolean_ after model is created
 });
 
-// Coerce object from schema
+// Coerce object with schema
 const John = Person({
   name: "John",
   age: 37,

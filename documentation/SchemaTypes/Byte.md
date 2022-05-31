@@ -54,9 +54,13 @@ The returned class accepts and converts all values [`Integer`](https://github.co
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes.Byte();
 
+// Log result of call()
 console.log(validator.call(12));
 ```
 
@@ -71,9 +75,13 @@ console.log(validator.call(12));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes.Byte();
 
+// Log result of call()
 console.log(validator.call("69 haha funny number"));
 ```
 
@@ -88,9 +96,13 @@ console.log(validator.call("69 haha funny number"));
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes.Byte();
 
+// Log result of call()
 console.log(validator.call(999));
 ```
 
@@ -105,8 +117,10 @@ undefined
 **Code:**
 
 ```js
+// Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
+// Create schema 'Color'
 const Color = new Schema({
   name: String,
   red: SchemaTypes.Byte,
@@ -115,6 +129,7 @@ const Color = new Schema({
   alpha: SchemaTypes.Byte
 });
 
+// Coerce object with schema
 const favColor = Color({
   name: "Blue",
   red: 0,
@@ -123,6 +138,7 @@ const favColor = Color({
   alpha: 255
 });
 
+// Log result
 console.log(favColor);
 ```
 
@@ -148,9 +164,13 @@ Check it out for more info on this class's methods
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
 const validator = new SchemaTypes.Byte();
 
+// Log result of call()
 console.log(validator.call("55"));
 ```
 
@@ -183,8 +203,10 @@ A function used to convert this object into a string format
 **Code:**
 
 ```js
+// Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
+// Log SchemaType instance's toString() result
 console.log(new SchemaTypes.Byte().toString());
 ```
 
