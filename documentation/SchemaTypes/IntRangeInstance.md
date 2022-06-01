@@ -21,7 +21,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**BigIntRangeInstance**](#bigintrangeinstance)
+* [**IntRangeInstance**](#intrangeinstance)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -38,14 +38,14 @@ A package to handle user inputs automatically
 
 
 
-# BigIntRangeInstance
+# IntRangeInstance
 
-A class returned from [`BigIntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)  
-it accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse that are within a defined range (inclusive)
+A class returned from [`IntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)  
+it accepts and converts all values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
-**Syntax:** &nbsp; `new BigIntRangeInstance()`
+**Syntax:** &nbsp; `new IntRangeInstance()`
 
 <br/>
 
@@ -58,10 +58,10 @@ it accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coer
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.BigIntRange(0, 5));
+const validator = new (SchemaTypes.IntRange(0, 5));
 
 // Log result of call()
-console.log(validator.call(123456789012345678901234567890n));
+console.log(validator.call(1234567890));
 ```
 
 **Output:**
@@ -77,7 +77,7 @@ undefined
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.BigIntRange(0, 5));
+const validator = new (SchemaTypes.IntRange(0, 5));
 
 // Log result of call()
 console.log(validator.call(4));
@@ -86,7 +86,7 @@ console.log(validator.call(4));
 **Output:**
 
 ```
-4n
+4
 ```
 
 <br/>
@@ -96,7 +96,7 @@ console.log(validator.call(4));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.BigIntRange(0, 5));
+const validator = new (SchemaTypes.IntRange(0, 5));
 
 // Log result of call()
 console.log(validator.call("5 is within the range yes"));
@@ -105,7 +105,7 @@ console.log(validator.call("5 is within the range yes"));
 **Output:**
 
 ```
-5n
+5
 ```
 
 <br/>
@@ -115,7 +115,7 @@ console.log(validator.call("5 is within the range yes"));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.BigIntRange(0, 5));
+const validator = new (SchemaTypes.IntRange(0, 5));
 
 // Log result of call()
 console.log(validator.call({ "This is": "an object" }));
@@ -137,7 +137,7 @@ undefined
 
 ## `.call`
 
-The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
+The function called to convert a value into a [`Number`](https://javascript.info/number) with no floating point and/or validate a value
 
 <br/>
 
@@ -149,7 +149,7 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 
 <br/>
 
-**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
+**Returns:** &nbsp; [**Number**](https://javascript.info/number)
 
 <br/>
 
@@ -162,7 +162,7 @@ The function called to convert a value into a [`BigInt`](https://javascript.info
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.BigIntRange(0, 5));
+const validator = new (SchemaTypes.IntRange(0, 5));
 
 // Log result of call()
 console.log(validator.call(4));
@@ -171,7 +171,7 @@ console.log(validator.call(4));
 **Output:**
 
 ```
-4n
+4
 ```
 
 <br/><br/>
@@ -201,13 +201,13 @@ A function used to convert this object into a string format
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Log SchemaType instance's toString() result
-console.log(new (SchemaTypes.BigIntRange(0, 5)).toString());
+console.log(new (SchemaTypes.IntRange(0, 5)).toString());
 ```
 
 **Output:**
 
 ```
-BigIntRange
+IntRange
 ```
 
 ---
