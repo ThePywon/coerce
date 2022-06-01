@@ -42,7 +42,10 @@ A package to handle user inputs automatically
 # \_Boolean\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan)  
+It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan) ![NEW](https://shields.io/badge/-New-red)  
+
+> The class used to accept and convert all values, which caused default boolean values to not work properly
+
 It converts everything into a [`Boolean`](https://javascript.info/types#boolean-logical-type) using the default javascript conversion system
 
 <br/>
