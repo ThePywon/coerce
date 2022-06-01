@@ -20,26 +20,26 @@ A package to handle user inputs automatically
 
 
 
-# IntRange
+# Range
 
-A function that return a class extending from [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md)  
-The returned class accepts and converts all values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse that are within a defined range (inclusive)
+A function that return a class extending from [`_Number_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md)  
+The returned class accepts and converts all values [`_Number_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
-**Syntax:** &nbsp; `IntRange(min, max)`
+**Syntax:** &nbsp; `Range(min, max)`
 
 |**Parameters**|**Types**|
 |-|-|
 |`min`|Any|
 |`max`|Any|
 
-> Accepted values are all the values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse  
+> Accepted values are all the values [`_Number_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md) can parse  
 > `min` must be equal or smaller than `max`
 
 <br/>
 
-**Returns:** &nbsp; [**IntRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRangeInstance.md)
+**Returns:** &nbsp; [**RangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/RangeInstance.md)
 
 <br/>
 
@@ -52,7 +52,7 @@ The returned class accepts and converts all values [`Integer`](https://github.co
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.IntRange(0, 5));
+const validator = new (SchemaTypes.Range(0, 5));
 
 // Log result of call()
 console.log(validator.call(1234567890));
@@ -71,16 +71,16 @@ undefined
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.IntRange(0, 5));
+const validator = new (SchemaTypes.Range(0, 5));
 
 // Log result of call()
-console.log(validator.call(4));
+console.log(validator.call(4.451));
 ```
 
 **Output:**
 
 ```
-4
+4.451
 ```
 
 <br/>
@@ -90,7 +90,7 @@ console.log(validator.call(4));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new (SchemaTypes.IntRange(0, 5));
+const validator = new (SchemaTypes.Range(0, 5));
 
 // Log result of call()
 console.log(validator.call("5 is within the range yes"));
@@ -129,35 +129,32 @@ undefined
 // Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
-// Create schema 'Person'
-const Person = new Schema({
+// Create schema 'Color'
+const Color = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String]
+  red: SchemaTypes.Byte,
+  green: SchemaTypes.Byte,
+  blue: SchemaTypes.Byte,
+  alpha: SchemaTypes.Range(0, 1)
 });
 
 // Coerce object with schema
-const John = Person({
-  name: "John",
-  age: 37,
-  birthday: "1984",
-  friends: [ "Steve", "Carl", "Meep" ]
+const favColor = Person({
+  name: "Blue",
+  red: 0,
+  green: 128,
+  blue: 255,
+  alpha: 1
 });
 
 // Log result
-console.log(John);
+console.log(favColor);
 ```
 
 **Ouput:**
 
 ```
-{
-  name: 'John',
-  age: 37,
-  birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carla', 'Meep' ]
-}
+{ name: 'Blue', red: 0, green: 128, blue: 255, alpha: 1 }
 ```
 
 ---

@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**Byte**](#byte)
+* [**\_Number\_**](#number)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,15 +37,17 @@ A package to handle user inputs automatically
 
 
 
-# Byte
+<a id="number"></a>
 
-A class extending from [`IntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)  
-The returned class accepts and converts all values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse that are within a defined range of 0 to 255 (inclusive)
+# \_Number\_
 
+A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
+It accepts all valid [`Number`](https://javascript.info/number)   
+It tries to convert anything else into one
 
 <br/>
 
-**Syntax:** &nbsp; `new Byte()`
+**Syntax:** &nbsp; `new _Number_()`
 
 <br/>
 
@@ -58,16 +60,16 @@ The returned class accepts and converts all values [`Integer`](https://github.co
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._Number_();
 
 // Log result of call()
-console.log(validator.call(12));
+console.log(validator.call(12.56));
 ```
 
 **Output:**
 
 ```
-12
+12.56
 ```
 
 <br/>
@@ -79,7 +81,28 @@ console.log(validator.call(12));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._Number_();
+
+// Log result of call()
+console.log(validator.call(-24));
+```
+
+**Output:**
+
+```
+-24
+```
+
+<br/>
+
+**Code:**
+
+```js
+// Imports
+const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
+const validator = new SchemaTypes._Number_();
 
 // Log result of call()
 console.log(validator.call("69 haha funny number"));
@@ -100,10 +123,10 @@ console.log(validator.call("69 haha funny number"));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._Number_();
 
 // Log result of call()
-console.log(validator.call(999));
+console.log(validator.call({ "This is": "an object" }));
 ```
 
 **Output:**
@@ -120,32 +143,32 @@ undefined
 // Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
-// Create schema 'Color'
-const Color = new Schema({
+// Create schema 'Country'
+const Country = new Schema({
   name: String,
-  red: SchemaTypes.Byte,
-  green: SchemaTypes.Byte,
-  blue: SchemaTypes.Byte,
-  alpha: SchemaTypes.Range(0, 1)
+  cities: SchemaTypes.Integer,
+  avgPopulation: Number // Equivalent to SchemaTypes._Number_ after model is created
 });
 
 // Coerce object with schema
-const favColor = Color({
-  name: "Blue",
-  red: 0,
-  green: 128,
-  blue: 255,
-  alpha: 1
+const someFictionnalPlace = Country({
+  name: "somewhere",
+  cities: 5,
+  avgPopulation 37857.125
 });
 
-// Log result
-console.log(favColor);
+// Log result of call()
+console.log(someFictionnalPlace);
 ```
 
 **Ouput:**
 
 ```
-{ name: 'Blue', red: 0, green: 128, blue: 255, alpha: 1 }
+{
+  name: 'somewhere',
+  cities: 5,
+  avgPopulation: 37857.125
+}
 ```
 
 ---
@@ -154,8 +177,23 @@ console.log(favColor);
 
 # Methods
 
-Some methods from this class are inherited from [`IntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)  
-Check it out for more info on this class's methods
+<br/>
+
+## `.call`
+
+The function called to convert a value into a [`Number`](https://javascript.info/number) and/or validate a value
+
+<br/>
+
+**Syntax:** &nbsp; `.call(val)`
+
+|**Parameters**|**Types**|
+|-|-|
+|`val`|**Any**|
+
+<br/>
+
+**Returns:** &nbsp; [**Number**](https://javascript.info/number)
 
 <br/>
 
@@ -168,16 +206,16 @@ Check it out for more info on this class's methods
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes.Byte();
+const validator = new SchemaTypes._Number_();
 
 // Log result of call()
-console.log(validator.call("55"));
+console.log(validator.call(-34.235));
 ```
 
 **Output:**
 
 ```
-55
+-34.235
 ```
 
 <br/><br/>
@@ -190,7 +228,7 @@ A function used to convert this object into a string format
 
 <br/>
 
-**Syntax:** &nbsp; `toString()`
+**Syntax:** &nbsp; `.toString()`
 
 <br/>
 
@@ -207,13 +245,13 @@ A function used to convert this object into a string format
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Log SchemaType instance's toString() result
-console.log(new SchemaTypes.Byte().toString());
+console.log(new SchemaTypes._Number_().toString());
 ```
 
 **Output:**
 
 ```
-Byte
+Number
 ```
 
 ---
