@@ -42,8 +42,8 @@ A package to handle user inputs automatically
 # \_Boolean\_
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts **ALL** values  
-It converts them all into [`Boolean`](https://javascript.info/types#boolean-logical-type) using the default javascript conversion system
+It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan)  
+It converts everything into a [`Boolean`](https://javascript.info/types#boolean-logical-type) using the default javascript conversion system
 
 <br/>
 

@@ -9,7 +9,7 @@ class _Boolean_ extends SchemaType {
   constructor() { super() }
 
   // Conversion
-  call(val) { return !!super.call(val) }
+  call(val) { return super.defaultCheck(val) ? val : undefined }
 }
 // Simple toString function override
 _Boolean_.prototype.toString = function toString() { return "Boolean" }
