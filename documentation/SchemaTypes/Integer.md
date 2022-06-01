@@ -168,8 +168,7 @@ console.log(John);
   name: 'John',
   age: 37,
   birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carla', 'Meep' ],
-  ID: 9817265120564739n
+  friends: [ 'Steve', 'Carla', 'Meep' ]
 }
 ```
 
