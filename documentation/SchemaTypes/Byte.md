@@ -126,7 +126,7 @@ const Color = new Schema({
   red: SchemaTypes.Byte,
   green: SchemaTypes.Byte,
   blue: SchemaTypes.Byte,
-  alpha: SchemaTypes.Byte
+  alpha: SchemaTypes.Range(0, 1)
 });
 
 // Coerce object with schema
@@ -135,7 +135,7 @@ const favColor = Color({
   red: 0,
   green: 128,
   blue: 255,
-  alpha: 255
+  alpha: 1
 });
 
 // Log result
@@ -145,7 +145,7 @@ console.log(favColor);
 **Ouput:**
 
 ```
-{ name: 'Blue', red: 0, green: 128, blue: 255, alpha: 255 }
+{ name: 'Blue', red: 0, green: 128, blue: 255, alpha: 1 }
 ```
 
 ---
