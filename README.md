@@ -71,7 +71,7 @@ A package to handle user inputs automatically
 
 ## Description
 
-This package takes in an object and coerces it into the same structure as the passed model
+This package takes in an object and coerces it into the same structure as the passed model  
 This can be a very usefull tool to manage user inputted data automatically
 
 <br/>
