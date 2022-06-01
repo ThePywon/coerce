@@ -49,7 +49,7 @@ it accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coer
 
 <br/>
 
-### **Examples**
+### **Example**
 
 **Code:**
 
@@ -67,61 +67,55 @@ console.log(validator.call(123456789012345678901234567890n));
 **Output:**
 
 ```
-123456789012345678901234567890n
+undefined
 ```
 
 <br/>
-
-**Code:**
 
 ```js
 // Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._BigInt_();
+const validator = new (SchemaTypes.BigIntRange(0, 5));
 
 // Log result of call()
-console.log(validator.call(12));
+console.log(validator.call(4));
 ```
 
 **Output:**
 
 ```
-12n
+4n
 ```
 
 <br/>
-
-**Code:**
 
 ```js
 // Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._BigInt_();
+const validator = new (SchemaTypes.BigIntRange(0, 5));
 
 // Log result of call()
-console.log(validator.call("69 haha funny number"));
+console.log(validator.call("5 is within the range yes"));
 ```
 
 **Output:**
 
 ```
-69n
+5n
 ```
 
 <br/>
-
-**Code:**
 
 ```js
 // Imports
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._BigInt_();
+const validator = new (SchemaTypes.BigIntRange(0, 5));
 
 // Log result of call()
 console.log(validator.call({ "This is": "an object" }));
