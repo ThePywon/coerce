@@ -19,7 +19,10 @@ function coerceSchema(schema, obj, defaults) {
         const result = [];
   
         if(typeof schemaParent === "object" && !Array.isArray(schemaParent))
-          throw new Error(`Invalid passed value at ${path}, expected Object`);
+          throw {
+            err: "Invalid value", path,
+            expected: "Object"
+          }
   
         // Loop through each element
         for(let i = 0; i < parent.length; i++) {
@@ -36,7 +39,10 @@ function coerceSchema(schema, obj, defaults) {
           }
   
           if(!valid)
-            throw new Error(`Invalid value at ${path}, expected [${schemaParent.map(s => s.toString()).join(', ')}]`);
+            throw {
+              err: "Invalid value", path,
+              expected: `[${schemaParent.map(s => s.toString()).join(', ')}]`
+            }
         }
   
         return result.length > 0 ? result : defaultParent || result;
@@ -61,7 +67,10 @@ function coerceSchema(schema, obj, defaults) {
             else result[name] = iterate(schemaProp, {}, defaultParent[name], path+'.'+name);
   
             if(result[name] === undefined)
-              throw new Error(`Invalid value at ${path}.${name}, expected ${schemaProp.toString()}`);
+              throw {
+                err: "Invalid value", path: path + '.' + name,
+                expected: schemaProp.toString()
+              }
           }
         // Iterable value is an object
         else
@@ -84,7 +93,10 @@ function coerceSchema(schema, obj, defaults) {
             else result[name] = iterate(schemaProp, parentProp, defaultParent[name], path+'.'+name);
   
             if(result[name] === undefined)
-              throw new Error(`Invalid value at ${path}.${name}, expected ${schemaProp.toString()}`);
+              throw {
+                err: "Invalid value", path: path + '.' + name,
+                expected: schemaProp.toString()
+              }
           }
         
         return result;
