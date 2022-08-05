@@ -39,8 +39,8 @@ A package to handle user inputs automatically
 
 # Byte
 
-A class extending from [`IntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)  
-The returned class accepts and converts all values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse that are within a defined range of 0 to 255 (inclusive)
+A [`IntRangeInstance`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRangeInstance.md) class with a range of 0 to 255 (inclusive)  
+It accepts and converts all values [`Integer`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md) can parse that are within a defined range of 0 to 255 (inclusive)
 
 
 <br/>

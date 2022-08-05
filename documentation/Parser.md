@@ -21,13 +21,13 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**SchemaInstance**](#schemainstance)
+* [**Parser**](#parser)
 
 * <details open><summary><a href="#properties"><b>Properties</b></a></summary>
   <p>
 
-  * [**`.raw`**](#raw)
-  * [**`.defaults`**](#defaults)
+  * [**`raw`**](#raw)
+  * [**`defaults`**](#defaults)
     
   </p>
 </details>
@@ -35,8 +35,8 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**`.setDefaults`**](#setdefaults)
-  * [**`.toString`**](#tostring)
+  * [**`setDefaults`**](#setdefaults)
+  * [**`toString`**](#tostring) &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
     
   </p>
 </details>
@@ -46,13 +46,13 @@ A package to handle user inputs automatically
 <br/><br/><br/>
 
 
-# SchemaInstance
+# Parser
 
-A resulting function from [`Schema`](https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md) used to ceorce an object by following a model
+A resulting function from [`Schema`](https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md) used to parse an object by following a model
 
 <br/>
 
-**Syntax:** &nbsp; `SchemaInstance(val)`
+**Syntax:** &nbsp; `Parser(val)`
 
 |**Parameters**|**Types**|
 |-|-|
@@ -75,7 +75,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: Date,
   friends: [String]
 });
@@ -101,10 +101,10 @@ console.log(John);
 
 ```
 {
-  name: _String_ {},
-  age: _IntRange_ {},
-  birthday: _Date_ {},
-  friends: [ _String_ {} ]
+  name: StringType {},
+  age: IntRange {},
+  birthday: DateType {},
+  friends: [ StringType {} ]
 }
 {
   name: 'John',
@@ -143,7 +143,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: Date,
   friends: [String]
 });
@@ -156,10 +156,10 @@ console.log(Person.raw);
 
 ```
 {
-  name: _String_ {},
-  age: _IntRange_ {},
-  birthday: _Date_ {},
-  friends: [ _String_ {} ]
+  name: StringType {},
+  age: IntRange {},
+  birthday: DateType {},
+  friends: [ StringType {} ]
 }
 ```
 
@@ -184,7 +184,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: Date,
   friends: [String]
 });
@@ -247,7 +247,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: Date,
   friends: [String]
 });
@@ -316,10 +316,10 @@ console.log(Person.toString());
 
 ```
 {
-  name: _String_ {},
-  age: _IntRange_ {},
-  birthday: _Date_ {},
-  friends: [ _String_ {} ]
+  name: StringType {},
+  age: IntRange {},
+  birthday: DateType {},
+  friends: [ StringType {} ]
 }
 ```
 

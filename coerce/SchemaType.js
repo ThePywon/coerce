@@ -1,9 +1,11 @@
 "use strict";
 
+// Imports
 const util = require("util");
 
 // SchemaType class definition
 class SchemaType {
+
   // Initialization
   constructor() {
     // Throw error if 'call' is not a function
@@ -12,9 +14,8 @@ class SchemaType {
       throw new Error("Invalid value at property 'call', expected function");
   }
 
-  // A function that checks either a value is defined or undefined/null/NaN
   /**
-   * Check if a value is not undefined, null or NaN
+   * Returns false is the value is undefined, null or NaN
    * @param {any} val 
    * @returns {boolean}
    */

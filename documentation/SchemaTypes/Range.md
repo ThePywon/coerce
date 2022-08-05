@@ -22,8 +22,8 @@ A package to handle user inputs automatically
 
 # Range
 
-A function that return a class extending from [`_Number_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md)  
-The returned class accepts and converts all values [`_Number_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md) can parse that are within a defined range (inclusive)
+A function that return a class extending from [`NumberType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/NumberType.md)  
+The returned class accepts and converts all values [`NumberType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/NumberType.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
@@ -34,7 +34,7 @@ The returned class accepts and converts all values [`_Number_`](https://github.c
 |`min`|Any|
 |`max`|Any|
 
-> Accepted values are all the values [`_Number_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md) can parse  
+> Accepted values are all the values [`NumberType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/NumberType.md) can parse  
 > `min` must be equal or smaller than `max`
 
 <br/>

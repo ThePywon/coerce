@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_String\_**](#string)
+* [**DateType**](#datetype)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,16 +37,17 @@ A package to handle user inputs automatically
 
 
 
-<a id="string"></a>
+<a id="datetype"></a>
 
-# \_String\_
+# DateType
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all [`String`](https://javascript.info/string) and tries to convert everything else into one
+It accepts all valid [`Date`](https://javascript.info/date)  
+It tries to convert everything into a valid date
 
 <br/>
 
-**Syntax:** &nbsp; `new _String_()`
+**Syntax:** &nbsp; `new DateType()`
 
 <br/>
 
@@ -59,16 +60,16 @@ It accepts all [`String`](https://javascript.info/string) and tries to convert e
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._String_();
+const validator = new SchemaTypes.DateType();
 
 // Log result of call()
-console.log(validator.call("Hello World!"));
+console.log(validator.call(new Date("2020")));
 ```
 
 **Output:**
 
 ```
-Hello World!
+2020-01-01T00:00:00.000Z
 ```
 
 <br/>
@@ -80,20 +81,37 @@ Hello World!
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._String_();
-
-// Create a random object
-const obj = { "ThisIs": "AnObject" };
-obj.toString = function toString() { return "Hello World!" };
+const validator = new SchemaTypes.DateType();
 
 // Log result of call()
-console.log(validator.call(obj));
+console.log(validator.call("2020"));
 ```
 
 **Output:**
 
 ```
-Hello World!
+2020-01-01T00:00:00.000Z
+```
+
+<br/>
+
+**Code:**
+
+```js
+// Imports
+const { SchemaTypes } = require("@protagonists/coerce");
+
+// Create SchemaType instance
+const validator = new SchemaTypes.DateType();
+
+// Log result of call()
+console.log(validator.call("Invalid date"));
+```
+
+**Output:**
+
+```
+undefined
 ```
 
 <br/>
@@ -106,9 +124,9 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String, // Equivalent to SchemaTypes._String_ after model is created
+  name: String,
   age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,  
+  birthday: Date,  // Equivalent to SchemaTypes.DateType after model is created
   friends: [String]
 });
 
@@ -145,7 +163,7 @@ console.log(John);
 
 ## `.call`
 
-The function called to validate any value into a [`String`](https://javascript.info/string)
+The function called to convert and/or validate a value to [`Date`](https://javascript.info/date)
 
 <br/>
 
@@ -157,7 +175,7 @@ The function called to validate any value into a [`String`](https://javascript.i
 
 <br/>
 
-**Returns:** &nbsp; [**Function**](https://javascript.info/function-basics)
+**Returns:** &nbsp; [**Date**](https://javascript.info/date)
 
 <br/>
 
@@ -170,16 +188,16 @@ The function called to validate any value into a [`String`](https://javascript.i
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._String_();
+const validator = new SchemaTypes.DateType();
 
 // Log result of call()
-console.log(validator.call("Some String"));
+console.log(validator.call("1984-02-23"));
 ```
 
 **Output:**
 
 ```
-Some String
+1984-02-23T00:00:00.000Z
 ```
 
 <br/><br/>
@@ -209,13 +227,13 @@ A function used to convert this object into a string format
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Log SchemaType instance's toString() result
-console.log(new SchemaTypes._String_().toString());
+console.log(new SchemaTypes.DateType().toString());
 ```
 
 **Output:**
 
 ```
-String
+Date
 ```
 
 ---

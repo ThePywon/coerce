@@ -1,13 +1,13 @@
 "use strict";
 
 // Import
-const _Number_ = require("./Number");
-const validator = new _Number_();
+const NumberType = require("./NumberType");
+const validator = new NumberType();
 
 /**
  * @param {number} min
  * @param {number} max
- * @returns {typeof _Number_}
+ * @returns {typeof NumberType}
  */
 function Range(min, max) {
   // Parse parameters
@@ -23,7 +23,7 @@ function Range(min, max) {
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class RangeInstance extends _Number_ {
+  const result = class RangeInstance extends NumberType {
     // Initialization
     constructor() { super() }
 
@@ -37,7 +37,7 @@ function Range(min, max) {
         return val;
     }
   }
-  result.prototype.toString = function toString() { return "Range" }
+  result.prototype.toString = function toString() { return `Range(${min}, ${max})` }
 
   // Return temp class
   return result;

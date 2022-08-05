@@ -41,7 +41,7 @@ A package to handle user inputs automatically
 # BigIntRangeInstance
 
 A class returned from [`BigIntRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)  
-it accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse that are within a defined range (inclusive)
+it accepts and converts all values [`BigIntType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntType.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
@@ -137,7 +137,7 @@ undefined
 
 ## `.call`
 
-The function called to convert a value into a [`BigInt`](https://javascript.info/types#bigint-type) and/or validate a value
+The function called to convert and/or validate a value to [`BigInt`](https://javascript.info/types#bigint-type)
 
 <br/>
 

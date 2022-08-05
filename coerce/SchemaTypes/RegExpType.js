@@ -1,10 +1,10 @@
 "use strict";
 
 // Import
-const _String_ = require("./String");
+const StringType = require("./StringType");
 
 // _RegExp_ class definition
-class _RegExp_ extends _String_ {
+class RegExpType extends StringType {
   // Initialization
   constructor() { super() }
 
@@ -26,7 +26,7 @@ class _RegExp_ extends _String_ {
   }
 }
 // Simple toString function override
-_RegExp_.prototype.toString = function toString() { return "RegExp" }
+RegExpType.prototype.toString = function toString() { return "RegExp" }
 
 // Export
-module.exports = _RegExp_;
+module.exports = RegExpType;

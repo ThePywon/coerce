@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_Boolean\_**](#boolean)
+* [**StringType**](#stringtype)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,20 +37,14 @@ A package to handle user inputs automatically
 
 
 
-<a id="boolean"></a>
-
-# \_Boolean\_
+# StringType
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan) &nbsp; ![NEW](https://shields.io/badge/-New-red)  
-
-> The class used to accept and convert all values, which caused default boolean values to not work properly
-
-It converts everything into a [`Boolean`](https://javascript.info/types#boolean-logical-type) using the default javascript conversion system
+It accepts all [`String`](https://javascript.info/string) and tries to convert everything else into one
 
 <br/>
 
-**Syntax:** &nbsp; `new _Boolean_()`
+**Syntax:** &nbsp; `new StringType()`
 
 <br/>
 
@@ -63,16 +57,16 @@ It converts everything into a [`Boolean`](https://javascript.info/types#boolean-
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Boolean_();
+const validator = new SchemaTypes.StringType();
 
 // Log result of call()
-console.log(validator.call(null));
+console.log(validator.call("Hello World!"));
 ```
 
 **Output:**
 
 ```
-false
+Hello World!
 ```
 
 <br/>
@@ -84,58 +78,20 @@ false
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Boolean_();
+const validator = new SchemaTypes.StringType();
+
+// Create a random object
+const obj = { "ThisIs": "AnObject" };
+obj.toString = function toString() { return "Hello World!" };
 
 // Log result of call()
-console.log(validator.call(12));
+console.log(validator.call(obj));
 ```
 
 **Output:**
 
 ```
-true
-```
-
-<br/>
-
-**Code:**
-
-```js
-// Imports
-const { SchemaTypes } = require("@protagonists/coerce");
-
-// Create SchemaType instance
-const validator = new SchemaTypes._Boolean_();
-
-// Log result of call()
-console.log(validator.call( {} ));
-```
-
-**Output:**
-
-```
-true
-```
-
-<br/>
-
-**Code:**
-
-```js
-// Imports
-const { SchemaTypes } = require("@protagonists/coerce");
-
-// Create SchemaType instance
-const validator = new SchemaTypes._Boolean_();
-
-// Log result of call()
-console.log(validator.call(""));
-```
-
-**Output:**
-
-```
-false
+Hello World!
 ```
 
 <br/>
@@ -148,11 +104,10 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String],
-  male: Boolean // Equivalent to SchemaTypes._Boolean_ after model is created
+  name: String, // Equivalent to SchemaTypes._String_ after model is created
+  age: SchemaTypes.IntRange(0, 200),
+  birthday: Date,  
+  friends: [String]
 });
 
 // Coerce object with schema
@@ -160,8 +115,7 @@ const John = Person({
   name: "John",
   age: 37,
   birthday: "1984",
-  friends: [ "Steve", "Carl", "Meep" ],
-  male: "yes"
+  friends: [ "Steve", "Carl", "Meep" ]
 });
 
 // Log result
@@ -175,8 +129,7 @@ console.log(John);
   name: 'John',
   age: 37,
   birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carla', 'Meep' ],
-  male: true
+  friends: [ 'Steve', 'Carla', 'Meep' ]
 }
 ```
 
@@ -190,7 +143,7 @@ console.log(John);
 
 ## `.call`
 
-The function called to convert any value into a [`Boolean`](https://javascript.info/types#boolean-logical-type)
+The function called to convert and/or validate any value to [`String`](https://javascript.info/string)
 
 <br/>
 
@@ -202,7 +155,7 @@ The function called to convert any value into a [`Boolean`](https://javascript.i
 
 <br/>
 
-**Returns:** &nbsp; [**Boolean**](https://javascript.info/types#boolean-logical-type)
+**Returns:** &nbsp; [**Function**](https://javascript.info/function-basics)
 
 <br/>
 
@@ -215,16 +168,16 @@ The function called to convert any value into a [`Boolean`](https://javascript.i
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Boolean_();
+const validator = new SchemaTypes._String_();
 
 // Log result of call()
-console.log(validator.call("A truthy value"));
+console.log(validator.call("Some String"));
 ```
 
 **Output:**
 
 ```
-true
+Some String
 ```
 
 <br/><br/>
@@ -254,13 +207,13 @@ A function used to convert this object into a string format
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Log SchemaType instance's toString() result
-console.log(new SchemaTypes._Boolean_().toString());
+console.log(new SchemaTypes.StringType().toString());
 ```
 
 **Output:**
 
 ```
-Boolean
+String
 ```
 
 ---

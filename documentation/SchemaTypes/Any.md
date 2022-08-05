@@ -39,7 +39,7 @@ A package to handle user inputs automatically
 # Any
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan) without any conversion
+It accepts all values but [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan) without applying any conversion
 
 <br/>
 
@@ -137,8 +137,7 @@ console.log(John);
 
 # Methods
 
-Some methods from this class are inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-Check it out for more info on this class's methods
+Some methods  inherited from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md) are not mentionned
 
 <br/>
 

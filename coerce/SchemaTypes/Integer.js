@@ -1,10 +1,10 @@
 "use strict";
 
 // Import
-const _Number_ = require("./Number");
+const NumberSymbol = require("./NumberType");
 
 // Integer class definition
-class Integer extends _Number_ {
+class Integer extends NumberSymbol {
   // Initialization
   constructor() { super() }
 

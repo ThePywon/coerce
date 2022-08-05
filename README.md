@@ -29,7 +29,7 @@ A package to handle user inputs automatically
 * <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/Schema.md"><b>Schema</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
   <p>
 
-  * [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md)
+  * [**Parser**](https://github.com/ThePywon/coerce/blob/main/documentation/Parser.md)
     
   </p>
 </details>
@@ -39,24 +39,24 @@ A package to handle user inputs automatically
 * <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes.md"><b>SchemaTypes</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
   <p>
 
-  * [**`.Any`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Any.md)
-  * [**`._BigInt_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md)
-  * [**`.BitIntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)
+  * [**`Any`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Any.md)
+  * [**`BigIntType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntType.md)
+  * [**`BitIntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)
   * [**BigIntRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRangeInstance.md)
-  * [**`._Boolean_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Boolean.md)
-  * [**`.Byte`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Byte.md)
-  * [**`._Date_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Date.md)
-  * [**`.DateRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRange.md)
+  * [**`BooleanType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BooleanType.md)
+  * [**`Byte`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Byte.md)
+  * [**`DateType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateType.md)
+  * [**`DateRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRange.md)
   * [**DateRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRangeInstance.md)
-  * [**`._Function_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Function.md)
-  * [**`.Integer`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md)
-  * [**`.IntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)
+  * [**`Function`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/FunctionType.md)
+  * [**`Integer`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md)
+  * [**`IntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)
   * [**IntRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRangeInstance.md)
-  * [**`._Number_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md)
-  * [**`.Range`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Range.md)
+  * [**`Number`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/NumberType.md)
+  * [**`Range`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Range.md)
   * [**RangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/RangeInstance.md)
-  * [**`._RegExp_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/RegExp.md)
-  * [**`._String_`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/String.md)
+  * [**`RegExpType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/RegExpType.md)
+  * [**`StringType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/StringType.md)
     
   </p>
 </details>
@@ -110,7 +110,7 @@ const Person = new Schema({
   friends: [String]
 });
 
-// Coerce object with the schema
+// Coerce object into following the model
 const John = new Person({
   name: "John",
   favColor: "Red",

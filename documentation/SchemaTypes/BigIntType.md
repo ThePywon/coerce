@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_Number\_**](#number)
+* [**BigIntType**](#biginttype)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,17 +37,15 @@ A package to handle user inputs automatically
 
 
 
-<a id="number"></a>
-
-# \_Number\_
+# BigIntType
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`Number`](https://javascript.info/number)   
-It tries to convert anything else into one
+It accepts all valid [`BigInt`](https://javascript.info/types#bigint-type)  
+It tries to convert everything else into a [`BigInt`](https://javascript.info/types#bigint-type)
 
 <br/>
 
-**Syntax:** &nbsp; `new _Number_()`
+**Syntax:** &nbsp; `new BigIntType()`
 
 <br/>
 
@@ -60,16 +58,16 @@ It tries to convert anything else into one
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Number_();
+const validator = new SchemaTypes.BigIntType();
 
 // Log result of call()
-console.log(validator.call(12.56));
+console.log(validator.call(123456789012345678901234567890n));
 ```
 
 **Output:**
 
 ```
-12.56
+123456789012345678901234567890n
 ```
 
 <br/>
@@ -81,16 +79,16 @@ console.log(validator.call(12.56));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Number_();
+const validator = new SchemaTypes.BigIntType();
 
 // Log result of call()
-console.log(validator.call(-24));
+console.log(validator.call(12));
 ```
 
 **Output:**
 
 ```
--24
+12n
 ```
 
 <br/>
@@ -102,7 +100,7 @@ console.log(validator.call(-24));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Number_();
+const validator = new SchemaTypes.BigIntType();
 
 // Log result of call()
 console.log(validator.call("69 haha funny number"));
@@ -111,7 +109,7 @@ console.log(validator.call("69 haha funny number"));
 **Output:**
 
 ```
-69
+69n
 ```
 
 <br/>
@@ -123,7 +121,7 @@ console.log(validator.call("69 haha funny number"));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Number_();
+const validator = new SchemaTypes.BigIntType();
 
 // Log result of call()
 console.log(validator.call({ "This is": "an object" }));
@@ -143,31 +141,37 @@ undefined
 // Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
-// Create schema 'Country'
-const Country = new Schema({
+// Create schema 'Person'
+const Person = new Schema({
   name: String,
-  cities: SchemaTypes.Integer,
-  avgPopulation: Number // Equivalent to SchemaTypes._Number_ after model is created
+  age: SchemaTypes.IntRange(0, 200),
+  birthday: Date,
+  friends: [String],
+  ID: BigInt // Equivalent to SchemaTypes._BigInt_ after model is created
 });
 
 // Coerce object with schema
-const someFictionnalPlace = Country({
-  name: "somewhere",
-  cities: 5,
-  avgPopulation 37857.125
+const John = Person({
+  name: "John",
+  age: 37,
+  birthday: "1984",
+  friends: [ "Steve", "Carl", "Meep" ],
+  ID: 9817265120564739
 });
 
 // Log result of call()
-console.log(someFictionnalPlace);
+console.log(John);
 ```
 
 **Ouput:**
 
 ```
 {
-  name: 'somewhere',
-  cities: 5,
-  avgPopulation: 37857.125
+  name: 'John',
+  age: 37,
+  birthday: 1984-01-01T00:00:00.000Z,
+  friends: [ 'Steve', 'Carla', 'Meep' ],
+  ID: 9817265120564739n
 }
 ```
 
@@ -181,7 +185,7 @@ console.log(someFictionnalPlace);
 
 ## `.call`
 
-The function called to convert a value into a [`Number`](https://javascript.info/number) and/or validate a value
+The function called to convert and/or validate a value to [`BigInt`](https://javascript.info/types#bigint-type)
 
 <br/>
 
@@ -193,7 +197,7 @@ The function called to convert a value into a [`Number`](https://javascript.info
 
 <br/>
 
-**Returns:** &nbsp; [**Number**](https://javascript.info/number)
+**Returns:** &nbsp; [**BigInt**](https://javascript.info/types#bigint-type)
 
 <br/>
 
@@ -206,16 +210,16 @@ The function called to convert a value into a [`Number`](https://javascript.info
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Number_();
+const validator = new SchemaTypes.BigIntType();
 
 // Log result of call()
-console.log(validator.call(-34.235));
+console.log(validator.call(1234456789012345678901234567890));
 ```
 
 **Output:**
 
 ```
--34.235
+123456789012345678901234567890n
 ```
 
 <br/><br/>
@@ -245,13 +249,13 @@ A function used to convert this object into a string format
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Log SchemaType instance's toString() result
-console.log(new SchemaTypes._Number_().toString());
+console.log(new SchemaTypes.BigIntType().toString());
 ```
 
 **Output:**
 
 ```
-Number
+BigInt
 ```
 
 ---

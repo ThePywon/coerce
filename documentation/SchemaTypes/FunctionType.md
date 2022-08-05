@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_Date\_**](#date)
+* [**FunctionType**](#functiontype)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,17 +37,14 @@ A package to handle user inputs automatically
 
 
 
-<a id="date"></a>
-
-# \_Date\_
+# FunctionType
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`Date`](https://javascript.info/date)  
-It tries to convert everything into a valid date
+It only accepts [`Function`](https://javascript.info/function-basics)s
 
 <br/>
 
-**Syntax:** &nbsp; `new _Date_()`
+**Syntax:** &nbsp; `new FunctionType()`
 
 <br/>
 
@@ -60,16 +57,16 @@ It tries to convert everything into a valid date
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Date_();
+const validator = new SchemaTypes.FunctionType();
 
 // Log result of call()
-console.log(validator.call(new Date("2020")));
+console.log(validator.call( () => {} ));
 ```
 
 **Output:**
 
 ```
-2020-01-01T00:00:00.000Z
+[Function (anonymous)]
 ```
 
 <br/>
@@ -81,16 +78,21 @@ console.log(validator.call(new Date("2020")));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Date_();
+const validator = new SchemaTypes.FunctionType();
+
+// Create a random function
+function test() {
+  // Some code
+}
 
 // Log result of call()
-console.log(validator.call("2020"));
+console.log(validator.call(test));
 ```
 
 **Output:**
 
 ```
-2020-01-01T00:00:00.000Z
+[Function: test]
 ```
 
 <br/>
@@ -102,10 +104,13 @@ console.log(validator.call("2020"));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._BigInt_();
+const validator = new SchemaTypes.FunctionType();
+
+// Create a random class
+class test {}
 
 // Log result of call()
-console.log(validator.call("Invalid date"));
+console.log(validator.call(test));
 ```
 
 **Output:**
@@ -122,34 +127,31 @@ undefined
 // Imports
 const { Schema, SchemaTypes } = require("@protagonists/coerce");
 
-// Create schema 'Person'
-const Person = new Schema({
+// Create Schema 'Event'
+const Event = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,  // Equivalent to SchemaTypes._Date_ after model is created
-  friends: [String]
+  data: SchemaTypes.Any,
+  callback: Function // Equivalent to SchemaTypes.FunctionType after model is created
 });
 
 // Coerce object with schema
-const John = Person({
-  name: "John",
-  age: 37,
-  birthday: "1984",
-  friends: [ "Steve", "Carl", "Meep" ]
+const readyEvent = Event({
+  name: "ready",
+  data: {},
+  callback: () => { console.log("Event called!") }
 });
 
 // Log result
-console.log(John);
+console.log(readyEvent);
 ```
 
 **Ouput:**
 
 ```
 {
-  name: 'John',
-  age: 37,
-  birthday: 1984-01-01T00:00:00.000Z,
-  friends: [ 'Steve', 'Carla', 'Meep' ]
+  name: 'ready',
+  data: {},
+  callback: [Function (anonymous)]
 }
 ```
 
@@ -163,7 +165,7 @@ console.log(John);
 
 ## `.call`
 
-The function called to convert a value into a [`Date`](https://javascript.info/date) and/or validate a value
+The function called to validate any value into a [`Function`](https://javascript.info/function-basics)
 
 <br/>
 
@@ -175,7 +177,7 @@ The function called to convert a value into a [`Date`](https://javascript.info/d
 
 <br/>
 
-**Returns:** &nbsp; [**Date**](https://javascript.info/date)
+**Returns:** &nbsp; [**Function**](https://javascript.info/function-basics)
 
 <br/>
 
@@ -188,16 +190,16 @@ The function called to convert a value into a [`Date`](https://javascript.info/d
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Date_();
+const validator = new SchemaTypes.FunctionType();
 
 // Log result of call()
-console.log(validator.call("1984-02-23"));
+console.log(validator.call( function() {} ));
 ```
 
 **Output:**
 
 ```
-1984-02-23T00:00:00.000Z
+[Function (anonymous)]
 ```
 
 <br/><br/>
@@ -227,13 +229,13 @@ A function used to convert this object into a string format
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Log SchemaType instance's toString() result
-console.log(new SchemaTypes._Date_().toString());
+console.log(new SchemaTypes.FunctionType().toString());
 ```
 
 **Output:**
 
 ```
-Date
+Function
 ```
 
 ---

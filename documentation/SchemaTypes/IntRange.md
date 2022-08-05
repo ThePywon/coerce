@@ -132,7 +132,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: Date,
   friends: [String]
 });
