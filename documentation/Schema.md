@@ -112,7 +112,7 @@ console.log(Person);
 
 <br/>
 
-<a href="#isdefault"></a>
+<a id="isdefault"></a>
 
 ## `.isDefault` &nbsp; ![NEW](https://shields.io/badge/-New-red)
 
