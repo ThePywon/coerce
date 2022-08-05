@@ -4,7 +4,7 @@
 const Integer = require("./Integer");
 
 // _BigInt_ class definition
-class _BigInt_ extends Integer {
+class BigIntType extends Integer {
   // Initialization
   constructor() { super() }
 
@@ -21,7 +21,7 @@ class _BigInt_ extends Integer {
   }
 }
 // Simple toString function override
-_BigInt_.prototype.toString = function toString() { return "BigInt" }
+BigIntType.prototype.toString = function toString() { return "BigInt" }
 
 // Export
-module.exports = _BigInt_;
+module.exports = BigIntType;

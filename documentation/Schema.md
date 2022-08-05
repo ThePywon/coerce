@@ -24,6 +24,14 @@ A package to handle user inputs automatically
 
 * [**Schema**](#schema)
 
+* <details open><summary><a href="#properties"><b>Properties</b></a></summary>
+  <p>
+
+  * [**`isDefault`**](#isdefault) &nbsp; ![NEW](https://shields.io/badge/-New-red)
+    
+  </p>
+</details>
+
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
@@ -40,14 +48,14 @@ A package to handle user inputs automatically
 
 # Schema
 
-A builder function that returns a [`SchemaInstance`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md) that can coerce objects  
-The model used to coerce objects is a parsed version of the parameter `obj`
+A builder function that returns a [`Parser`](https://github.com/ThePywon/coerce/blob/main/documentation/Parser.md) that can coerce objects into following the passed model
 
 <br/>
 
 **Syntax:** &nbsp; `new Schema(obj)`
 
-> The lack of the `new` keyword may cause unwanted behaviour
+> Although a function, it must be used as a constructor  
+> The lack of the keyword `new` causes an error
 
 |**Parameters**|**Types**|
 |-|-|
@@ -55,7 +63,7 @@ The model used to coerce objects is a parsed version of the parameter `obj`
 
 <br/>
 
-**Returns:** &nbsp; [**SchemaInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaInstance.md)
+**Returns:** &nbsp; [**Parser**](https://github.com/ThePywon/coerce/blob/main/documentation/Parser.md)
 
 <br/>
 
@@ -70,7 +78,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: Date,
   friends: [String]
 });
@@ -85,10 +93,10 @@ console.log(Person);
 ```
 [Function: SchemaInstance] {
   raw: {
-    name: _String_ {},
-    age: _IntRange_ {},
-    birthday: _Date_ {},
-    friends: [ _String_ {} ]
+    name: StringType {},
+    age: IntRange {},
+    birthday: DateType {},
+    friends: [ StringType {} ]
   },
   defaults: [Getter],
   setDefaults: [Function: setDefaults]
@@ -99,6 +107,96 @@ console.log(Person);
 
 <br/><br/><br/>
 
+
+# Properties
+
+<br/>
+
+<a id="isdefault"></a>
+
+## `.isDefault` &nbsp; ![NEW](https://shields.io/badge/-New-red)
+
+A Symbol used as a property name by the result of a convertion  
+It has the same structure as the model but each property is a boolean  
+`true` means the value we got from parsing is a default value defined before  
+`false` means that the user has input the value (even if that value is the same as the corresponding default value)
+
+**Type:** &nbsp; [**Symbol**](https://javascript.info/symbol)
+
+<br/>
+
+### **Example**
+
+**Code:**
+
+```js
+// Imports
+const { Schema } = require("@protagonists/coerce");
+
+// Log property
+console.log(Schema.isDefault);
+```
+
+**Output:**
+
+```
+Symbol(isDefault)
+```
+
+<br/>
+
+**Code:**
+
+```js
+// Imports
+const { Schema, SchemaTypes } = require("@protagonists/coerce");
+
+// Create schema 'Person'
+const Person = new Schema({
+  name: String,
+  age: SchemaTypes.IntRange(0, 200),
+  favColor: String,
+  birthday: Date,
+  friends: [String]
+});
+
+// Set default values
+Person.setDefaults({
+  name: "John",
+  favColor: "Red",
+  friends: ["Meep"]
+});
+
+// Create new Person
+const John = Person({
+  name: "John",
+  age: 37,
+  birthday: "1984"
+});
+
+// Log results
+console.log(John);
+console.log(John[Schema.isDefault]);
+```
+
+**Output:**
+
+```{
+  name: 'John',
+  age: 37,
+  favColor: 'Red',
+  birthday: 1984-01-01T00:00:00.000Z,
+  friends: [ 'Meep' ]
+}
+{
+  name: false,
+  age: false,
+  favColor: true,
+  birthday: false,
+  friends: true
+}
+
+```
 
 
 # Methods

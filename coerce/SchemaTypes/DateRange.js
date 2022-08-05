@@ -1,8 +1,8 @@
 "use strict";
 
 // Import
-const _Date_ = require("./Date");
-const validator = new _Date_();
+const DateType = require("./DateType");
+const validator = new DateType();
 
 /**
  * @typedef {Date|string|number} date
@@ -11,7 +11,7 @@ const validator = new _Date_();
 /**
  * @param {date} min
  * @param {date} max
- * @returns {typeof _Date_}
+ * @returns {typeof DateType}
  */
 function DateRange(min, max) {
   // Parse parameters
@@ -27,7 +27,7 @@ function DateRange(min, max) {
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class DateRangeInstance extends _Date_ {
+  const result = class DateRangeInstance extends DateType {
     // Initialization
     constructor() { super() }
 
@@ -41,7 +41,7 @@ function DateRange(min, max) {
         return val;
     }
   }
-  result.prototype.toString = function toString() { return "DateRange" }
+  result.prototype.toString = function toString() { return `DateRange(${min.getTime()}, ${max.getTime()})` }
 
   // Return temp class
   return result;

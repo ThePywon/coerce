@@ -137,7 +137,7 @@ undefined
 
 ## `.call`
 
-The function called to convert a value into a [`Number`](https://javascript.info/number) with no floating point and/or validate a value
+The function called to convert and/or validate a value into a [`Number`](https://javascript.info/number) with no floating point
 
 <br/>
 

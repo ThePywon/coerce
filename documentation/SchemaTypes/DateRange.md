@@ -22,8 +22,8 @@ A package to handle user inputs automatically
 
 # DateRange
 
-A function that return a class extending from [`_Date_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Date.md)  
-The returned class accepts and converts all values [`_Date_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Date.md) can parse that are within a defined range (inclusive)
+A function that return a class extending from [`DateType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateType.md)  
+The returned class accepts and converts all values [`DateType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateType.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
@@ -34,7 +34,7 @@ The returned class accepts and converts all values [`_Date_`](https://github.com
 |`min`|Any|
 |`max`|Any|
 
-> Accepted values are all the values [`_Date_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Date.md) can parse
+> Accepted values are all the values [`DateType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateType.md) can parse  
 > `min` must be equal or smaller than `max`
 
 <br/>
@@ -113,7 +113,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: SchemaTypes.DateRange("1900", new Date()),
   friends: [String]
 });

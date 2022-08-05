@@ -20,7 +20,7 @@ A package to handle user inputs automatically
 
 # Table of content
 
-* [**\_Function\_**](#function)
+* [**RegExpType**](#regexptype)
 
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
@@ -37,16 +37,15 @@ A package to handle user inputs automatically
 
 
 
-<a id="function"></a>
-
-# \_Function\_
+# RegExpType
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It only accepts [`Function`](https://javascript.info/function-basics)s
+It accepts all valid [`RegExp`](https://javascript.info/regular-expressions)  
+It tries to convert everything else into a valid regular expression
 
 <br/>
 
-**Syntax:** &nbsp; `new _Function_()`
+**Syntax:** &nbsp; `new RegExpType()`
 
 <br/>
 
@@ -59,16 +58,16 @@ It only accepts [`Function`](https://javascript.info/function-basics)s
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Function_();
+const validator = new SchemaTypes.RegExpType();
 
 // Log result of call()
-console.log(validator.call( () => {} ));
+console.log(validator.call(new RegExp("[a-zA-Z]", 'g')));
 ```
 
 **Output:**
 
 ```
-[Function (anonymous)]
+/[a-zA-Z]/g
 ```
 
 <br/>
@@ -80,21 +79,16 @@ console.log(validator.call( () => {} ));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Function_();
-
-// Create a random function
-function test() {
-  // Some code
-}
+const validator = new SchemaTypes.RegExpType();
 
 // Log result of call()
-console.log(validator.call(test));
+console.log(validator.call("[a-zA-Z]"));
 ```
 
 **Output:**
 
 ```
-[Function: test]
+/[a-zA-Z]/
 ```
 
 <br/>
@@ -106,55 +100,16 @@ console.log(validator.call(test));
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Function_();
-
-// Create a random class
-class test {}
+const validator = new SchemaTypes.RegExpType();
 
 // Log result of call()
-console.log(validator.call(test));
+console.log(validator.call(/a-zA-Z/g));
 ```
 
 **Output:**
 
 ```
-undefined
-```
-
-<br/>
-
-**Code:**
-
-```js
-// Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
-
-// Create Schema 'Event'
-const Event = new Schema({
-  name: String,
-  data: SchemaTypes.Any,
-  callback: Function // Equivalent to SchemaTypes._Function_ after model is created
-});
-
-// Coerce object with schema
-const readyEvent = Event({
-  name: "ready",
-  data: {},
-  callback: () => { console.log("Event called!") }
-});
-
-// Log result
-console.log(readyEvent);
-```
-
-**Ouput:**
-
-```
-{
-  name: 'ready',
-  data: {},
-  callback: [Function (anonymous)]
-}
+/a-zA-Z/g
 ```
 
 ---
@@ -167,7 +122,7 @@ console.log(readyEvent);
 
 ## `.call`
 
-The function called to validate any value into a [`Function`](https://javascript.info/function-basics)
+The function called to convert a value and/or validate to [`RegExp`](https://javascript.info/regular-expressions)
 
 <br/>
 
@@ -179,7 +134,7 @@ The function called to validate any value into a [`Function`](https://javascript
 
 <br/>
 
-**Returns:** &nbsp; [**Function**](https://javascript.info/function-basics)
+**Returns:** &nbsp; [**Date**](https://javascript.info/date)
 
 <br/>
 
@@ -192,16 +147,16 @@ The function called to validate any value into a [`Function`](https://javascript
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Create SchemaType instance
-const validator = new SchemaTypes._Function_();
+const validator = new SchemaTypes.RegExpType();
 
 // Log result of call()
-console.log(validator.call( function() {} ));
+console.log(validator.call("[0-9]"));
 ```
 
 **Output:**
 
 ```
-[Function (anonymous)]
+/[0-9]/
 ```
 
 <br/><br/>
@@ -231,13 +186,13 @@ A function used to convert this object into a string format
 const { SchemaTypes } = require("@protagonists/coerce");
 
 // Log SchemaType instance's toString() result
-console.log(new SchemaTypes._Function_().toString());
+console.log(new SchemaTypes.RegExpType().toString());
 ```
 
 **Output:**
 
 ```
-Function
+RegExp
 ```
 
 ---

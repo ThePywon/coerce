@@ -1,173 +1,156 @@
-"use strict";
+"user strict";
 
 // Imports
 const { deepClone, deepFreeze } = require("@protagonists/deep");
 const SchemaType = require("../SchemaType");
 const SchemaTypes = require("../SchemaTypes");
 
-// Function imports
-const coerceSchema = require("./coerceSchema");
-const createDefaults = require("./createDefaults");
+const Parser = require("./Coerce");
 
-/**
- * Creates the raw model used inside the Schema class
- * @param {Object} obj
- * @returns {Model} raw Schema model
- */
-function toSchema(obj) {
+////////// MODEL CONVERSION //////////
 
-  // Iterator
-  const iterate = function(parent, path) {
-    // Parser
-    const parse = function(elem, name, isArray) {
-      const types = Object.getOwnPropertyNames(SchemaTypes);
-        
-      // Check if it is an existing SchemaType
-      if(Schemas.indexOf(elem) != -1)
-        if(!isArray)
-          return elem.raw;
-        else throw new Error(`Illegal use of Schema at ${path}[${name}], cannot process Object nested inside an Array\nUse SchemaType instead`);
-      else if(elem instanceof SchemaType)
-        return new elem.constructor();
-      else if(elem.prototype instanceof SchemaType)
-        return new elem();
-  
-      // Check if it is a similar value type
-      switch(elem) {
-        case Boolean:
-          return new SchemaTypes._Boolean_();
-  
-        case Number:
-          return new SchemaTypes._Number_();
-            
-        case String:
-          return new SchemaTypes._String_();
-            
-        case Date:
-          return new SchemaTypes._Date_();
+function parseProperty(prop, path) {
+  // Check if that property is a SchemaType
+  // and assign a new instance of it to the final model
+  if(prop instanceof SchemaType)
+    return new prop.constructor();
+  else if(prop.prototype instanceof SchemaType)
+    return new prop();
 
-        case Function:
-          return new SchemaTypes._Function_();
+  // Hardcoded SchemaType equivalents
+  switch(prop) {
+    case Boolean:
+      return new SchemaTypes.BooleanType();
 
-        case RegExp:
-          return new SchemaTypes._RegExp_();
-      }
-  
-      // Check if it is an object to iterate over
-      if(typeof elem === "object")
-        if(!isArray)
-          return iterate(elem, path+'.'+name);
-        else throw new Error(`Illegal use of Schema at ${path}[${name}], cannot process Object nested inside an Array\nUse SchemaType instead`);
-      else throw new Error(`Invalid Schema Type at ${isArray ? path+'['+name+']' : path+'.'+name}`);
-    }
-  
-    // Iterable value is an array
-    if(Array.isArray(parent)) {
-      // Check if empty
-      if(parent.length === 0)
-        throw new Error("Schema array must contain at least one element at "+path);
-  
-      const result = [];
-  
-      // Parse each element
-      for(let i = 0; i < parent.length; i++) {
-        const child = parent[i];
-          
-        result[i] = parse(child, i, true);
-      }
-  
-      return result;
-    }
-    // Iterable value is an object
-    else {
-      const props = Object.getOwnPropertyNames(parent);
-  
-      // Check is empty
-      if(props.length === 0)
-        throw new Error(`Schema object must contain at least one property at `+path);
-  
-      const result = {};
-  
-      // Parse each property
-      for(let i = 0; i < props.length; i++) {
-        const prop = parent[props[i]];
-        const name = props[i];
-          
-        result[name] = parse(prop, name);
-      }
-  
-      return result;
-    }
+    case Number:
+      return new SchemaTypes.NumberType();
+
+    case String:
+      return new SchemaTypes.StringType();
+
+    case Date:
+      return new SchemaTypes.DateType();
+
+    case Function:
+      return new SchemaTypes.FunctionType();
+    
+    case RegExp:
+      return new SchemaTypes.RegExpType();
   }
-  
-  return iterate(obj, "root");
+
+  // Throw error in any other case
+  throw new Error(`Invalid Schema Type at ${path}`);
 }
+
+
+function iterate(obj, path) {
+  // Get properties
+  const props = Object.getOwnPropertyNames(obj);
+
+  // Loop through each property
+  for(let i = 0; i < props.length; i++) {
+    const name = props[i];
+    const prop = obj[name];
+
+    // Check if it is an object to iterate over
+    if(typeof prop == "object") {
+
+      // Check if it is an array
+      if(Array.isArray(prop)) {
+
+        // Make sure it is not empty
+        if(prop.length === 0)
+          throw new Error("Schema array must contain at least one element at " + path);
+
+        obj[name] = [];
+
+        // Parse each element
+        for(let j = 0; j < prop.length; j++) {
+
+          // Make sure to communicate to users that objects are illegal inside arrays
+          if(!prop[j] instanceof SchemaType &&
+            !prop[j].prototype instanceof SchemaType &&
+            typeof prop[j] == "object")
+              throw new Error(`Illegal use of Schema at ${path}.${name}[${j}], cannot process Object nested inside an Array.\n       Use a SchemaType instance instead.`);
+
+          obj[name][j] = parseProperty(prop[j], `${path}.${name}[${j}]`);
+        }
+      }
+      else if(prop instanceof SchemaType ||
+        prop.prototype instanceof SchemaType)
+          obj[name] = parseProperty(prop, path + '.' + name);
+      // Otherwise, treat as any other object
+      else {
+        // Make sure it contains at least one property
+        if(Object.getOwnPropertyNames(prop).length === 0)
+          throw new Error(`Schema object must contain at least one property at ${path}.${name}`);
+
+        obj[name] = iterate(prop, path + '.' + name);
+      }
+    }
+    // If it is a Schema, simply take the existing model
+    else if(prop instanceof Schema)
+      obj[name] = prop.raw;
+    // Otherwise, simply parse the property to a corresponding SchemaType
+    else obj[name] = parseProperty(prop, path + '.' + name);
+  }
+
+  return obj;
+}
+
+
+function coerceModel(obj) { return iterate(obj, "root") }
+
+////////// END OF MODEL CONVERSION //////////
 
 const Schemas = [];
 
+function Schema(model) {
+  // Make sure this function is called from a new instance
+  if(!new.target)
+    throw new Error("Schema constructor called without keyword 'new'.");
 
-const SchemaInstances = [];
+  // Convert the passed model
+  model = coerceModel(model);
+  deepFreeze(model);
 
-/**
- * Creates a small temp function that coerces objects into the passed model
- * @param {Object} obj
- * @returns {SchemaInstance} a schema parsing function
- */
-function Schema(obj) {
-  // Handle parameters
-  if(!obj || typeof obj !== "object")
-    throw new Error("Invalid passed value for parameter 'obj', expected Object.");
+  let defaults = Parser.Coerce(model, {});
 
-  // Convert the passed object into a proper schema
-  obj = toSchema(obj);
-  deepFreeze(obj);
+  // Create the resulting convertion function
+  const result = function Coerce(obj) {
+    if(!obj || typeof obj !== "object")
+      throw new Error("Invalid passed value for convertion. Expected Object");
 
-  // Initialize resulting class
-  const result = function SchemaInstance(val) {
-    if(!val || typeof val !== "object")
-      throw new Error("Invalid passed value for parameter 'val', expected Object.");
-
-    return coerceSchema(obj, val, defaults);
+    return Parser.Coerce(model, obj, defaults);
   }
 
   // Define properties
-  Object.defineProperty(result, "raw", {
-    enumerable: true,
-    value: obj,
-    writable: false
-  });
-
-  let defaults = createDefaults(obj, {});
-
-  Object.defineProperty(result, "defaults", {
-    enumerable: true,
-    get: ()=>{return deepClone(defaults)}
-  });
-
-  // Define functions
-  Object.defineProperty(result, "setDefaults", {
-    enumerable: true,
-    value: function setDefaults(val) {
-      if(!val || typeof val !== "object")
-        throw new Error("Invalid passed value for parameter 'val', expected Object.");
-
-      defaults = createDefaults(obj, val);
+  Object.defineProperties(result, {
+    "raw": {
+      enumerable: true,
+      value: model
     },
-    writable: false
+    "defaults": {
+      enumerable: true,
+      get: () => defaults
+    },
+    "setDefaults": {
+      enumerable: true,
+      value: function setDefaults(newDefs) { defaults = Parser.Coerce(model, newDefs) }
+    }
   });
 
-  Object.defineProperty(result, "toString", {
-    value: function toString() { return result.raw },
-    writable: false
-  });
-
-  SchemaInstances.push(result);
+  // Return the conversion function
+  Schemas.push(result);
   return result;
 }
-Object.defineProperty(Schema, Symbol.hasInstance, {
-  value: function hasInstance(instance) {
-    return instance === Schema || SchemaInstances.indexOf(instance) != -1;
-  }
+Object.defineProperties(Schema, {
+  [Symbol.hasInstance]: {
+    value: function hasInstance(instance) {
+      return instance === Schema || Schemas.indexOf(instance) != -1;
+    }
+  },
+  "isDefault": { value: Parser.isDefault } 
 });
 
 module.exports = Schema;

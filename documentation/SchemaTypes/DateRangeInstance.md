@@ -41,7 +41,7 @@ A package to handle user inputs automatically
 # DateRangeInstance
 
 A class returned from [`DateRange`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRange.md)  
-it accepts and converts all values [`_Date_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Date.md) can parse that are within a defined range (inclusive)
+it accepts and converts all values [`DateType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateType.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
@@ -119,7 +119,7 @@ const { Schema, SchemaTypes } = require("@protagonists/coerce");
 // Create schema 'Person'
 const Person = new Schema({
   name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
+  age: SchemaTypes.IntRange(0, 200),
   birthday: SchemaTypes.DateRange("1900", new Date()),
   friends: [String]
 });
@@ -157,7 +157,7 @@ console.log(John);
 
 ## `.call`
 
-The function called to convert a value into a [`Date`](https://javascript.info/date) and/or validate a value
+The function called to convert and/or validate a value to [`Date`](https://javascript.info/date)
 
 <br/>
 

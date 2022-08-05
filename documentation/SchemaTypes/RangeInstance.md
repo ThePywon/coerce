@@ -41,7 +41,7 @@ A package to handle user inputs automatically
 # RangeInstance
 
 A class returned from [`Range`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Range.md)  
-it accepts and converts all values [`_Number_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Number.md) can parse that are within a defined range (inclusive)
+it accepts and converts all values [`NumberType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/NumberType.md) can parse that are within a defined range (inclusive)
 
 <br/>
 

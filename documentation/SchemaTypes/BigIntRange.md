@@ -22,8 +22,8 @@ A package to handle user inputs automatically
 
 # BigIntRange
 
-A function that return a class extending from [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md)  
-The returned class accepts and converts all values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse that are within a defined range (inclusive)
+A function that return a class extending from [`BigIntType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntType.md)  
+The returned class accepts and converts all values [`BigIntType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntType.md) can parse that are within a defined range (inclusive)
 
 <br/>
 
@@ -34,7 +34,7 @@ The returned class accepts and converts all values [`_BigInt_`](https://github.c
 |`min`|Any|
 |`max`|Any|
 
-> Accepted values are all the values [`_BigInt_`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigInt.md) can parse  
+> Accepted values are all the values [`BigIntType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntType.md) can parse  
 > `min` must be equal or smaller than `max`
 
 <br/>

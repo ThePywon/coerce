@@ -25,9 +25,9 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#methods"><b>Methods</b></a></summary>
   <p>
 
-  * [**`.defined`**](#defined) &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
-  * [**`.call`**](#call)
-  * [**`.toString`**](#tostring) &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
+  * [**`defaultCheck`**](#defaultcheck) &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
+  * [**`call`**](#call)
+  * [**`toString`**](#tostring) &nbsp; [![Prototype](https://shields.io/badge/-Prototype-orange)](https://javascript.info/prototype-inheritance)
     
   </p>
 </details>
@@ -117,9 +117,9 @@ console.log(John);
 
 <br/>
 
-<a id="defined"></a>
+<a id="defaultcheck"></a>
 
-## `.defined` &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
+## `.defaultCheck` &nbsp; [![Static](https://img.shields.io/badge/-Static-red)](https://javascript.info/static-properties-methods)
 
 A simple function that returns true if a value is a valid value  
 It returns false whenever the value is [`undefined`](https://javascript.info/types#the-undefined-value), [`null`](https://javascript.info/types#the-null-value) or [`NaN`](https://javascript.info/number#tests-isfinite-and-isnan)

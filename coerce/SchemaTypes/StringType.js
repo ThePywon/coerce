@@ -4,7 +4,7 @@
 const SchemaType = require("../SchemaType");
 
 // _String_ class definition
-class _String_ extends SchemaType {
+class StringType extends SchemaType {
   // Initialization
   constructor() { super() }
 
@@ -17,7 +17,7 @@ class _String_ extends SchemaType {
   }
 }
 // Simple toString function override
-_String_.prototype.toString = function toString() { return "String" }
+StringType.prototype.toString = function toString() { return "String" }
 
 // Export
-module.exports = _String_;
+module.exports = StringType;

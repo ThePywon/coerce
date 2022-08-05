@@ -5,7 +5,7 @@ const SchemaType = require("../SchemaType");
 const util = require("util");
 
 // Create _Function_ class
-class _Function_ extends SchemaType {
+class FunctionType extends SchemaType {
   // Initialization
   constructor() { super() }
 
@@ -19,7 +19,7 @@ class _Function_ extends SchemaType {
   }
 }
 // Simple toString function override
-_Function_.prototype.toString = function toString() { return "Function" }
+FunctionType.prototype.toString = function toString() { return "Function" }
 
 // Export
-module.exports = _Function_;
+module.exports = FunctionType;

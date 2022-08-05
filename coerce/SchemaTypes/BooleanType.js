@@ -4,7 +4,7 @@
 const SchemaType = require("../SchemaType");
 
 // _Boolean_ class definition
-class _Boolean_ extends SchemaType {
+class BooleanType extends SchemaType {
   // Initialization
   constructor() { super() }
 
@@ -12,7 +12,7 @@ class _Boolean_ extends SchemaType {
   call(val) { return SchemaType.defaultCheck(val) ? !!val : undefined }
 }
 // Simple toString function override
-_Boolean_.prototype.toString = function toString() { return "Boolean" }
+BooleanType.prototype.toString = function toString() { return "Boolean" }
 
 // Export
-module.exports = _Boolean_;
+module.exports = BooleanType;

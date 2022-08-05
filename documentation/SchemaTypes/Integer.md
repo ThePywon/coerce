@@ -40,8 +40,8 @@ A package to handle user inputs automatically
 # Integer
 
 A class extending from [`SchemaType`](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md)  
-It accepts all valid [`Number`](https://javascript.info/number) with no floating point  
-It tries to convert anything else into one
+It accepts all valid [`Number`](https://javascript.info/number)  
+It tries to convert anything else into one and removes any floating point
 
 <br/>
 
@@ -182,7 +182,7 @@ console.log(John);
 
 ## `.call`
 
-The function called to convert a value into a [`Number`](https://javascript.info/number) with no floating point and/or validate a value
+The function called to convert and/or validate a value to [`Number`](https://javascript.info/number) with no floating point
 
 <br/>
 
@@ -216,7 +216,7 @@ console.log(validator.call(-34.235));
 **Output:**
 
 ```
--35
+-34
 ```
 
 <br/><br/>

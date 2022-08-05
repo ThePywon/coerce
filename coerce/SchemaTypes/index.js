@@ -1,17 +1,17 @@
 // Fetch all default SchemaTypes
 module.exports = {
-  _Boolean_: require("./Boolean"),
-  _Number_: require("./Number"),
+  BooleanType: require("./BooleanType"),
+  NumberType: require("./NumberType"),
   Range: require("./Range"),
-  _String_: require("./String"),
-  _Date_: require("./Date"),
+  StringType: require("./StringType"),
+  DateType: require("./DateType"),
   DateRange: require("./DateRange"),
-  _Function_: require("./Function"),
-  _RegExp_: require("./RegExp"),
+  FunctionType: require("./Function"),
+  RegExpType: require("./RegExpType"),
   Integer: require("./Integer"),
   IntRange: require("./IntRange"),
   Byte: require("./Byte"),
-  _BigInt_: require("./BigInt"),
+  BigIntType: require("./BigIntType"),
   BigIntRange: require("./BigIntRange"),
   Any: require("./Any")
 }

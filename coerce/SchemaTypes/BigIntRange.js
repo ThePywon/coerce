@@ -1,13 +1,13 @@
 "use strict";
 
 // Import
-const _BigInt_ = require("./BigInt");
-const validator = new _BigInt_();
+const BigIntType = require("./BigIntType");
+const validator = new BigIntType();
 
 /**
  * @param {bigint} min
  * @param {bigint} max
- * @returns {typeof _BigInt_}
+ * @returns {typeof BigIntType}
  */
 function BigIntRange(min, max) {
   // Parse parameters
@@ -23,7 +23,7 @@ function BigIntRange(min, max) {
     throw new Error("Invalid passed value for parameter 'min', must not be higher than parameter 'max'");
 
   // Create temp class
-  const result = class BigIntRangeInstance extends _BigInt_ {
+  const result = class BigIntRangeInstance extends BigIntType {
     // Initialization
     constructor() { super() }
 
@@ -37,7 +37,7 @@ function BigIntRange(min, max) {
         return val;
     }
   }
-  result.prototype.toString = function toString() { return "BigIntRange" }
+  result.prototype.toString = function toString() { return `BigIntRange(${min}, ${max})` }
 
   // Return temp class
   return result;
