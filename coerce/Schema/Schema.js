@@ -3,39 +3,10 @@
 // Imports
 const { deepClone, deepFreeze } = require("@protagonists/deep");
 const SchemaType = require("../SchemaType");
-const SchemaTypes = require("../SchemaTypes");
 
 const Parser = require("./Coerce");
 
 ////////// MODEL CONVERSION //////////
-
-function parseProperty(prop, path) {
-  
-
-  // Hardcoded SchemaType equivalents
-  switch(prop) {
-    case Boolean:
-      return new SchemaTypes.BooleanType();
-
-    case Number:
-      return new SchemaTypes.NumberType();
-
-    case String:
-      return new SchemaTypes.StringType();
-
-    case Date:
-      return new SchemaTypes.DateType();
-
-    case Function:
-      return new SchemaTypes.FunctionType();
-    
-    case RegExp:
-      return new SchemaTypes.RegExpType();
-  }
-
-  // Throw error in any other case
-  throw new Error(`Invalid Schema Type at ${path}`);
-}
 
 
 function iterate(obj, path) {
