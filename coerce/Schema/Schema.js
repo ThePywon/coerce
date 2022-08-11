@@ -10,12 +10,7 @@ const Parser = require("./Coerce");
 ////////// MODEL CONVERSION //////////
 
 function parseProperty(prop, path) {
-  // Check if that property is a SchemaType
-  // and assign a new instance of it to the final model
-  if(prop instanceof SchemaType)
-    return new prop.constructor();
-  else if(prop.prototype instanceof SchemaType)
-    return new prop();
+  
 
   // Hardcoded SchemaType equivalents
   switch(prop) {
@@ -64,21 +59,25 @@ function iterate(obj, path) {
 
         obj[name] = [];
 
-        // Parse each element
+        // Validate each element
         for(let j = 0; j < prop.length; j++) {
 
-          // Make sure to communicate to users that objects are illegal inside arrays
-          if(!prop[j] instanceof SchemaType &&
-            !prop[j].prototype instanceof SchemaType &&
-            typeof prop[j] == "object")
-              throw new Error(`Illegal use of Schema at ${path}.${name}[${j}], cannot process Object nested inside an Array.\n       Use a SchemaType instance instead.`);
-
-          obj[name][j] = parseProperty(prop[j], `${path}.${name}[${j}]`);
+          // Check if that property is a SchemaType
+          // and assign a new instance of it to the final model
+          if(prop instanceof SchemaType)
+            object[name][j] = new prop.constructor();
+          else if(prop.prototype instanceof SchemaType)
+            object[name][j] = new prop();
+          // Illegal use!
+          else throw new Error(`Invalid Schema Type at ${path}.${name}[${j}]`);
         }
       }
-      else if(prop instanceof SchemaType ||
-        prop.prototype instanceof SchemaType)
-          obj[name] = parseProperty(prop, path + '.' + name);
+      // Check if that property is a SchemaType
+      // and assign a new instance of it to the final model
+      else if(prop instanceof SchemaType)
+        object[name] = new prop.constructor();
+      else if(prop.prototype instanceof SchemaType)
+        object[name] = new prop();
       // Otherwise, treat as any other object
       else {
         // Make sure it contains at least one property
@@ -92,7 +91,12 @@ function iterate(obj, path) {
     else if(prop instanceof Schema)
       obj[name] = prop.raw;
     // Otherwise, simply parse the property to a corresponding SchemaType
-    else obj[name] = parseProperty(prop, path + '.' + name);
+    if(prop instanceof SchemaType)
+      object[name][j] = new prop.constructor();
+    else if(prop.prototype instanceof SchemaType)
+      object[name][j] = new prop();
+    // Illegal use!
+    else throw new Error(`Invalid Schema Type at ${path}.${name}`);
   }
 
   return obj;

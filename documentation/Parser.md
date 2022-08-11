@@ -70,20 +70,21 @@ A resulting function from [`Schema`](https://github.com/ThePywon/coerce/blob/mai
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, 200),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, 200),
+  birthday: DateType,
+  friends: [StringType]
 });
 
 // Log the Person schema's raw model
 console.log(Person.raw);
 
-// Coerce object with schema
+// Create object with 'Person' model
 const John = new Person({
   name: "John",
   favColor: "Red",
@@ -138,14 +139,15 @@ The raw parsed model used to coerce the objects
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, 200),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, 200),
+  birthday: DateType,
+  friends: [StringType]
 });
 
 // Log result
@@ -179,14 +181,15 @@ An object in the same format as the model containing all the placeholder values 
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, 200),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, 200),
+  birthday: DateType,
+  friends: [StringType]
 });
 // Set the schema's default values
 Person.setDefaults({
@@ -242,14 +245,15 @@ A function used to set the properties of [`.defaults`](#defaults)
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, 200),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, 200),
+  birthday: DateType,
+  friends: [StringType]
 });
 // Set schema's default values
 Person.setDefaults({
@@ -298,14 +302,15 @@ It returns a stringified version of [`.raw`](#raw)
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: SIntRange(0, Number.MAX_SAFE_INTEGER),
+  birthday: DateType,
+  friends: [StringType]
 });
 
 // Log toString
