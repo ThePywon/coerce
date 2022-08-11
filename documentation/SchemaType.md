@@ -55,8 +55,8 @@ This class is meant to be extended upon
 
 ```js
 // Imports
-const { Schema, SchemaType, SchemaTypes } = require("@protagonists/coerce");
-
+const { Schema, SchemaType } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create class 'Gender' from SchemaType class
 class Gender extends SchemaType {
@@ -75,16 +75,16 @@ class Gender extends SchemaType {
   }
 }
 
-// Create schema "Person"
+// Create schema 'Person'
 const Person = new Schema({
-  name: String,
+  name: StringType,
   gender: Gender,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String]
+  age: IntRange(0, 200),
+  birthday: DateType,
+  friends: [StringType]
 });
 
-// Coerce object with schema
+// Create object from 'Person' model
 const John = Person({
   name: "John",
   gender: Gender.Male,

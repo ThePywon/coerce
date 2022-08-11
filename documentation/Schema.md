@@ -27,7 +27,7 @@ A package to handle user inputs automatically
 * <details open><summary><a href="#properties"><b>Properties</b></a></summary>
   <p>
 
-  * [**`isDefault`**](#isdefault) &nbsp; ![NEW](https://shields.io/badge/-New-red)
+  * [**`isDefault`**](#isdefault)
     
   </p>
 </details>
@@ -73,14 +73,15 @@ A builder function that returns a [`Parser`](https://github.com/ThePywon/coerce/
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, 200),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, 200),
+  birthday: DateType,
+  friends: [StringType]
 });
 
 
@@ -114,7 +115,7 @@ console.log(Person);
 
 <a id="isdefault"></a>
 
-## `.isDefault` &nbsp; ![NEW](https://shields.io/badge/-New-red)
+## `.isDefault`
 
 A Symbol used as a property name by the result of a convertion  
 It has the same structure as the model but each property is a boolean  
@@ -149,15 +150,16 @@ Symbol(isDefault)
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateRange } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, 200),
-  favColor: String,
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, 200),
+  favColor: StringType,
+  birthday: DateRange,
+  friends: [StringType]
 });
 
 // Set default values
@@ -167,7 +169,7 @@ Person.setDefaults({
   friends: ["Meep"]
 });
 
-// Create new Person
+// Create object from 'Person' model
 const John = Person({
   name: "John",
   age: 37,
@@ -226,14 +228,15 @@ It returns true if the value is itself or one of the temporary functions it crea
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create a model for the schema
 const PersonModel = {
-  name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, Number.MAX_SAFE_INTEGER),
+  birthday: DateType,
+  friends: [StringType]
 };
 // Create schema 'Person' from model
 const Person = new Schema(PersonModel);

@@ -36,30 +36,8 @@ A package to handle user inputs automatically
 
 * [**SchemaType**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaType.md) &nbsp; ![Exported](https://img.shields.io/badge/-Exported-cyan)
 
-* <details open><summary><a href="https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes.md"><b>SchemaTypes</b></a> &nbsp; <img src="https://img.shields.io/badge/-Exported-cyan"/></summary>
-  <p>
-
-  * [**`Any`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Any.md)
-  * [**`BigIntType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntType.md)
-  * [**`BitIntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRange.md)
-  * [**BigIntRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BigIntRangeInstance.md)
-  * [**`BooleanType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/BooleanType.md)
-  * [**`Byte`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Byte.md)
-  * [**`DateType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateType.md)
-  * [**`DateRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRange.md)
-  * [**DateRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/DateRangeInstance.md)
-  * [**`Function`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/FunctionType.md)
-  * [**`Integer`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Integer.md)
-  * [**`IntRange`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRange.md)
-  * [**IntRangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/IntRangeInstance.md)
-  * [**`Number`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/NumberType.md)
-  * [**`Range`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/Range.md)
-  * [**RangeInstance**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/RangeInstance.md)
-  * [**`RegExpType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/RegExpType.md)
-  * [**`StringType`**](https://github.com/ThePywon/coerce/blob/main/documentation/SchemaTypes/StringType.md)
-    
-  </p>
-</details>
+> ![NEW](https://img.shields.io/badge/-NEW-red) &nbsp; Default SchemaTypes are now completely seperate from the original package!  
+> See more at [`@protagonists/coerce-basics`](https://www.npmjs.com/package/@protagonists/coerce-basics)
 
 ---
 
@@ -72,7 +50,7 @@ A package to handle user inputs automatically
 ## Description
 
 This package takes in an object and coerces it into the same structure as the passed model  
-This can be a very usefull tool to manage user inputted data automatically
+This can be a very usefull tool to manage user inputed data automatically
 
 <br/>
 
@@ -100,14 +78,15 @@ This can be a very usefull tool to manage user inputted data automatically
 
 ```js
 // Imports
-const { Schema, SchemaTypes } = require("@protagonists/coerce");
+const { Schema } = require("@protagonists/coerce");
+const { StringType, IntRange, DateType } = require("@protagonists/coerce-basics");
 
 // Create schema 'Person'
 const Person = new Schema({
-  name: String,
-  age: SchemaTypes.IntRange(0, Number.MAX_SAFE_INTEGER),
-  birthday: Date,
-  friends: [String]
+  name: StringType,
+  age: IntRange(0, 200),
+  birthday: DateType,
+  friends: [StringType]
 });
 
 // Coerce object into following the model
