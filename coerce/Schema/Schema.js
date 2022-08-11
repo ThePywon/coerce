@@ -36,9 +36,9 @@ function iterate(obj, path) {
           // Check if that property is a SchemaType
           // and assign a new instance of it to the final model
           if(prop instanceof SchemaType)
-            object[name][j] = new prop.constructor();
+            obj[name][j] = new prop.constructor();
           else if(prop.prototype instanceof SchemaType)
-            object[name][j] = new prop();
+            obj[name][j] = new prop();
           // Illegal use!
           else throw new Error(`Invalid Schema Type at ${path}.${name}[${j}]`);
         }
@@ -46,9 +46,9 @@ function iterate(obj, path) {
       // Check if that property is a SchemaType
       // and assign a new instance of it to the final model
       else if(prop instanceof SchemaType)
-        object[name] = new prop.constructor();
+        obj[name] = new prop.constructor();
       else if(prop.prototype instanceof SchemaType)
-        object[name] = new prop();
+        obj[name] = new prop();
       // Otherwise, treat as any other object
       else {
         // Make sure it contains at least one property
@@ -63,9 +63,9 @@ function iterate(obj, path) {
       obj[name] = prop.raw;
     // Otherwise, simply parse the property to a corresponding SchemaType
     if(prop instanceof SchemaType)
-      object[name][j] = new prop.constructor();
+      obj[name][j] = new prop.constructor();
     else if(prop.prototype instanceof SchemaType)
-      object[name][j] = new prop();
+      obj[name][j] = new prop();
     // Illegal use!
     else throw new Error(`Invalid Schema Type at ${path}.${name}`);
   }

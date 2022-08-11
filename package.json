@@ -1,6 +1,6 @@
 {
   "name": "@protagonists/coerce",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A package to handle user inputs automatically",
   "main": "coerce",
   "scripts": {
@@ -17,8 +17,6 @@
   },
   "homepage": "https://github.com/ThePywon/coerce#readme",
   "dependencies": {
-    "@protagonists/coerce": "^1.0.8",
-    "@protagonists/coerce-basics": "^1.0.0",
     "@protagonists/deep": "^1.0.2"
   }
 }
