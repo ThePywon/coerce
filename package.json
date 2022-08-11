@@ -1,6 +1,6 @@
 {
   "name": "@protagonists/coerce",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A package to handle user inputs automatically",
   "main": "coerce",
   "scripts": {

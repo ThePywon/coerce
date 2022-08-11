@@ -63,9 +63,9 @@ function iterate(obj, path) {
       obj[name] = prop.raw;
     // Otherwise, simply parse the property to a corresponding SchemaType
     if(prop instanceof SchemaType)
-      obj[name][j] = new prop.constructor();
+      obj[name] = new prop.constructor();
     else if(prop.prototype instanceof SchemaType)
-      obj[name][j] = new prop();
+      obj[name] = new prop();
     // Illegal use!
     else throw new Error(`Invalid Schema Type at ${path}.${name}`);
   }
